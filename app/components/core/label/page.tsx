@@ -1,68 +1,254 @@
-import { Label, Card, Input } from "@/components/ui";
+"use client";
+
+import { cn } from "@/lib/utils";
+
+import {
+  Label,
+  Input,
+  Card,
+  Table,
+  TableHeader,
+  TableBody,
+  TableHead,
+  TableRow,
+  TableCell,
+  Typography,
+  H1,
+  H3,
+  Lead,
+} from "@/components/ui";
+import { CopyButton } from "@/components/docs/CopyButton";
 
 export default function LabelDoc() {
+  const labelExamples = [
+    {
+      label: "Standard_Label",
+      items: [
+        {
+          id: "std-1",
+          text: "System_Identifier",
+          required: false,
+          placeholder: "0x4A2B9",
+        },
+        {
+          id: "std-2",
+          text: "Operator_Name",
+          required: false,
+          placeholder: "Administrator",
+        },
+      ],
+    },
+    {
+      label: "Validation_Labels",
+      items: [
+        {
+          id: "val-1",
+          text: "Encrypted_Vault_Key",
+          required: true,
+          placeholder: "Enter_Key...",
+        },
+        {
+          id: "val-2",
+          text: "Secondary_Auth_Protocol",
+          required: true,
+          placeholder: "Sequence_ID...",
+        },
+      ],
+    },
+    {
+      label: "Scaling",
+      items: [
+        {
+          id: "s-xs",
+          text: "XS_Label",
+          size: "xs",
+          placeholder: "Extreme_Density",
+          required: true,
+        },
+        {
+          id: "s-sm",
+          text: "SM_Label",
+          size: "sm",
+          placeholder: "Compact_Mode",
+          required: true,
+        },
+        {
+          id: "s-md",
+          text: "MD_Label",
+          size: "md",
+          placeholder: "Standard_Protocol",
+          required: true,
+        },
+        {
+          id: "s-lg",
+          text: "LG_Label",
+          size: "lg",
+          placeholder: "Focus_Mode",
+          required: true,
+        },
+        {
+          id: "s-xl",
+          text: "XL_Label",
+          size: "xl",
+          placeholder: "High_Fidelity",
+          required: true,
+        },
+      ] as const,
+    },
+  ] as const;
+
   return (
-    <div className="space-y-16">
+    <div className="space-y-20 pb-24">
+      {/* Header */}
       <div className="space-y-4">
-        <h1 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter">
-          Label
-        </h1>
-        <p className="text-zinc-500 text-lg max-w-2xl font-light">
-          A minimalist indicator for digital inscriptions. Designed for
-          high-clarity monospace hierarchy.
-        </p>
+        <H1>Label</H1>
+        <Lead>
+          The technical descriptor for data inscriptions. Optimized for
+          monospace clarity and structural hierarchy.
+        </Lead>
       </div>
 
-      <section className="space-y-8">
-        <h3 className="text-[10px] font-mono font-bold uppercase tracking-[0.4em] text-zinc-600">
-          Standard Design
-        </h3>
-        <Card variant="artifact" className="p-12 space-y-12 bg-white/[0.01]">
-          <div className="space-y-3">
-            <Label htmlFor="standard">Standard_Indicator</Label>
-            <p className="text-zinc-500 text-xs font-mono">
-              Used for primary form labels.
-            </p>
+      {/* Preview */}
+      <section className="space-y-12">
+        <div className="flex items-center justify-between border-b border-white/5 pb-4">
+          <div className="flex items-center gap-3">
+            <div className="w-2 h-2 bg-zinc-500" />
+            <H3>Preview</H3>
           </div>
+          <span className="text-[10px] font-mono text-zinc-800 italic">
+            Core
+          </span>
+        </div>
 
-          <div className="space-y-3">
-            <Label htmlFor="accent" className="text-accent/60">
-              Accent_Indicator
-            </Label>
-            <p className="text-zinc-500 text-xs font-mono">
-              Customizable color states for different alchemical phases.
-            </p>
+        <div className="space-y-16">
+          {labelExamples.map((group) => (
+            <div key={group.label} className="space-y-6">
+              <Typography
+                variant="large"
+                className="text-sm tracking-tight text-zinc-500"
+              >
+                {group.label.replace("_", " ")}
+              </Typography>
+
+              <div
+                className={cn(
+                  "p-10 rounded-sm border border-white/5 bg-white/[0.01]",
+                  group.label === "Scaling"
+                    ? "flex flex-col gap-8"
+                    : "grid grid-cols-1 md:grid-cols-2 gap-8"
+                )}
+              >
+                {group.items.map((item) => (
+                  <div
+                    key={item.id}
+                    className={cn(
+                      "space-y-3",
+                      group.label === "Scaling" && "max-w-md"
+                    )}
+                  >
+                    {/* @ts-expect-error - Size prop is valid */}
+                    <Label
+                      htmlFor={item.id}
+                      required={item.required}
+                      size={item.size}
+                    >
+                      {item.text}
+                    </Label>
+                    {/* @ts-expect-error - Size prop is valid */}
+                    <Input
+                      id={item.id}
+                      placeholder={item.placeholder}
+                      size={item.size}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* API Reference */}
+      <section className="space-y-8">
+        <div className="flex items-center justify-between border-b border-white/5 pb-4">
+          <div className="flex items-center gap-3">
+            <div className="w-2 h-2 bg-zinc-800" />
+            <H3>API_Reference</H3>
           </div>
+          <span className="text-[10px] font-mono text-zinc-800 italic">
+            Core
+          </span>
+        </div>
+        <Card className="overflow-hidden border-white/5 bg-black/20">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-[150px]">Prop</TableHead>
+                <TableHead>Type</TableHead>
+                <TableHead>Default</TableHead>
+                <TableHead>Description</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell className="font-mono text-white">size</TableCell>
+                <TableCell className="text-[12px] font-mono text-zinc-500">
+                  "xs" | "sm" | "md" | "lg" | "xl"
+                </TableCell>
+                <TableCell className="font-mono text-[12px]">"md"</TableCell>
+                <TableCell>
+                  Synchronized typographic scale for label alignment.
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className="font-mono text-white">required</TableCell>
+                <TableCell className="text-[12px] font-mono text-zinc-500">
+                  boolean
+                </TableCell>
+                <TableCell className="font-mono text-[12px]">false</TableCell>
+                <TableCell>
+                  Display a technical 'required' asterisk indicator.
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className="font-mono text-white">htmlFor</TableCell>
+                <TableCell className="text-[12px] font-mono text-zinc-500">
+                  string
+                </TableCell>
+                <TableCell className="font-mono text-[12px]">null</TableCell>
+                <TableCell>
+                  The ID of the form element the label is bound to.
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
         </Card>
       </section>
 
+      {/* Usage */}
       <section className="space-y-8">
-        <h3 className="text-[10px] font-mono font-bold uppercase tracking-[0.4em] text-zinc-600">
-          Composition
-        </h3>
-        <Card className="p-12 space-y-6 bg-black/40 border-white/5">
-          <div className="grid w-full max-w-sm items-center gap-3">
-            <Label htmlFor="email-example">Coordinate_Email</Label>
-            <Input
-              type="email"
-              id="email-example"
-              placeholder="architect@8eyond.io"
+        <div className="flex items-center justify-between border-b border-white/5 pb-4">
+          <div className="flex items-center gap-3">
+            <div className="w-2 h-2 bg-zinc-800" />
+            <H3>Usage</H3>
+          </div>
+          <span className="text-[10px] font-mono text-zinc-800 italic">
+            Core
+          </span>
+        </div>
+        <div className="relative group">
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-700 rounded-sm blur-sm" />
+          <div className="relative p-8 bg-black/60 border border-white/5 font-mono text-sm overflow-x-auto flex items-center justify-between">
+            <code className="text-zinc-400 group-hover:text-white transition-colors duration-500 whitespace-pre">
+              {`<Label htmlFor="email" required>
+  Secure_Auth_Address
+</Label>`}
+            </code>
+            <CopyButton
+              value={`<Label htmlFor="email" required>Secure_Auth_Address</Label>`}
             />
           </div>
-        </Card>
-      </section>
-
-      <section className="space-y-8">
-        <h3 className="text-[10px] font-mono font-bold uppercase tracking-[0.4em] text-zinc-600">
-          Usage
-        </h3>
-        <Card className="p-8 bg-black/40 font-mono text-sm border-white/5">
-          <pre className="text-zinc-400 overflow-x-auto">
-            {`import { Label } from "@/components/ui";
-
-<Label htmlFor="email">Email_Address</Label>`}
-          </pre>
-        </Card>
+        </div>
       </section>
     </div>
   );

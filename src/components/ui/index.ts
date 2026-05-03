@@ -11,5 +11,4 @@ export * from "./core/Table";
 export * from "./core/Dialog";
 export * from "./core/Typography";
 
-// Alchemist Artifacts
 export { AlchemistButton } from "./alchemist/Button/Button";

@@ -1,19 +1,46 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-const Label = React.forwardRef<
-  HTMLLabelElement,
-  React.LabelHTMLAttributes<HTMLLabelElement>
->(({ className, ...props }, ref) => (
-  <label
-    ref={ref}
-    className={cn(
-      "text-[10px] font-mono font-bold uppercase tracking-[0.3em] text-zinc-500 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
-      className
-    )}
-    {...props}
-  />
-));
+export interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
+  required?: boolean;
+  size?: "xs" | "sm" | "md" | "lg" | "xl";
+}
+
+const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
+  ({ className, required, size = "md", children, ...props }, ref) => {
+    const sizes = {
+      xs: "text-[10px]",
+      sm: "text-[11px]",
+      md: "text-[12px]",
+      lg: "text-[14px]",
+      xl: "text-[16px]",
+    };
+
+    return (
+      <label
+        ref={ref}
+        className={cn(
+          "font-mono font-medium tracking-tight text-zinc-500 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex items-center gap-1",
+          sizes[size],
+          className
+        )}
+        {...props}
+      >
+        {children}
+        {required && (
+          <span
+            className={cn(
+              "text-red-500/80 font-bold",
+              size === "xs" || size === "sm" ? "text-[10px]" : "text-[12px]"
+            )}
+          >
+            *
+          </span>
+        )}
+      </label>
+    );
+  }
+);
 
 Label.displayName = "Label";
 
