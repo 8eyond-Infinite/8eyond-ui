@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+@theme {
+  --color-void-900: #0a0a0a;
+  --color-void-950: #050505;
+  --color-void-1000: #000000;
+
+  --color-accent: #fbbf24;
+  --color-accent-dim: rgba(251, 191, 36, 0.2);
+  --color-accent-secondary: #ff4400;
+
+  --color-background: var(--color-void-1000);
+  --color-foreground: #f4f4f5;
+  --color-border: rgba(255, 255, 255, 0.08);
+
+  --font-sans: "Inter", "Geist Sans", system-ui, sans-serif;
+  --font-mono: "Geist Mono", "Fira Code", monospace;
+
+  --shadow-glow: 0 0 25px rgba(251, 191, 36, 0.15);
+  --shadow-glow-heavy: 0 0 50px rgba(251, 191, 36, 0.3);
+
+  --animate-shimmer: shimmer 2s linear infinite;
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+  @keyframes shimmer {
+    from {
+      background-position: 200% 0;
+    }
+    to {
+      background-position: -200% 0;
+    }
+  }
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    selection-background-color: var(--color-accent);
+    selection-color: var(--color-void-1000);
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-void-1000);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-void-900);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-accent-dim);
+  }
+}
+
+@layer utilities {
+  .glass-artifact {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(12px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+  }
+
+  .glass-artifact-hover {
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .glass-artifact-hover:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(251, 191, 36, 0.3);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .text-artifact {
+    background: linear-gradient(to right, #ffffff, #a1a1aa, #ffffff);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 5s linear infinite;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 10px rgba(251, 191, 36, 0.4);
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+}
