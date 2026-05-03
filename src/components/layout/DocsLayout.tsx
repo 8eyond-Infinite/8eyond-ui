@@ -66,21 +66,38 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
 
           <div className="space-y-4">
             {sidebarData.map((group) => {
+              const isActive = group.items.some(
+                (item) => item.href === pathname
+              );
               const isOpen = openGroups.includes(group.title);
+
               return (
                 <div key={group.title} className="space-y-1">
                   <button
                     onClick={() => toggleGroup(group.title)}
-                    className="w-full flex items-center justify-between py-2 px-3 -mx-3 rounded-md hover:bg-white/[0.02] group/btn transition-colors"
+                    className={cn(
+                      "w-full flex items-center justify-between py-2 px-3 -mx-3 rounded-md transition-colors group/btn",
+                      isActive
+                        ? "bg-white/[0.04] text-white"
+                        : "hover:bg-white/[0.02] text-zinc-500"
+                    )}
                   >
-                    <h4 className="text-[10px] font-mono font-bold uppercase tracking-[0.3em] text-zinc-500 group-hover/btn:text-zinc-200 transition-colors">
+                    <h4
+                      className={cn(
+                        "text-[12px] font-bold uppercase tracking-wider transition-colors",
+                        isActive
+                          ? "text-white"
+                          : "group-hover/btn:text-zinc-200"
+                      )}
+                    >
                       {group.title}
                     </h4>
                     <ChevronRight
                       size={10}
                       className={cn(
                         "text-zinc-800 transition-transform duration-300",
-                        isOpen && "rotate-90 text-accent"
+                        isOpen && "rotate-90",
+                        isActive && "text-accent"
                       )}
                     />
                   </button>
