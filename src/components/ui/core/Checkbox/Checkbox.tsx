@@ -4,15 +4,35 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { Check } from "lucide-react";
 
-export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface CheckboxProps extends Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  "size"
+> {
   onCheckedChange?: (checked: boolean) => void;
+  size?: "xs" | "sm" | "md" | "lg" | "xl";
 }
 
 const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ className, onCheckedChange, ...props }, ref) => {
+  ({ className, onCheckedChange, size = "md", ...props }, ref) => {
     const [checked, setChecked] = React.useState(
       props.checked || props.defaultChecked || false
     );
+
+    const sizes = {
+      xs: "h-3 w-3",
+      sm: "h-4 w-4",
+      md: "h-5 w-5",
+      lg: "h-6 w-6",
+      xl: "h-7 w-7",
+    };
+
+    const checkSizes = {
+      xs: "h-2 w-2",
+      sm: "h-2.5 w-2.5",
+      md: "h-3.5 w-3.5",
+      lg: "h-4 w-4",
+      xl: "h-5 w-5",
+    };
 
     React.useEffect(() => {
       if (props.checked !== undefined) {
@@ -29,7 +49,7 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
     };
 
     return (
-      <div className="relative inline-flex items-center group cursor-pointer">
+      <div className="relative inline-flex items-center group cursor-pointer h-fit">
         <input
           type="checkbox"
           className="peer sr-only"
@@ -40,7 +60,12 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
         />
         <div
           className={cn(
-            "h-5 w-5 rounded-[2px] border border-white/10 bg-white/[0.02] transition-all duration-300 peer-focus-visible:border-accent/40 peer-focus-visible:shadow-glow peer-checked:bg-accent peer-checked:border-accent group-hover:border-white/20 flex items-center justify-center",
+            "rounded-[1px] border transition-all duration-300 flex items-center justify-center",
+            sizes[size],
+            checked
+              ? "bg-white border-white shadow-[0_0_10px_rgba(255,255,255,0.1)]"
+              : "border-white/10 bg-zinc-950/50 group-hover:border-white/30",
+            props.disabled && "opacity-50 cursor-not-allowed grayscale",
             className
           )}
           onClick={() => {
@@ -53,7 +78,8 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
         >
           <Check
             className={cn(
-              "h-3.5 w-3.5 text-void-1000 transition-all duration-300 transform",
+              "text-black font-bold transition-all duration-300 transform",
+              checkSizes[size],
               checked ? "opacity-100 scale-100" : "opacity-0 scale-50"
             )}
           />
