@@ -10,6 +10,8 @@ import {
   CardDescription,
   CardContent,
   CardFooter,
+  Input,
+  Label,
 } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import {
@@ -24,16 +26,18 @@ import {
   Terminal,
   Cpu,
   Sparkles,
+  Inscription,
 } from "lucide-react";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<"preview" | "code">("preview");
+  const [activeInputTab, setActiveInputTab] = useState<"preview" | "code">(
+    "preview"
+  );
   const [copied, setCopied] = useState(false);
 
-  const copyCode = () => {
-    navigator.clipboard.writeText(
-      `<Button variant="alchemist" size="lg">\n  Transmute Artifact\n</Button>`
-    );
+  const copyCode = (code: string) => {
+    navigator.clipboard.writeText(code);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -108,7 +112,8 @@ export default function Home() {
             </div>
           </motion.div>
 
-          <div className="grid grid-cols-1 gap-40">
+          <div className="grid grid-cols-1 gap-60">
+            {/* Artifact 01: Button */}
             <div className="space-y-16">
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
                 <div className="space-y-4">
@@ -192,7 +197,11 @@ export default function Home() {
                           <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
                         </div>
                         <button
-                          onClick={copyCode}
+                          onClick={() =>
+                            copyCode(
+                              `<Button variant="alchemist" size="lg">\n  Transmute Artifact\n</Button>`
+                            )
+                          }
                           className="text-zinc-500 hover:text-white transition-all p-2 hover:bg-white/5 rounded-md"
                         >
                           {copied ? (
@@ -220,6 +229,135 @@ export default function Home() {
                           {"  Transmute Artifact"}
                           {"\n"}
                           {"</Button>"}
+                        </code>
+                      </pre>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </Card>
+            </div>
+
+            {/* Artifact 02: Input */}
+            <div className="space-y-16">
+              <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3 text-accent font-mono text-[10px] tracking-[0.4em] uppercase opacity-60">
+                    <Terminal size={14} /> Artifact_02 // INSCRIPTION
+                  </div>
+                  <h2 className="text-5xl font-black tracking-tight uppercase italic">
+                    The Input
+                  </h2>
+                  <p className="text-zinc-500 max-w-md text-sm leading-relaxed">
+                    Monospace input fields designed for data-heavy inscriptions
+                    and alchemical focus states.
+                  </p>
+                </div>
+
+                <div className="flex bg-white/5 p-1 rounded-[2px] border border-white/5 h-fit">
+                  <button
+                    onClick={() => setActiveInputTab("preview")}
+                    className={cn(
+                      "flex items-center gap-2 px-6 py-2 text-[10px] font-mono uppercase tracking-widest transition-all duration-300",
+                      activeInputTab === "preview"
+                        ? "bg-white/10 text-white shadow-lg"
+                        : "text-zinc-500 hover:text-zinc-300"
+                    )}
+                  >
+                    <Eye size={12} /> Preview
+                  </button>
+                  <button
+                    onClick={() => setActiveInputTab("code")}
+                    className={cn(
+                      "flex items-center gap-2 px-6 py-2 text-[10px] font-mono uppercase tracking-widest transition-all duration-300",
+                      activeInputTab === "code"
+                        ? "bg-white/10 text-white shadow-lg"
+                        : "text-zinc-500 hover:text-zinc-300"
+                    )}
+                  >
+                    <Code size={12} /> Code
+                  </button>
+                </div>
+              </div>
+
+              <Card
+                variant="artifact"
+                className="min-h-[500px] flex items-center justify-center relative overflow-hidden bg-white/[0.01]"
+              >
+                <AnimatePresence mode="wait">
+                  {activeInputTab === "preview" ? (
+                    <motion.div
+                      key="preview"
+                      initial={{
+                        opacity: 0,
+                        scale: 0.98,
+                        filter: "blur(10px)",
+                      }}
+                      animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                      exit={{ opacity: 0, scale: 0.98, filter: "blur(10px)" }}
+                      transition={{ duration: 0.5 }}
+                      className="w-full max-w-md space-y-8 z-10"
+                    >
+                      <div className="space-y-3">
+                        <Label htmlFor="logic">Logic_Field</Label>
+                        <Input id="logic" placeholder="Standard_Input..." />
+                      </div>
+                      <div className="space-y-3">
+                        <Label htmlFor="artifact" className="text-accent/60">
+                          Artifact_Inscription
+                        </Label>
+                        <Input
+                          variant="artifact"
+                          id="artifact"
+                          placeholder="Glow_Focus_Enabled..."
+                        />
+                      </div>
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="code"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="w-full max-w-2xl bg-black/40 backdrop-blur-md rounded-lg border border-white/5 p-8 font-mono text-sm relative group"
+                    >
+                      <div className="flex justify-between items-center mb-6 pb-4 border-b border-white/5">
+                        <div className="flex gap-1.5">
+                          <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
+                          <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
+                          <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
+                        </div>
+                        <button
+                          onClick={() =>
+                            copyCode(
+                              `<Label htmlFor="key">Key</Label>\n<Input variant="artifact" id="key" />`
+                            )
+                          }
+                          className="text-zinc-500 hover:text-white transition-all p-2 hover:bg-white/5 rounded-md"
+                        >
+                          {copied ? (
+                            <Check size={16} className="text-accent" />
+                          ) : (
+                            <Copy size={16} />
+                          )}
+                        </button>
+                      </div>
+                      <pre className="text-zinc-300 leading-loose overflow-x-auto">
+                        <code className="block">
+                          <span className="text-zinc-600">import</span>{" "}
+                          {"{ Input, Label }"}{" "}
+                          <span className="text-zinc-600">from</span>{" "}
+                          <span className="text-accent">
+                            &quot;@/components/ui&quot;
+                          </span>
+                          ;{"\n\n"}
+                          {'<div className="space-y-3">'}
+                          {"\n"}
+                          {'  <Label htmlFor="key">Artifact_Key</Label>'}
+                          {"\n"}
+                          {"  <Input "}
+                          <span className="text-accent">variant</span>
+                          =&quot;artifact&quot; id=&quot;key&quot; /&gt;{"\n"}
+                          {"</div>"}
                         </code>
                       </pre>
                     </motion.div>
