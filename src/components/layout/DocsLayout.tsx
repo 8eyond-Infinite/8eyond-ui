@@ -19,6 +19,7 @@ const sidebarData = [
           { name: "Typography", href: "/components/core/typography" },
           { name: "Button", href: "/components/core/button" },
           { name: "Badge", href: "/components/core/badge" },
+          { name: "Accordion", href: "/components/core/accordion" },
         ],
       },
       {

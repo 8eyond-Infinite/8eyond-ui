@@ -15,5 +15,6 @@ export * from "./core/RadioGroup";
 export * from "./core/Tooltip";
 export * from "./core/Badge";
 export * from "./core/Typography";
+export * from "./core/Accordion";
 
 export { AlchemistButton } from "./alchemist/Button/Button";
