@@ -4,27 +4,52 @@ import * as React from "react";
 import { ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+const BreadcrumbContext = React.createContext<{
+  size?: "xs" | "sm" | "md" | "lg" | "xl";
+} | null>(null);
+
 const Breadcrumb = React.forwardRef<
   HTMLElement,
   React.ComponentPropsWithoutRef<"nav"> & {
     separator?: React.ReactNode;
+    size?: "xs" | "sm" | "md" | "lg" | "xl";
   }
->(({ ...props }, ref) => <nav ref={ref} aria-label="breadcrumb" {...props} />);
+>(({ size = "md", ...props }, ref) => {
+  return (
+    <BreadcrumbContext.Provider value={{ size }}>
+      <nav ref={ref} aria-label="breadcrumb" {...props} />
+    </BreadcrumbContext.Provider>
+  );
+});
 Breadcrumb.displayName = "Breadcrumb";
 
 const BreadcrumbList = React.forwardRef<
   HTMLOListElement,
   React.ComponentPropsWithoutRef<"ol">
->(({ className, ...props }, ref) => (
-  <ol
-    ref={ref}
-    className={cn(
-      "flex flex-wrap items-center gap-2 break-words text-[11px] font-mono uppercase tracking-[0.2em] text-zinc-500",
-      className
-    )}
-    {...props}
-  />
-));
+>(({ className, ...props }, ref) => {
+  const context = React.useContext(BreadcrumbContext);
+  const size = context?.size || "md";
+
+  const sizes = {
+    xs: "text-[9px] gap-1.5",
+    sm: "text-[10px] gap-2",
+    md: "text-[11px] gap-2.5",
+    lg: "text-[13px] gap-3",
+    xl: "text-[15px] gap-4",
+  };
+
+  return (
+    <ol
+      ref={ref}
+      className={cn(
+        "flex flex-wrap items-center break-words font-mono uppercase tracking-[0.2em] text-zinc-500",
+        sizes[size],
+        className
+      )}
+      {...props}
+    />
+  );
+});
 BreadcrumbList.displayName = "BreadcrumbList";
 
 const BreadcrumbItem = React.forwardRef<
@@ -33,7 +58,7 @@ const BreadcrumbItem = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <li
     ref={ref}
-    className={cn("inline-flex items-center gap-2", className)}
+    className={cn("inline-flex items-center gap-[inherit]", className)}
     {...props}
   />
 ));
@@ -69,7 +94,7 @@ const BreadcrumbPage = React.forwardRef<
     role="link"
     aria-disabled="true"
     aria-current="page"
-    className={cn("font-bold text-accent italic text-glow", className)}
+    className={cn("font-black text-white italic tracking-tight", className)}
     {...props}
   />
 ));
@@ -83,10 +108,10 @@ const BreadcrumbSeparator = ({
   <li
     role="presentation"
     aria-hidden="true"
-    className={cn("text-zinc-800", className)}
+    className={cn("text-zinc-800 font-normal", className)}
     {...props}
   >
-    {children ?? <ChevronRight size={12} />}
+    {children ?? <ChevronRight className="w-[1em] h-[1em]" />}
   </li>
 );
 BreadcrumbSeparator.displayName = "BreadcrumbSeparator";

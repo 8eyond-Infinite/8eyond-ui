@@ -42,7 +42,10 @@ const sidebarData = [
       },
       {
         title: "Overlays",
-        items: [{ name: "Dialog", href: "/components/core/dialog" }],
+        items: [
+          { name: "Dialog", href: "/components/core/dialog" },
+          { name: "Toast", href: "/components/core/toast" },
+        ],
       },
     ],
   },

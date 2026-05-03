@@ -7,23 +7,28 @@ import { cn } from "@/lib/utils";
 const TabsContext = React.createContext<{
   value?: string;
   onValueChange?: (value: string) => void;
+  size?: "xs" | "sm" | "md" | "lg" | "xl";
+  layoutId: string;
 } | null>(null);
 
 const Tabs = ({
   defaultValue,
   value,
   onValueChange,
+  size = "md",
   className,
   children,
 }: {
   defaultValue?: string;
   value?: string;
   onValueChange?: (value: string) => void;
+  size?: "xs" | "sm" | "md" | "lg" | "xl";
   className?: string;
   children: React.ReactNode;
 }) => {
   const [internalValue, setInternalValue] = React.useState(defaultValue);
   const activeValue = value ?? internalValue;
+  const generatedId = React.useId();
 
   return (
     <TabsContext.Provider
@@ -33,6 +38,8 @@ const Tabs = ({
           setInternalValue(v);
           onValueChange?.(v);
         },
+        size,
+        layoutId: `tabs-active-${generatedId}`,
       }}
     >
       <div className={cn("w-full", className)}>{children}</div>
@@ -46,16 +53,30 @@ const TabsList = ({
 }: {
   className?: string;
   children: React.ReactNode;
-}) => (
-  <div
-    className={cn(
-      "inline-flex h-11 items-center justify-center rounded-[4px] bg-white/[0.02] border border-white/5 p-1 text-zinc-500 relative mb-2",
-      className
-    )}
-  >
-    {children}
-  </div>
-);
+}) => {
+  const context = React.useContext(TabsContext);
+  const size = context?.size || "md";
+
+  const sizes = {
+    xs: "h-7 p-0.5",
+    sm: "h-9 p-1",
+    md: "h-11 p-1",
+    lg: "h-14 p-1.5",
+    xl: "h-16 p-2",
+  };
+
+  return (
+    <div
+      className={cn(
+        "inline-flex items-center justify-center rounded-sm bg-zinc-950/50 border border-white/10 text-zinc-500 relative",
+        sizes[size],
+        className
+      )}
+    >
+      {children}
+    </div>
+  );
+};
 
 const TabsTrigger = ({
   value,
@@ -68,24 +89,36 @@ const TabsTrigger = ({
 }) => {
   const context = React.useContext(TabsContext);
   const isActive = context?.value === value;
+  const size = context?.size || "md";
+
+  const sizes = {
+    xs: "px-3 py-1 text-[9px]",
+    sm: "px-4 py-1.5 text-[10px]",
+    md: "px-6 py-2 text-[11px]",
+    lg: "px-8 py-3 text-[13px]",
+    xl: "px-10 py-4 text-[15px]",
+  };
 
   return (
     <button
       onClick={() => context?.onValueChange?.(value)}
       className={cn(
-        "relative z-10 inline-flex items-center justify-center whitespace-nowrap px-6 py-1.5 text-[11px] font-mono font-bold uppercase tracking-widest transition-all duration-300 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50",
-        isActive ? "text-void-1000" : "hover:text-zinc-300",
+        "relative z-10 inline-flex items-center justify-center whitespace-nowrap font-mono font-bold uppercase tracking-widest transition-all duration-300 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 h-full",
+        sizes[size],
+        isActive ? "text-black" : "hover:text-zinc-300",
         className
       )}
     >
       {isActive && (
         <motion.div
-          layoutId="tabs-active"
-          className="absolute inset-0 bg-accent rounded-[2px] shadow-glow"
+          layoutId={context?.layoutId}
+          className="absolute inset-0 bg-white rounded-[1px] shadow-[0_0_15px_rgba(255,255,255,0.1)]"
           transition={{ type: "spring", bounce: 0.15, duration: 0.5 }}
         />
       )}
-      <span className="relative z-20">{children}</span>
+      <div className="relative z-20 flex items-center justify-center gap-[inherit]">
+        {children}
+      </div>
     </button>
   );
 };
