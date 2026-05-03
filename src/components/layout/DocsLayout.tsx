@@ -47,6 +47,7 @@ const sidebarData = [
         items: [
           { name: "Dialog", href: "/components/core/dialog" },
           { name: "Toast", href: "/components/core/toast" },
+          { name: "Tooltip", href: "/components/core/tooltip" },
         ],
       },
     ],
