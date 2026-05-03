@@ -9,6 +9,13 @@ import { Button } from "@/components/ui";
 
 const sidebarData = [
   {
+    title: "Foundations",
+    items: [
+      { name: "Introduction", href: "/components" },
+      { name: "Typography", href: "/components/typography" },
+    ],
+  },
+  {
     title: "General",
     items: [{ name: "Button", href: "/components/button" }],
   },
@@ -53,7 +60,7 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
                     <Link
                       href={item.href}
                       className={cn(
-                        "group flex items-center justify-between py-2 text-[11px] font-mono tracking-tight transition-all",
+                        "group flex items-center justify-between py-2 text-[13px] font-medium tracking-tight transition-all",
                         pathname === item.href
                           ? "text-accent"
                           : "text-zinc-500 hover:text-zinc-200"

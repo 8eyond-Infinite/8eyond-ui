@@ -7,9 +7,9 @@ export default function ButtonDoc() {
         <h1 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter">
           Button
         </h1>
-        <p className="text-zinc-500 text-lg max-w-2xl font-light">
+        <p className="text-zinc-500 text-lg max-w-2xl font-normal leading-relaxed">
           An interactive catalyst. Triggers logical operations or alchemical
-          transitions.
+          transitions within the system.
         </p>
       </div>
 
