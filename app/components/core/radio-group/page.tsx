@@ -30,7 +30,7 @@ export default function RadioGroupDoc() {
     <div className="space-y-20 pb-24">
       {/* Header */}
       <div className="space-y-4">
-        <H1>Radio_Group</H1>
+        <H1>Radio Group</H1>
         <Lead>
           A set of mutually exclusive selection artifacts. Engineered for
           critical system parameters and binary-branching decision matrices.
@@ -54,9 +54,12 @@ export default function RadioGroupDoc() {
 
           <div className="relative z-10 w-full max-w-sm space-y-8">
             <div className="space-y-2 px-1">
-              <Muted className="text-[9px] uppercase tracking-widest">
-                Operation_Mode
-              </Muted>
+              <div className="flex items-center gap-2">
+                <div className="w-1 h-1 bg-zinc-800" />
+                <Muted className="text-[10px] font-mono uppercase tracking-[0.2em]">
+                  Variants
+                </Muted>
+              </div>
               <p className="text-[10px] font-mono text-white uppercase tracking-tighter">
                 Current: {protocol}_PROTOCOL
               </p>
@@ -155,9 +158,12 @@ export default function RadioGroupDoc() {
 
         <div className="space-y-16">
           <div className="space-y-6">
-            <Muted className="text-sm tracking-tight">
-              Dimensional_Scaling
-            </Muted>
+            <div className="flex items-center gap-2 px-1">
+              <div className="w-1 h-1 bg-zinc-800" />
+              <Muted className="text-[10px] font-mono uppercase tracking-[0.2em]">
+                Scaling
+              </Muted>
+            </div>
             <div className="p-10 rounded-sm border border-white/5 bg-white/[0.01] flex flex-col gap-10">
               {scalingSizes.map((size) => (
                 <div key={size} className="flex items-center gap-4">

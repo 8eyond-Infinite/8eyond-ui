@@ -13,6 +13,7 @@ export * from "./core/Toast";
 export * from "./core/Select";
 export * from "./core/RadioGroup";
 export * from "./core/Tooltip";
+export * from "./core/Badge";
 export * from "./core/Typography";
 
 export { AlchemistButton } from "./alchemist/Button/Button";

@@ -155,12 +155,12 @@ export default function ButtonDoc() {
         <div className="space-y-16">
           {industrialExamples.map((group) => (
             <div key={group.label} className="space-y-6">
-              <Typography
-                variant="large"
-                className="text-xs uppercase tracking-[0.3em] text-zinc-500"
-              >
-                {group.label.replace("_", " ")}
-              </Typography>
+              <div className="flex items-center gap-2 px-1">
+                <div className="w-1 h-1 bg-zinc-800" />
+                <Muted className="text-[10px] font-mono uppercase tracking-[0.2em]">
+                  {group.label.replace("_", " ")}
+                </Muted>
+              </div>
 
               <div className="p-10 rounded-sm border border-white/5 bg-white/[0.01] flex flex-wrap gap-6 items-center">
                 {group.items.map((btn, idx) => (

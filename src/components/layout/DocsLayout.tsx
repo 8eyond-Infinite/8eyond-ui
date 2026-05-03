@@ -18,6 +18,7 @@ const sidebarData = [
         items: [
           { name: "Typography", href: "/components/core/typography" },
           { name: "Button", href: "/components/core/button" },
+          { name: "Badge", href: "/components/core/badge" },
         ],
       },
       {
@@ -33,7 +34,10 @@ const sidebarData = [
       },
       {
         title: "Data Display",
-        items: [{ name: "Table", href: "/components/core/table" }],
+        items: [
+          { name: "Card", href: "/components/core/card" },
+          { name: "Table", href: "/components/core/table" },
+        ],
       },
       {
         title: "Navigation",

@@ -144,12 +144,12 @@ export default function InputDoc() {
         <div className="space-y-16">
           {inputExamples.map((group) => (
             <div key={group.label} className="space-y-6">
-              <Typography
-                variant="large"
-                className="text-sm tracking-tight text-zinc-500"
-              >
-                {group.label.replace("_", " ")}
-              </Typography>
+              <div className="flex items-center gap-2 px-1">
+                <div className="w-1 h-1 bg-zinc-800" />
+                <Muted className="text-[10px] font-mono uppercase tracking-[0.2em]">
+                  {group.label.replace("_", " ")}
+                </Muted>
+              </div>
 
               <div
                 className={cn(

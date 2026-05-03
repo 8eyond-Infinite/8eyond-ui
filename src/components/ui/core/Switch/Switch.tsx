@@ -12,9 +12,12 @@ export interface SwitchProps extends Omit<
 }
 
 const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
-  ({ className, onCheckedChange, size = "md", ...props }, ref) => {
+  (
+    { className, onCheckedChange, size = "md", defaultChecked, ...props },
+    ref
+  ) => {
     const [checked, setChecked] = React.useState(
-      props.checked || props.defaultChecked || false
+      props.checked ?? defaultChecked ?? false
     );
 
     const sizes = {

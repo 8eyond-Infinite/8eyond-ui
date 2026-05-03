@@ -56,10 +56,10 @@ export default function ToastDoc() {
             <div className="relative z-10 w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-12">
               {/* Position Controller */}
               <div className="space-y-6">
-                <div className="flex items-center gap-2">
-                  <LayoutGrid size={14} className="text-accent" />
-                  <Muted className="text-[9px] uppercase tracking-widest px-1">
-                    Position_Matrix
+                <div className="flex items-center gap-2 px-1">
+                  <div className="w-1 h-1 bg-zinc-800" />
+                  <Muted className="text-[10px] font-mono uppercase tracking-[0.2em]">
+                    Positions
                   </Muted>
                 </div>
                 <Card className="p-6 bg-black/40 border-white/10 grid grid-cols-2 gap-3 h-fit">
@@ -86,10 +86,10 @@ export default function ToastDoc() {
 
               {/* Signal Trigger */}
               <div className="space-y-6">
-                <div className="flex items-center gap-2">
-                  <MousePointer2 size={14} className="text-accent" />
-                  <Muted className="text-[9px] uppercase tracking-widest px-1">
-                    Broadcasting_Interface
+                <div className="flex items-center gap-2 px-1">
+                  <div className="w-1 h-1 bg-zinc-800" />
+                  <Muted className="text-[10px] font-mono uppercase tracking-[0.2em]">
+                    Variants
                   </Muted>
                 </div>
                 <Card className="p-6 bg-black/40 border-white/10 flex flex-wrap gap-3 h-fit">

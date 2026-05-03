@@ -55,9 +55,12 @@ export default function BreadcrumbDoc() {
 
           <div className="relative z-10 w-full max-w-2xl mx-auto space-y-12">
             <div className="space-y-4">
-              <Muted className="text-[9px] uppercase tracking-widest px-1">
-                Kernel_File_System
-              </Muted>
+              <div className="flex items-center gap-2 px-1">
+                <div className="w-1 h-1 bg-zinc-800" />
+                <Muted className="text-[10px] font-mono uppercase tracking-[0.2em]">
+                  Kernel_File_System
+                </Muted>
+              </div>
               <Card className="p-6 bg-black/40 border-white/10">
                 <Breadcrumb size="md">
                   <BreadcrumbList>
@@ -89,9 +92,12 @@ export default function BreadcrumbDoc() {
             </div>
 
             <div className="space-y-4">
-              <Muted className="text-[9px] uppercase tracking-widest px-1">
-                Custom_Separator_Protocol
-              </Muted>
+              <div className="flex items-center gap-2 px-1">
+                <div className="w-1 h-1 bg-zinc-800" />
+                <Muted className="text-[10px] font-mono uppercase tracking-[0.2em]">
+                  Custom_Separator_Protocol
+                </Muted>
+              </div>
               <Card className="p-6 bg-black/40 border-white/10">
                 <Breadcrumb size="sm">
                   <BreadcrumbList>
@@ -132,12 +138,12 @@ export default function BreadcrumbDoc() {
 
         <div className="space-y-16">
           <div className="space-y-8">
-            <Typography
-              variant="large"
-              className="text-sm tracking-tight text-zinc-500"
-            >
-              Scaling_Standard
-            </Typography>
+            <div className="flex items-center gap-2 px-1">
+              <div className="w-1 h-1 bg-zinc-800" />
+              <Muted className="text-[10px] font-mono uppercase tracking-[0.2em]">
+                Scaling
+              </Muted>
+            </div>
 
             <div className="p-10 rounded-sm border border-white/5 bg-white/[0.01] flex flex-col gap-10">
               {scalingSizes.map((size) => (

@@ -115,23 +115,15 @@ export default function TypographyDoc() {
             return (
               <div key={example.label} className="space-y-6">
                 <div className="flex items-center justify-between border-b border-white/5 pb-3">
-                  <div className="flex items-center gap-3">
-                    <span className="px-2 py-0.5 rounded-sm bg-white/5 border border-white/10 text-zinc-400 font-mono text-[10px] font-bold">
-                      {example.variant}
-                    </span>
-                    <Typography
-                      variant="large"
-                      className="text-sm tracking-tight"
-                    >
+                  <div className="flex items-center gap-2">
+                    <div className="w-1 h-1 bg-zinc-800" />
+                    <Muted className="text-[10px] font-mono uppercase tracking-[0.2em]">
                       {example.label}
-                    </Typography>
+                    </Muted>
                   </div>
-                  <Typography
-                    variant="muted"
-                    className="font-mono text-[10px] italic opacity-50"
-                  >
-                    Archetype Reference
-                  </Typography>
+                  <Muted className="font-mono text-[9px] uppercase tracking-widest opacity-30">
+                    Archetype_Ref
+                  </Muted>
                 </div>
 
                 <div className="space-y-4">

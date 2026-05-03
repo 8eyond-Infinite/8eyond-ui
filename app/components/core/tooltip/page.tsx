@@ -51,9 +51,12 @@ export default function TooltipDoc() {
 
           <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="flex flex-col items-center gap-3">
-              <Muted className="text-[9px] uppercase tracking-widest">
-                Top_Node
-              </Muted>
+              <div className="flex items-center gap-2">
+                <div className="w-1 h-1 bg-zinc-800" />
+                <Muted className="text-[10px] font-mono uppercase tracking-[0.2em]">
+                  Top_Node
+                </Muted>
+              </div>
               <Tooltip position="top">
                 <TooltipTrigger>
                   <div className="p-4 rounded-sm border border-white/10 bg-black/40 hover:bg-black/60 transition-colors">
@@ -65,9 +68,12 @@ export default function TooltipDoc() {
             </div>
 
             <div className="flex flex-col items-center gap-3">
-              <Muted className="text-[9px] uppercase tracking-widest">
-                Right_Link
-              </Muted>
+              <div className="flex items-center gap-2">
+                <div className="w-1 h-1 bg-zinc-800" />
+                <Muted className="text-[10px] font-mono uppercase tracking-[0.2em]">
+                  Right_Link
+                </Muted>
+              </div>
               <Tooltip position="right">
                 <TooltipTrigger>
                   <div className="p-4 rounded-sm border border-white/10 bg-black/40 hover:bg-black/60 transition-colors">
@@ -79,9 +85,12 @@ export default function TooltipDoc() {
             </div>
 
             <div className="flex flex-col items-center gap-3">
-              <Muted className="text-[9px] uppercase tracking-widest">
-                Bottom_Sec
-              </Muted>
+              <div className="flex items-center gap-2">
+                <div className="w-1 h-1 bg-zinc-800" />
+                <Muted className="text-[10px] font-mono uppercase tracking-[0.2em]">
+                  Bottom_Sec
+                </Muted>
+              </div>
               <Tooltip position="bottom">
                 <TooltipTrigger>
                   <div className="p-4 rounded-sm border border-white/10 bg-black/40 hover:bg-black/60 transition-colors">
@@ -93,9 +102,12 @@ export default function TooltipDoc() {
             </div>
 
             <div className="flex flex-col items-center gap-3">
-              <Muted className="text-[9px] uppercase tracking-widest">
-                Left_Access
-              </Muted>
+              <div className="flex items-center gap-2">
+                <div className="w-1 h-1 bg-zinc-800" />
+                <Muted className="text-[10px] font-mono uppercase tracking-[0.2em]">
+                  Left_Access
+                </Muted>
+              </div>
               <Tooltip position="left">
                 <TooltipTrigger>
                   <div className="p-4 rounded-sm border border-white/10 bg-black/40 hover:bg-black/60 transition-colors">
@@ -123,9 +135,12 @@ export default function TooltipDoc() {
 
         <div className="space-y-12">
           <div className="space-y-6">
-            <Muted className="text-sm tracking-tight">
-              Interactive_Integration
-            </Muted>
+            <div className="flex items-center gap-2 px-1">
+              <div className="w-1 h-1 bg-zinc-800" />
+              <Muted className="text-[10px] font-mono uppercase tracking-[0.2em]">
+                Variants
+              </Muted>
+            </div>
             <Card className="p-8 border-white/5 bg-black/20 flex items-center justify-center gap-8">
               <Tooltip position="top">
                 <TooltipTrigger>

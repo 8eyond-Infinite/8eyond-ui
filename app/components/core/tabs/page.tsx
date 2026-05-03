@@ -187,12 +187,12 @@ export default function TabsDoc() {
 
         <div className="space-y-16">
           <div className="space-y-8">
-            <Typography
-              variant="large"
-              className="text-sm tracking-tight text-zinc-500"
-            >
-              Scaling_Standard
-            </Typography>
+            <div className="flex items-center gap-2 px-1">
+              <div className="w-1 h-1 bg-zinc-800" />
+              <Muted className="text-[10px] font-mono uppercase tracking-[0.2em]">
+                Scaling
+              </Muted>
+            </div>
 
             <div className="p-10 rounded-sm border border-white/5 bg-white/[0.01] flex flex-col gap-12 items-center">
               {scalingSizes.map((size) => (

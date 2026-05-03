@@ -86,10 +86,13 @@ export default function CheckboxDoc() {
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808005_1px,transparent_1px),linear-gradient(to_bottom,#80808005_1px,transparent_1px)] bg-[size:20px_20px]" />
 
           <div className="relative z-10 w-full max-w-md mx-auto space-y-6">
-            <div className="flex items-center justify-between px-2">
-              <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">
-                Active_Protocols: {selectedProtocols.length}
-              </span>
+            <div className="flex items-center justify-between px-1">
+              <div className="flex items-center gap-2">
+                <div className="w-1 h-1 bg-zinc-800" />
+                <Muted className="text-[10px] font-mono uppercase tracking-[0.2em]">
+                  Active_Protocols
+                </Muted>
+              </div>
               <div className="flex gap-1">
                 <div className="w-1 h-1 bg-accent shadow-glow rounded-full animate-pulse" />
                 <div className="w-1 h-1 bg-accent shadow-glow rounded-full animate-pulse delay-75" />
@@ -159,12 +162,12 @@ export default function CheckboxDoc() {
 
         <div className="space-y-16">
           <div className="space-y-6">
-            <Typography
-              variant="large"
-              className="text-sm tracking-tight text-zinc-500"
-            >
-              Scaling_Standard
-            </Typography>
+            <div className="flex items-center gap-2 px-1">
+              <div className="w-1 h-1 bg-zinc-800" />
+              <Muted className="text-[10px] font-mono uppercase tracking-[0.2em]">
+                Scaling
+              </Muted>
+            </div>
 
             <div className="p-10 rounded-sm border border-white/5 bg-white/[0.01] flex flex-col gap-8">
               {scalingExamples.map((item) => (
@@ -184,12 +187,12 @@ export default function CheckboxDoc() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="space-y-6">
-              <Typography
-                variant="large"
-                className="text-sm tracking-tight text-zinc-500"
-              >
-                States_Unchecked
-              </Typography>
+              <div className="flex items-center gap-2 px-1">
+                <div className="w-1 h-1 bg-zinc-800" />
+                <Muted className="text-[10px] font-mono uppercase tracking-[0.2em]">
+                  States_Unchecked
+                </Muted>
+              </div>
               <div className="p-10 rounded-sm border border-white/5 bg-white/[0.01] flex items-center gap-4">
                 <Checkbox id="un-1" />
                 <Label htmlFor="un-1">Inactive_Module</Label>
@@ -197,12 +200,12 @@ export default function CheckboxDoc() {
             </div>
 
             <div className="space-y-6">
-              <Typography
-                variant="large"
-                className="text-sm tracking-tight text-zinc-500"
-              >
-                States_Disabled
-              </Typography>
+              <div className="flex items-center gap-2 px-1">
+                <div className="w-1 h-1 bg-zinc-800" />
+                <Muted className="text-[10px] font-mono uppercase tracking-[0.2em]">
+                  States_Disabled
+                </Muted>
+              </div>
               <div className="p-10 rounded-sm border border-white/5 bg-white/[0.01] flex items-center gap-4">
                 <Checkbox id="dis-1" disabled defaultChecked />
                 <Label htmlFor="dis-1" className="opacity-50">

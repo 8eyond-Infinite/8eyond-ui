@@ -20,6 +20,7 @@ import {
   Input,
   Label,
   Typography,
+  Muted,
   H1,
   H3,
   Lead,
@@ -53,12 +54,12 @@ export default function DialogDoc() {
 
         <div className="space-y-16">
           <div className="space-y-6">
-            <Typography
-              variant="large"
-              className="text-sm tracking-tight text-zinc-500"
-            >
-              Scenarios_Gallery
-            </Typography>
+            <div className="flex items-center gap-2 px-1">
+              <div className="w-1 h-1 bg-zinc-800" />
+              <Muted className="text-[10px] font-mono uppercase tracking-[0.2em]">
+                Variants
+              </Muted>
+            </div>
 
             <Card className="p-16 rounded-sm border border-white/5 bg-zinc-900/20 relative overflow-hidden flex flex-wrap gap-6 justify-center items-center">
               <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808005_1px,transparent_1px),linear-gradient(to_bottom,#80808005_1px,transparent_1px)] bg-[size:32px_32px]" />

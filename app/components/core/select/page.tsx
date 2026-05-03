@@ -56,10 +56,13 @@ export default function SelectDoc() {
 
           <div className="relative z-10 w-full max-w-md mx-auto space-y-12">
             <div className="space-y-6">
-              <div className="flex items-center justify-between px-1">
-                <Muted className="text-[9px] uppercase tracking-widest">
-                  Protocol_Selection
-                </Muted>
+              <div className="flex flex-col gap-2 px-1">
+                <div className="flex items-center gap-2">
+                  <div className="w-1 h-1 bg-zinc-800" />
+                  <Muted className="text-[10px] font-mono uppercase tracking-[0.2em]">
+                    Variants
+                  </Muted>
+                </div>
                 <span className="text-[10px] font-mono text-accent">
                   ID: {protocol}
                 </span>
@@ -83,9 +86,12 @@ export default function SelectDoc() {
             </div>
 
             <div className="space-y-6">
-              <Muted className="text-[9px] uppercase tracking-widest px-1">
-                Geo_Node_Mapping
-              </Muted>
+              <div className="flex items-center gap-2 px-1">
+                <div className="w-1 h-1 bg-zinc-800" />
+                <Muted className="text-[10px] font-mono uppercase tracking-[0.2em]">
+                  Geo_Node_Mapping
+                </Muted>
+              </div>
               <Card className="p-8 bg-black/40 border-white/10 flex flex-col gap-4">
                 <Select value={region} onValueChange={setRegion} size="sm">
                   <SelectTrigger className="bg-transparent" />
@@ -123,9 +129,12 @@ export default function SelectDoc() {
 
         <div className="space-y-16">
           <div className="space-y-6">
-            <Muted className="text-sm tracking-tight">
-              Dimensional_Scaling
-            </Muted>
+            <div className="flex items-center gap-2 px-1">
+              <div className="w-1 h-1 bg-zinc-800" />
+              <Muted className="text-[10px] font-mono uppercase tracking-[0.2em]">
+                Scaling
+              </Muted>
+            </div>
             <div className="p-10 rounded-sm border border-white/5 bg-white/[0.01] grid grid-cols-1 md:grid-cols-2 gap-8 items-end">
               {scalingSizes.map((size) => (
                 <div key={size} className="space-y-2">
