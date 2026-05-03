@@ -50,12 +50,18 @@ export default function Home() {
             </span>
           </div>
           <div className="hidden md:flex gap-8 font-mono text-[9px] uppercase tracking-[0.3em] text-zinc-500">
-            <a href="#" className="hover:text-white transition-colors">
+            <Link
+              href="/components"
+              className="hover:text-white transition-colors"
+            >
               Documentation
-            </a>
-            <a href="#" className="hover:text-white transition-colors">
+            </Link>
+            <Link
+              href="/components"
+              className="hover:text-white transition-colors"
+            >
               Components
-            </a>
+            </Link>
             <a href="#" className="hover:text-white transition-colors">
               Lab
             </a>
