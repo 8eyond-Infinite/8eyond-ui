@@ -25,6 +25,8 @@ const sidebarData = [
     items: [
       { name: "Input", href: "/components/input" },
       { name: "Label", href: "/components/label" },
+      { name: "Checkbox", href: "/components/checkbox" },
+      { name: "Switch", href: "/components/switch" },
     ],
   },
   {

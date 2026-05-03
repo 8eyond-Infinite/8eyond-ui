@@ -1,5 +1,13 @@
 import { Card } from "@/components/ui";
-import { Cpu, Terminal, Layers, Type, ArrowRight } from "lucide-react";
+import {
+  Cpu,
+  Terminal,
+  Layers,
+  Type,
+  ArrowRight,
+  Check,
+  Repeat,
+} from "lucide-react";
 import Link from "next/link";
 
 export default function ComponentsPage() {
@@ -103,6 +111,50 @@ export default function ComponentsPage() {
                   </h3>
                   <p className="text-zinc-500 text-sm leading-relaxed">
                     Terminal fields for precise data inscriptions.
+                  </p>
+                </div>
+              </Card>
+            </Link>
+            <Link href="/components/checkbox">
+              <Card className="p-6 group hover:border-accent/30 transition-all duration-500 relative overflow-hidden">
+                <div className="flex items-start justify-between">
+                  <Check
+                    className="text-zinc-600 group-hover:text-accent transition-colors"
+                    size={24}
+                  />
+                  <ArrowRight
+                    size={14}
+                    className="text-zinc-800 group-hover:text-accent transition-all group-hover:translate-x-1"
+                  />
+                </div>
+                <div className="mt-8">
+                  <h3 className="text-md font-bold uppercase italic mb-2">
+                    Checkbox
+                  </h3>
+                  <p className="text-zinc-500 text-sm leading-relaxed">
+                    Binary selection logic for multi-choice states.
+                  </p>
+                </div>
+              </Card>
+            </Link>
+            <Link href="/components/switch">
+              <Card className="p-6 group hover:border-accent/30 transition-all duration-500 relative overflow-hidden">
+                <div className="flex items-start justify-between">
+                  <Repeat
+                    className="text-zinc-600 group-hover:text-accent transition-colors"
+                    size={24}
+                  />
+                  <ArrowRight
+                    size={14}
+                    className="text-zinc-800 group-hover:text-accent transition-all group-hover:translate-x-1"
+                  />
+                </div>
+                <div className="mt-8">
+                  <h3 className="text-md font-bold uppercase italic mb-2">
+                    Switch
+                  </h3>
+                  <p className="text-zinc-500 text-sm leading-relaxed">
+                    Premium toggles for immediate state transitions.
                   </p>
                 </div>
               </Card>
