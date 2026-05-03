@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Button,
@@ -26,7 +27,6 @@ import {
   Terminal,
   Cpu,
   Sparkles,
-  Inscription,
 } from "lucide-react";
 
 export default function Home() {
@@ -71,9 +71,11 @@ export default function Home() {
               Lab
             </a>
           </div>
-          <Button variant="alchemist" size="sm" className="h-8">
-            Initialize_System
-          </Button>
+          <Link href="/components">
+            <Button variant="alchemist" size="sm" className="h-8">
+              Initialize_System
+            </Button>
+          </Link>
         </nav>
 
         <section className="max-w-6xl mx-auto px-6 pt-32 pb-24">
@@ -103,9 +105,11 @@ export default function Home() {
               and <span className="text-accent italic">alchemical wonder</span>.
             </p>
             <div className="flex justify-center gap-6">
-              <Button size="lg" variant="alchemist">
-                Browse Artifacts
-              </Button>
+              <Link href="/components">
+                <Button size="lg" variant="alchemist">
+                  Browse Artifacts
+                </Button>
+              </Link>
               <Button size="lg" variant="secondary">
                 View Source
               </Button>
