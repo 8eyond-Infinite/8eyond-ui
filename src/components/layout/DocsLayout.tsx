@@ -53,8 +53,8 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex min-h-screen bg-background text-foreground">
       {/* Sidebar */}
-      <aside className="fixed top-0 left-0 z-40 w-72 h-screen border-r border-white/5 bg-background/50 backdrop-blur-xl pt-20 px-10 overflow-y-auto hidden md:block">
-        <div className="space-y-10">
+      <aside className="fixed top-0 left-0 z-40 w-72 h-screen border-r border-white/5 bg-background/50 backdrop-blur-xl pt-20 px-8 overflow-y-auto hidden md:block">
+        <div className="space-y-8">
           <div className="flex items-center gap-3 mb-12">
             <div className="w-5 h-5 border border-accent rotate-45 flex items-center justify-center">
               <div className="w-1.5 h-1.5 bg-accent" />
@@ -64,61 +64,63 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
             </span>
           </div>
 
-          {sidebarData.map((group) => {
-            const isOpen = openGroups.includes(group.title);
-            return (
-              <div key={group.title} className="space-y-1">
-                <button
-                  onClick={() => toggleGroup(group.title)}
-                  className="w-full flex items-center justify-between py-2 group/btn"
-                >
-                  <h4 className="text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-zinc-400 group-hover/btn:text-white transition-colors">
-                    {group.title}
-                  </h4>
-                  <ChevronRight
-                    size={10}
-                    className={cn(
-                      "text-zinc-700 transition-transform duration-300",
-                      isOpen && "rotate-90 text-accent"
-                    )}
-                  />
-                </button>
+          <div className="space-y-4">
+            {sidebarData.map((group) => {
+              const isOpen = openGroups.includes(group.title);
+              return (
+                <div key={group.title} className="space-y-1">
+                  <button
+                    onClick={() => toggleGroup(group.title)}
+                    className="w-full flex items-center justify-between py-2 px-3 -mx-3 rounded-md hover:bg-white/[0.02] group/btn transition-colors"
+                  >
+                    <h4 className="text-[10px] font-mono font-bold uppercase tracking-[0.3em] text-zinc-500 group-hover/btn:text-zinc-200 transition-colors">
+                      {group.title}
+                    </h4>
+                    <ChevronRight
+                      size={10}
+                      className={cn(
+                        "text-zinc-800 transition-transform duration-300",
+                        isOpen && "rotate-90 text-accent"
+                      )}
+                    />
+                  </button>
 
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.ul
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                      className="space-y-0.5 overflow-hidden border-l border-white/5 ml-1 pl-4"
-                    >
-                      {group.items.map((item) => (
-                        <li key={item.href}>
-                          <Link
-                            href={item.href}
-                            className={cn(
-                              "group flex items-center justify-between py-2 px-3 -ml-3 rounded-[2px] text-[14px] font-medium tracking-tight transition-all",
-                              pathname === item.href
-                                ? "bg-accent/5 text-accent"
-                                : "text-zinc-500 hover:text-zinc-200 hover:bg-white/[0.03]"
-                            )}
-                          >
-                            <span>{item.name}</span>
-                            {pathname === item.href && (
-                              <motion.div layoutId="active-indicator">
-                                <div className="w-1 h-1 rounded-full bg-accent shadow-glow" />
-                              </motion.div>
-                            )}
-                          </Link>
-                        </li>
-                      ))}
-                    </motion.ul>
-                  )}
-                </AnimatePresence>
-              </div>
-            );
-          })}
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.ul
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                        className="space-y-0.5 overflow-hidden border-l border-white/5 ml-px pl-4"
+                      >
+                        {group.items.map((item) => (
+                          <li key={item.href}>
+                            <Link
+                              href={item.href}
+                              className={cn(
+                                "group flex items-center justify-between py-2 px-3 -ml-3 rounded-[2px] text-[13px] font-medium tracking-tight transition-all",
+                                pathname === item.href
+                                  ? "bg-accent/5 text-accent"
+                                  : "text-zinc-500 hover:text-zinc-200 hover:bg-white/[0.03]"
+                              )}
+                            >
+                              <span>{item.name}</span>
+                              {pathname === item.href && (
+                                <motion.div layoutId="active-indicator">
+                                  <div className="w-1 h-1 rounded-full bg-accent shadow-glow" />
+                                </motion.div>
+                              )}
+                            </Link>
+                          </li>
+                        ))}
+                      </motion.ul>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </aside>
 
