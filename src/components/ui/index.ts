@@ -1,11 +1,15 @@
-export * from "./Button";
-export * from "./Card";
-export * from "./Input";
-export * from "./Label";
-export * from "./Checkbox";
-export * from "./Switch";
-export * from "./Tabs";
-export * from "./Breadcrumb";
-export * from "./Table";
-export * from "./Dialog";
-export * from "./Typography";
+// Core Industrial Components
+export * from "./core/Button";
+export * from "./core/Card";
+export * from "./core/Input";
+export * from "./core/Label";
+export * from "./core/Checkbox";
+export * from "./core/Switch";
+export * from "./core/Tabs";
+export * from "./core/Breadcrumb";
+export * from "./core/Table";
+export * from "./core/Dialog";
+export * from "./core/Typography";
+
+// Alchemist Artifacts
+export { AlchemistButton } from "./alchemist/Button/Button";

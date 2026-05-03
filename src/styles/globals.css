@@ -1,26 +1,33 @@
 @import "tailwindcss";
 
 @theme {
-  --color-void-900: #0a0a0a;
-  --color-void-950: #050505;
-  --color-void-1000: #000000;
+  --color-void-900: #08080a;
+  --color-void-950: #040405;
+  --color-void-1000: #020203;
 
   --color-accent: #fbbf24;
-  --color-accent-dim: rgba(251, 191, 36, 0.2);
-  --color-accent-secondary: #ff4400;
+  --color-accent-dim: rgba(251, 191, 36, 0.15);
+  --color-accent-secondary: #f59e0b;
+  --color-accent-highlight: #fef3c7;
+
+  --color-steel-400: #a1a1aa;
+  --color-steel-500: #71717a;
+  --color-steel-600: #52525b;
 
   --color-background: var(--color-void-1000);
-  --color-foreground: #f4f4f5;
-  --color-border: rgba(255, 255, 255, 0.08);
+  --color-foreground: #ececed;
+  --color-border: rgba(255, 255, 255, 0.06);
 
-  --font-sans: "Inter", "Geist Sans", system-ui, sans-serif;
-  --font-mono: "Geist Mono", "Fira Code", monospace;
+  --font-sans: var(--font-geist-sans), "Inter", system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), "Fira Code", monospace;
+  --font-serif: var(--font-serif), serif;
 
-  --shadow-glow: 0 0 25px rgba(251, 191, 36, 0.15);
-  --shadow-glow-heavy: 0 0 50px rgba(251, 191, 36, 0.3);
+  --shadow-glow: 0 0 20px rgba(251, 191, 36, 0.1);
+  --shadow-glow-heavy: 0 0 40px rgba(251, 191, 36, 0.2);
 
   --animate-shimmer: shimmer 2s linear infinite;
   --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-shine: shine 1.5s ease-out infinite;
 
   @keyframes shimmer {
     from {
@@ -28,6 +35,15 @@
     }
     to {
       background-position: -200% 0;
+    }
+  }
+
+  @keyframes shine {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(100%);
     }
   }
 }
@@ -64,19 +80,32 @@
 
 @layer utilities {
   .glass-artifact {
-    background: rgba(255, 255, 255, 0.02);
-    backdrop-filter: blur(12px) saturate(150%);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+    background: linear-gradient(
+      135deg,
+      rgba(251, 191, 36, 0.03) 0%,
+      rgba(0, 0, 0, 0.2) 100%
+    );
+    backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(251, 191, 36, 0.1);
+    box-shadow:
+      inset 0 0 30px rgba(251, 191, 36, 0.02),
+      0 10px 40px -10px rgba(0, 0, 0, 0.5);
   }
 
   .glass-artifact-hover {
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .glass-artifact-hover:hover {
-    background: rgba(255, 255, 255, 0.04);
-    border-color: rgba(251, 191, 36, 0.3);
-    box-shadow: var(--shadow-glow);
+    background: linear-gradient(
+      135deg,
+      rgba(251, 191, 36, 0.06) 0%,
+      rgba(251, 191, 36, 0.02) 100%
+    );
+    border-color: rgba(251, 191, 36, 0.4);
+    box-shadow:
+      var(--shadow-glow),
+      inset 0 0 40px rgba(251, 191, 36, 0.03);
+    transform: translateY(-1px);
   }
 
   .text-artifact {

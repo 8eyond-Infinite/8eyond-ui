@@ -10,52 +10,62 @@ import { Button } from "@/components/ui";
 
 const sidebarData = [
   {
-    title: "Foundations",
-    items: [
-      { name: "Introduction", href: "/components" },
-      { name: "Typography", href: "/components/typography" },
+    system: "core",
+    label: "Industrial_Core",
+    groups: [
+      {
+        title: "General",
+        items: [
+          { name: "Typography", href: "/components/core/typography" },
+          { name: "Button", href: "/components/core/button" },
+        ],
+      },
+      {
+        title: "Form",
+        items: [
+          { name: "Input", href: "/components/core/input" },
+          { name: "Label", href: "/components/core/label" },
+          { name: "Checkbox", href: "/components/core/checkbox" },
+          { name: "Switch", href: "/components/core/switch" },
+        ],
+      },
+      {
+        title: "Data_Display",
+        items: [{ name: "Table", href: "/components/core/table" }],
+      },
+      {
+        title: "Navigation",
+        items: [
+          { name: "Tabs", href: "/components/core/tabs" },
+          { name: "Breadcrumb", href: "/components/core/breadcrumb" },
+        ],
+      },
+      {
+        title: "Overlays",
+        items: [{ name: "Dialog", href: "/components/core/dialog" }],
+      },
     ],
   },
   {
-    title: "General",
-    items: [{ name: "Button", href: "/components/button" }],
-  },
-  {
-    title: "Form",
-    items: [
-      { name: "Input", href: "/components/input" },
-      { name: "Label", href: "/components/label" },
-      { name: "Checkbox", href: "/components/checkbox" },
-      { name: "Switch", href: "/components/switch" },
+    system: "alchemist",
+    label: "Alchemist_Sanctum",
+    groups: [
+      {
+        title: "Artifacts",
+        items: [
+          { name: "Alchemist_Button", href: "/components/alchemist/button" },
+        ],
+      },
     ],
-  },
-  {
-    title: "Data Display",
-    items: [
-      { name: "Card", href: "/components/card" },
-      { name: "Table", href: "/components/table" },
-    ],
-  },
-  {
-    title: "Navigation",
-    items: [
-      { name: "Tabs", href: "/components/tabs" },
-      { name: "Breadcrumb", href: "/components/breadcrumb" },
-    ],
-  },
-  {
-    title: "Overlays",
-    items: [{ name: "Dialog", href: "/components/dialog" }],
   },
 ];
 
 export function DocsLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [openGroups, setOpenGroups] = useState<string[]>([
-    "Foundations",
     "General",
     "Form",
-    "Data Display",
+    "Artifacts",
   ]);
 
   const toggleGroup = (title: string) => {
@@ -78,79 +88,128 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
             </span>
           </div>
 
-          <div className="space-y-4">
-            {sidebarData.map((group) => {
-              const isActive = group.items.some(
-                (item) => item.href === pathname
-              );
-              const isOpen = openGroups.includes(group.title);
-
-              return (
-                <div key={group.title} className="space-y-1">
-                  <button
-                    onClick={() => toggleGroup(group.title)}
+          <div className="space-y-12">
+            {sidebarData.map((system) => (
+              <div key={system.label} className="space-y-4">
+                <div className="flex items-center gap-2 px-3">
+                  <div
                     className={cn(
-                      "w-full flex items-center justify-between py-2 px-3 -mx-3 rounded-md transition-colors group/btn",
-                      isActive
-                        ? "bg-white/[0.04] text-white"
-                        : "hover:bg-white/[0.02] text-zinc-500"
+                      "w-1 h-3 rounded-full",
+                      system.system === "alchemist"
+                        ? "bg-accent shadow-glow"
+                        : "bg-zinc-800"
+                    )}
+                  />
+                  <span
+                    className={cn(
+                      "font-mono text-[9px] uppercase tracking-[0.3em] font-bold",
+                      system.system === "alchemist"
+                        ? "text-accent"
+                        : "text-zinc-600"
                     )}
                   >
-                    <h4
-                      className={cn(
-                        "text-[12px] font-bold uppercase tracking-wider transition-colors",
-                        isActive
-                          ? "text-white"
-                          : "group-hover/btn:text-zinc-200"
-                      )}
-                    >
-                      {group.title}
-                    </h4>
-                    <ChevronRight
-                      size={10}
-                      className={cn(
-                        "text-zinc-800 transition-transform duration-300",
-                        isOpen && "rotate-90",
-                        isActive && "text-accent"
-                      )}
-                    />
-                  </button>
+                    {system.label}
+                  </span>
+                </div>
 
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.ul
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                        className="space-y-0.5 overflow-hidden border-l border-white/5 ml-px pl-4"
-                      >
-                        {group.items.map((item) => (
-                          <li key={item.href}>
-                            <Link
-                              href={item.href}
+                <div className="space-y-1">
+                  {system.groups.map((group) => {
+                    const isActive = group.items.some(
+                      (item) => item.href === pathname
+                    );
+                    const isOpen = openGroups.includes(group.title);
+
+                    return (
+                      <div key={group.title} className="space-y-1">
+                        <button
+                          onClick={() => toggleGroup(group.title)}
+                          className={cn(
+                            "w-full flex items-center justify-between py-2 px-3 rounded-md transition-colors group/btn",
+                            isActive
+                              ? "bg-white/[0.04] text-white"
+                              : "hover:bg-white/[0.02] text-zinc-500"
+                          )}
+                        >
+                          <h4
+                            className={cn(
+                              "text-[11px] font-bold uppercase tracking-wider transition-colors",
+                              isActive
+                                ? "text-white"
+                                : system.system === "alchemist"
+                                  ? "text-accent/40 group-hover/btn:text-accent/80"
+                                  : "group-hover/btn:text-zinc-200"
+                            )}
+                          >
+                            {group.title}
+                          </h4>
+                          <ChevronRight
+                            size={10}
+                            className={cn(
+                              "text-zinc-800 transition-transform duration-300",
+                              isOpen && "rotate-90",
+                              isActive &&
+                                (system.system === "alchemist"
+                                  ? "text-accent"
+                                  : "text-white")
+                            )}
+                          />
+                        </button>
+
+                        <AnimatePresence initial={false}>
+                          {isOpen && (
+                            <motion.ul
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{
+                                duration: 0.3,
+                                ease: [0.16, 1, 0.3, 1],
+                              }}
                               className={cn(
-                                "group flex items-center justify-between py-2 px-3 -ml-3 rounded-[2px] text-[13px] font-medium tracking-tight transition-all",
-                                pathname === item.href
-                                  ? "bg-accent/5 text-accent"
-                                  : "text-zinc-500 hover:text-zinc-200 hover:bg-white/[0.03]"
+                                "space-y-0.5 overflow-hidden border-l ml-px pl-4",
+                                system.system === "alchemist"
+                                  ? "border-accent/10"
+                                  : "border-white/5"
                               )}
                             >
-                              <span>{item.name}</span>
-                              {pathname === item.href && (
-                                <motion.div layoutId="active-indicator">
-                                  <div className="w-1 h-1 rounded-full bg-accent shadow-glow" />
-                                </motion.div>
-                              )}
-                            </Link>
-                          </li>
-                        ))}
-                      </motion.ul>
-                    )}
-                  </AnimatePresence>
+                              {group.items.map((item) => (
+                                <li key={item.href}>
+                                  <Link
+                                    href={item.href}
+                                    className={cn(
+                                      "group flex items-center justify-between py-2 px-3 -ml-3 rounded-[2px] text-[13px] font-medium tracking-tight transition-all",
+                                      pathname === item.href
+                                        ? system.system === "alchemist"
+                                          ? "bg-accent/5 text-accent"
+                                          : "bg-white/5 text-white"
+                                        : "text-zinc-500 hover:text-zinc-200 hover:bg-white/[0.03]"
+                                    )}
+                                  >
+                                    <span>{item.name}</span>
+                                    {pathname === item.href && (
+                                      <motion.div layoutId="active-indicator">
+                                        <div
+                                          className={cn(
+                                            "w-1 h-1 rounded-full shadow-glow",
+                                            system.system === "alchemist"
+                                              ? "bg-accent"
+                                              : "bg-white"
+                                          )}
+                                        />
+                                      </motion.div>
+                                    )}
+                                  </Link>
+                                </li>
+                              ))}
+                            </motion.ul>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    );
+                  })}
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </div>
       </aside>

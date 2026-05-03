@@ -91,12 +91,9 @@ export default function DialogDoc() {
               </div>
               <DialogFooter>
                 <Button variant="ghost">Cancel</Button>
-                <Button variant="alchemist">Initialize_Key</Button>
               </DialogFooter>
             </DialogContent>
           </Dialog>
-
-          {/* Example 3: Success Confirmation */}
           <Dialog>
             <DialogTrigger>
               <Button variant="success">Sync_Protocol</Button>
