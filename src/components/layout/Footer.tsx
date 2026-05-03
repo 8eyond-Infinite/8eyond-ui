@@ -6,60 +6,101 @@ import { Badge } from "@/components/ui";
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/5 py-12 px-8 bg-zinc-950/50">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
-        <div className="flex items-center gap-4">
-          <div className="w-8 h-8 border border-white/10 rotate-45 flex items-center justify-center">
-            <div className="w-1.5 h-1.5 bg-white/20" />
-          </div>
-          <div className="space-y-1">
-            <div className="font-mono text-[10px] tracking-[0.4em] uppercase font-bold text-white">
-              8eyond UI
+    <footer className="border-t border-white/5 py-16 px-8 bg-zinc-950/30 backdrop-blur-sm">
+      <div className="max-w-7xl mx-auto space-y-16">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-12">
+          <div className="space-y-6">
+            <div className="flex items-center gap-4">
+              <div className="w-10 h-10 border border-white/10 rotate-45 flex items-center justify-center group transition-transform hover:rotate-90 duration-700">
+                <div className="w-2 h-2 bg-accent shadow-glow" />
+              </div>
+              <div className="space-y-1">
+                <div className="font-mono text-xs tracking-[0.3em] uppercase font-bold text-white">
+                  8eyond_Catalyst
+                </div>
+                <div className="text-[8px] font-mono text-zinc-600 uppercase tracking-widest">
+                  © 2026 Architectural Entropy
+                </div>
+              </div>
             </div>
-            <div className="text-[8px] font-mono text-zinc-700 uppercase tracking-widest">
-              © 2026 Architectural Entropy
+            <p className="max-w-xs text-[10px] font-mono text-zinc-500 leading-relaxed uppercase tracking-wider">
+              Designing the metaphysical through industrial precision. The
+              ultimate catalyst for the modern architect.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-16 md:gap-24 font-mono text-[9px] uppercase tracking-[0.3em]">
+            <div className="space-y-4">
+              <div className="text-white font-bold">Protocols</div>
+              <div className="flex flex-col gap-2.5">
+                <Link
+                  href="/components"
+                  className="text-zinc-500 hover:text-accent transition-colors"
+                >
+                  Library Index
+                </Link>
+                <Link
+                  href="/components/core/button"
+                  className="text-zinc-500 hover:text-accent transition-colors"
+                >
+                  Core Components
+                </Link>
+                <Link
+                  href="/components/alchemist/button"
+                  className="text-zinc-500 hover:text-accent transition-colors"
+                >
+                  Alchemist Sanctum
+                </Link>
+              </div>
+            </div>
+            <div className="space-y-4">
+              <div className="text-white font-bold">Connect</div>
+              <div className="flex flex-col gap-2.5">
+                <a
+                  href="https://github.com/8eyond-Infinite/8eyond-ui"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-zinc-500 hover:text-white transition-colors"
+                >
+                  GitHub Repository
+                </a>
+                <a
+                  href="#"
+                  className="text-zinc-500 hover:text-white transition-colors"
+                >
+                  Discord Server
+                </a>
+                <a
+                  href="#"
+                  className="text-zinc-500 hover:text-white transition-colors"
+                >
+                  Twitter / X
+                </a>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="flex gap-12 font-mono text-[9px] text-zinc-500 uppercase tracking-[0.4em]">
-          <div className="space-y-3">
-            <div className="text-zinc-400">Resources</div>
-            <div className="flex flex-col gap-2">
-              <Link href="/components" className="hover:text-accent">
-                Library Index
-              </Link>
-              <a href="#" className="hover:text-accent">
-                Documentation
-              </a>
-              <a href="#" className="hover:text-accent">
-                Changelog
-              </a>
+        <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-6">
+          <div className="flex items-center gap-6 text-[8px] font-mono text-zinc-600 uppercase tracking-[0.2em]">
+            <span className="hover:text-white cursor-pointer transition-colors">
+              Privacy Policy
+            </span>
+            <span className="hover:text-white cursor-pointer transition-colors">
+              Terms of Service
+            </span>
+            <span className="hover:text-white cursor-pointer transition-colors">
+              Cookie Policy
+            </span>
+          </div>
+          <div className="flex items-center gap-4">
+            <div className="text-[10px] font-mono text-zinc-600 italic mr-2">
+              &quot;The lead of logic, the gold of mastery.&quot;
             </div>
+            <Badge variant="secondary" size="xs" className="opacity-30">
+              Build v1.0.4 // Development
+            </Badge>
           </div>
-          <div className="space-y-3">
-            <div className="text-zinc-400">Social</div>
-            <div className="flex flex-col gap-2">
-              <a href="#" className="hover:text-accent">
-                GitHub
-              </a>
-              <a href="#" className="hover:text-accent">
-                Twitter X
-              </a>
-              <a href="#" className="hover:text-accent">
-                Discord
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex flex-col items-end gap-2 text-right">
-          <div className="text-[10px] font-mono text-zinc-600 italic">
-            &quot;The lead of logic, the gold of mastery.&quot;
-          </div>
-          <Badge variant="secondary" size="xs" className="opacity-40">
-            System V1.0.4 Stable
-          </Badge>
         </div>
       </div>
     </footer>

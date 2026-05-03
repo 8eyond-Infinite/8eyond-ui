@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
@@ -32,14 +32,8 @@ import {
 } from "lucide-react";
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState<"preview" | "code">("preview");
-  const [scanning, setScanning] = useState(true);
-
   useEffect(() => {
-    const interval = setInterval(() => {
-      setScanning((prev) => !prev);
-    }, 3000);
-    return () => clearInterval(interval);
+    // System Initialization Logic
   }, []);
 
   return (
@@ -64,29 +58,38 @@ export default function Home() {
               className="space-y-12"
             >
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-accent/20 bg-accent/5 text-[9px] font-mono text-accent uppercase tracking-widest">
-                <Sparkles size={10} className="animate-pulse" /> Industrial Core
-                v1.0.4
+                <Sparkles size={10} className="animate-pulse" /> 8eyond
+                Protocols {" // "}
+                Dual-Path_v1.0.4
               </div>
               <div className="space-y-4">
                 <h1 className="text-6xl md:text-8xl font-black tracking-tighter uppercase italic leading-[0.85]">
-                  High_Fidelity <br />
+                  8EYOND <br />
                   <span
                     className="text-transparent"
                     style={{ WebkitTextStroke: "1px rgba(255,255,255,0.2)" }}
                   >
-                    Interface.
+                    CATALYST.
                   </span>
                 </h1>
-                <p className="max-w-lg text-zinc-500 text-lg font-light leading-relaxed">
-                  A modular design system bridging the gap between{" "}
+                <div className="flex items-center gap-3 font-mono text-[10px] tracking-[0.4em] text-accent font-bold uppercase">
+                  <span>Framer</span>
+                  <span className="text-zinc-800">/</span>
+                  <span>React</span>
+                  <span className="text-zinc-800">/</span>
+                  <span>Tailwind</span>
+                </div>
+                <p className="max-w-xl text-zinc-500 text-lg font-light leading-relaxed">
+                  The dual-path ecosystem for digital architects. Bridging the{" "}
                   <span className="text-white italic font-medium">
-                    industrial efficiency
+                    raw precision
                   </span>{" "}
-                  and{" "}
+                  of Industrial Core with the{" "}
                   <span className="text-accent italic font-medium">
-                    high-fidelity aesthetics
-                  </span>
-                  .
+                    metaphysical soul
+                  </span>{" "}
+                  of the Alchemist Sanctum — serving as the ultimate catalyst
+                  for motion-driven, high-fidelity logic.
                 </p>
               </div>
               <div className="flex flex-wrap gap-6 pt-4">
@@ -132,8 +135,6 @@ export default function Home() {
                 </div>
               </div>
             </motion.div>
-
-            {/* Industrial Showcase Mockup */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9, rotateY: -10 }}
               animate={{ opacity: 1, scale: 1, rotateY: 0 }}

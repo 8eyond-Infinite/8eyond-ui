@@ -7,69 +7,7 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight } from "lucide-react";
-
-const sidebarData = [
-  {
-    system: "core",
-    label: "Industrial_Core",
-    groups: [
-      {
-        title: "General",
-        items: [
-          { name: "Typography", href: "/components/core/typography" },
-          { name: "Button", href: "/components/core/button" },
-          { name: "Badge", href: "/components/core/badge" },
-          { name: "Accordion", href: "/components/core/accordion" },
-        ],
-      },
-      {
-        title: "Form",
-        items: [
-          { name: "Input", href: "/components/core/input" },
-          { name: "Label", href: "/components/core/label" },
-          { name: "Checkbox", href: "/components/core/checkbox" },
-          { name: "Switch", href: "/components/core/switch" },
-          { name: "Select", href: "/components/core/select" },
-          { name: "Radio Group", href: "/components/core/radio-group" },
-        ],
-      },
-      {
-        title: "Data Display",
-        items: [
-          { name: "Card", href: "/components/core/card" },
-          { name: "Table", href: "/components/core/table" },
-        ],
-      },
-      {
-        title: "Navigation",
-        items: [
-          { name: "Tabs", href: "/components/core/tabs" },
-          { name: "Breadcrumb", href: "/components/core/breadcrumb" },
-        ],
-      },
-      {
-        title: "Overlays",
-        items: [
-          { name: "Dialog", href: "/components/core/dialog" },
-          { name: "Toast", href: "/components/core/toast" },
-          { name: "Tooltip", href: "/components/core/tooltip" },
-        ],
-      },
-    ],
-  },
-  {
-    system: "alchemist",
-    label: "Alchemist Sanctum",
-    groups: [
-      {
-        title: "Artifacts",
-        items: [
-          { name: "Alchemist Button", href: "/components/alchemist/button" },
-        ],
-      },
-    ],
-  },
-];
+import { sidebarData } from "@/config/docs";
 
 export function DocsLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
