@@ -1,9 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Search, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui";
 
@@ -34,66 +35,118 @@ const sidebarData = [
 
 export function DocsLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const [openGroups, setOpenGroups] = useState<string[]>([
+    "Foundations",
+    "General",
+    "Form",
+    "Data Display",
+  ]);
+
+  const toggleGroup = (title: string) => {
+    setOpenGroups((prev) =>
+      prev.includes(title) ? prev.filter((t) => t !== title) : [...prev, title]
+    );
+  };
 
   return (
     <div className="flex min-h-screen bg-background text-foreground">
       {/* Sidebar */}
-      <aside className="fixed top-0 left-0 z-40 w-64 h-screen border-r border-white/5 bg-background/50 backdrop-blur-xl pt-20 px-8 overflow-y-auto hidden md:block">
+      <aside className="fixed top-0 left-0 z-40 w-72 h-screen border-r border-white/5 bg-background/50 backdrop-blur-xl pt-20 px-10 overflow-y-auto hidden md:block">
         <div className="space-y-10">
           <div className="flex items-center gap-3 mb-12">
             <div className="w-5 h-5 border border-accent rotate-45 flex items-center justify-center">
               <div className="w-1.5 h-1.5 bg-accent" />
             </div>
-            <span className="font-mono text-[10px] tracking-[0.4em] uppercase font-bold">
+            <span className="font-mono text-[11px] tracking-[0.4em] uppercase font-bold text-white">
               8eyond_UI
             </span>
           </div>
 
-          {sidebarData.map((group) => (
-            <div key={group.title} className="space-y-4">
-              <h4 className="text-[9px] font-mono font-bold uppercase tracking-[0.5em] text-zinc-600">
-                {group.title}
-              </h4>
-              <ul className="space-y-1">
-                {group.items.map((item) => (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      className={cn(
-                        "group flex items-center justify-between py-2 text-[13px] font-medium tracking-tight transition-all",
-                        pathname === item.href
-                          ? "text-accent"
-                          : "text-zinc-500 hover:text-zinc-200"
-                      )}
+          {sidebarData.map((group) => {
+            const isOpen = openGroups.includes(group.title);
+            return (
+              <div key={group.title} className="space-y-1">
+                <button
+                  onClick={() => toggleGroup(group.title)}
+                  className="w-full flex items-center justify-between py-2 group/btn"
+                >
+                  <h4 className="text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-zinc-400 group-hover/btn:text-white transition-colors">
+                    {group.title}
+                  </h4>
+                  <ChevronRight
+                    size={10}
+                    className={cn(
+                      "text-zinc-700 transition-transform duration-300",
+                      isOpen && "rotate-90 text-accent"
+                    )}
+                  />
+                </button>
+
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.ul
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                      className="space-y-0.5 overflow-hidden border-l border-white/5 ml-1 pl-4"
                     >
-                      <span>{item.name}</span>
-                      {pathname === item.href && (
-                        <motion.div layoutId="active-indicator">
-                          <ChevronRight size={12} className="text-accent" />
-                        </motion.div>
-                      )}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+                      {group.items.map((item) => (
+                        <li key={item.href}>
+                          <Link
+                            href={item.href}
+                            className={cn(
+                              "group flex items-center justify-between py-2 px-3 -ml-3 rounded-[2px] text-[14px] font-medium tracking-tight transition-all",
+                              pathname === item.href
+                                ? "bg-accent/5 text-accent"
+                                : "text-zinc-500 hover:text-zinc-200 hover:bg-white/[0.03]"
+                            )}
+                          >
+                            <span>{item.name}</span>
+                            {pathname === item.href && (
+                              <motion.div layoutId="active-indicator">
+                                <div className="w-1 h-1 rounded-full bg-accent shadow-glow" />
+                              </motion.div>
+                            )}
+                          </Link>
+                        </li>
+                      ))}
+                    </motion.ul>
+                  )}
+                </AnimatePresence>
+              </div>
+            );
+          })}
         </div>
       </aside>
 
       {/* Main Content */}
-      <main className="md:pl-64 w-full relative">
+      <main className="md:pl-72 w-full relative">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808005_1px,transparent_1px),linear-gradient(to_bottom,#80808005_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
 
-        <nav className="sticky top-0 z-30 h-16 border-b border-white/5 bg-background/50 backdrop-blur-xl px-8 flex items-center justify-between">
-          <div className="flex items-center gap-4 text-[9px] font-mono text-zinc-500 uppercase tracking-[0.3em]">
-            <Link href="/" className="hover:text-accent transition-colors">
-              Home
+        <nav className="sticky top-0 z-30 h-20 border-b border-white/5 bg-background/50 backdrop-blur-xl px-12 flex items-center justify-between">
+          <div className="flex items-center gap-4 text-[11px] font-mono uppercase tracking-[0.3em]">
+            <Link
+              href="/"
+              className="text-zinc-600 hover:text-accent transition-colors"
+            >
+              System_Home
             </Link>
-            <ChevronRight size={10} className="opacity-30" />
-            <span className="text-zinc-300">
-              {pathname.split("/").pop() || "Library"}
-            </span>
+            <ChevronRight size={12} className="text-zinc-800" />
+            <Link
+              href="/components"
+              className="text-zinc-600 hover:text-accent transition-colors"
+            >
+              Library
+            </Link>
+            {pathname !== "/components" && (
+              <>
+                <ChevronRight size={12} className="text-zinc-800" />
+                <span className="text-accent font-bold text-glow italic">
+                  {pathname.split("/").pop()?.toUpperCase()}
+                </span>
+              </>
+            )}
           </div>
           <div className="flex items-center gap-6">
             <div className="relative group hidden sm:block">
