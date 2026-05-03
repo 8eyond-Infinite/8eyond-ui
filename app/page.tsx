@@ -67,7 +67,7 @@ export default function Home() {
             </a>
           </div>
           <Link href="/components">
-            <Button variant="alchemist" size="sm" className="h-8">
+            <Button size="sm" className="h-8">
               Initialize_System
             </Button>
           </Link>
@@ -101,9 +101,7 @@ export default function Home() {
             </p>
             <div className="flex justify-center gap-6">
               <Link href="/components">
-                <Button size="lg" variant="alchemist">
-                  Browse Artifacts
-                </Button>
+                <Button size="lg">Browse Artifacts</Button>
               </Link>
               <Button size="lg" variant="secondary">
                 View Source
@@ -154,10 +152,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <Card
-                variant="artifact"
-                className="min-h-[500px] flex items-center justify-center relative overflow-hidden bg-white/[0.01]"
-              >
+              <Card className="min-h-[500px] flex items-center justify-center relative overflow-hidden bg-white/[0.01]">
                 <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,rgba(251,191,36,0.1),transparent_50%)]" />
 
                 <AnimatePresence mode="wait">
@@ -176,7 +171,7 @@ export default function Home() {
                     >
                       <Button variant="primary">Core_Logic</Button>
                       <Button variant="secondary">System_Static</Button>
-                      <Button variant="alchemist" size="lg" className="group">
+                      <Button size="lg" className="group">
                         Transmute Now
                         <MoveRight className="ml-4 w-4 h-4 group-hover:translate-x-2 transition-transform" />
                       </Button>
@@ -198,7 +193,7 @@ export default function Home() {
                         <button
                           onClick={() =>
                             copyCode(
-                              `<Button variant="alchemist" size="lg">\n  Transmute Artifact\n</Button>`
+                              `<Button size="lg">\n  Transmute Artifact\n</Button>`
                             )
                           }
                           className="text-zinc-500 hover:text-white transition-all p-2 hover:bg-white/5 rounded-md"
@@ -220,8 +215,6 @@ export default function Home() {
                           </span>
                           ;{"\n\n"}
                           {"<Button "}
-                          <span className="text-accent">variant</span>
-                          =&quot;alchemist&quot;{" "}
                           <span className="text-accent">size</span>
                           =&quot;lg&quot;{">"}
                           {"\n"}
@@ -248,7 +241,7 @@ export default function Home() {
                   </h2>
                   <p className="text-zinc-500 max-w-md text-sm leading-relaxed">
                     Monospace input fields designed for data-heavy inscriptions
-                    and alchemical focus states.
+                    and industrial focus states.
                   </p>
                 </div>
 
@@ -278,10 +271,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <Card
-                variant="artifact"
-                className="min-h-[500px] flex items-center justify-center relative overflow-hidden bg-white/[0.01]"
-              >
+              <Card className="min-h-[500px] flex items-center justify-center relative overflow-hidden bg-white/[0.01]">
                 <AnimatePresence mode="wait">
                   {activeInputTab === "preview" ? (
                     <motion.div
@@ -301,13 +291,12 @@ export default function Home() {
                         <Input id="logic" placeholder="Standard_Input..." />
                       </div>
                       <div className="space-y-3">
-                        <Label htmlFor="artifact" className="text-accent/60">
-                          Artifact_Inscription
+                        <Label htmlFor="industrial">
+                          Industrial_Inscription
                         </Label>
                         <Input
-                          variant="artifact"
-                          id="artifact"
-                          placeholder="Glow_Focus_Enabled..."
+                          id="industrial"
+                          placeholder="Steel_Focus_Enabled..."
                         />
                       </div>
                     </motion.div>
@@ -328,7 +317,7 @@ export default function Home() {
                         <button
                           onClick={() =>
                             copyCode(
-                              `<Label htmlFor="key">Key</Label>\n<Input variant="artifact" id="key" />`
+                              `<Label htmlFor="key">Key</Label>\n<Input id="key" />`
                             )
                           }
                           className="text-zinc-500 hover:text-white transition-all p-2 hover:bg-white/5 rounded-md"
@@ -351,11 +340,10 @@ export default function Home() {
                           ;{"\n\n"}
                           {'<div className="space-y-3">'}
                           {"\n"}
-                          {'  <Label htmlFor="key">Artifact_Key</Label>'}
+                          {'  <Label htmlFor="key">System_Key</Label>'}
                           {"\n"}
                           {"  <Input "}
-                          <span className="text-accent">variant</span>
-                          =&quot;artifact&quot; id=&quot;key&quot; /&gt;{"\n"}
+                          id=&quot;key&quot; /&gt;{"\n"}
                           {"</div>"}
                         </code>
                       </pre>
@@ -377,14 +365,12 @@ export default function Home() {
                   keyboard-first accessibility.
                 </p>
               </Card>
-              <Card variant="artifact" className="p-8 space-y-4 group">
+              <Card className="p-8 space-y-4 group">
                 <Layers
                   size={24}
-                  className="text-accent group-hover:text-accent shadow-glow"
+                  className="text-zinc-400 group-hover:text-accent transition-colors"
                 />
-                <h3 className="font-bold uppercase italic text-glow">
-                  Multi_Layered
-                </h3>
+                <h3 className="font-bold uppercase italic">Multi_Layered</h3>
                 <p className="text-zinc-400 text-xs leading-relaxed">
                   Dual-layer design system that scales from minimalist admin
                   panels to high-end landing pages.

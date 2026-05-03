@@ -1,7 +1,6 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-
 import {
   Label,
   Input,
@@ -28,12 +27,14 @@ export default function LabelDoc() {
           id: "std-1",
           text: "System_Identifier",
           required: false,
+          size: "md" as const,
           placeholder: "0x4A2B9",
         },
         {
           id: "std-2",
           text: "Operator_Name",
           required: false,
+          size: "md" as const,
           placeholder: "Administrator",
         },
       ],
@@ -45,12 +46,14 @@ export default function LabelDoc() {
           id: "val-1",
           text: "Encrypted_Vault_Key",
           required: true,
+          size: "md" as const,
           placeholder: "Enter_Key...",
         },
         {
           id: "val-2",
           text: "Secondary_Auth_Protocol",
           required: true,
+          size: "md" as const,
           placeholder: "Sequence_ID...",
         },
       ],
@@ -61,39 +64,39 @@ export default function LabelDoc() {
         {
           id: "s-xs",
           text: "XS_Label",
-          size: "xs",
+          size: "xs" as const,
           placeholder: "Extreme_Density",
           required: true,
         },
         {
           id: "s-sm",
           text: "SM_Label",
-          size: "sm",
+          size: "sm" as const,
           placeholder: "Compact_Mode",
           required: true,
         },
         {
           id: "s-md",
           text: "MD_Label",
-          size: "md",
+          size: "md" as const,
           placeholder: "Standard_Protocol",
           required: true,
         },
         {
           id: "s-lg",
           text: "LG_Label",
-          size: "lg",
+          size: "lg" as const,
           placeholder: "Focus_Mode",
           required: true,
         },
         {
           id: "s-xl",
           text: "XL_Label",
-          size: "xl",
+          size: "xl" as const,
           placeholder: "High_Fidelity",
           required: true,
         },
-      ] as const,
+      ],
     },
   ] as const;
 
@@ -146,7 +149,6 @@ export default function LabelDoc() {
                       group.label === "Scaling" && "max-w-md"
                     )}
                   >
-                    {/* @ts-expect-error - Size prop is valid */}
                     <Label
                       htmlFor={item.id}
                       required={item.required}
@@ -154,7 +156,6 @@ export default function LabelDoc() {
                     >
                       {item.text}
                     </Label>
-                    {/* @ts-expect-error - Size prop is valid */}
                     <Input
                       id={item.id}
                       placeholder={item.placeholder}
