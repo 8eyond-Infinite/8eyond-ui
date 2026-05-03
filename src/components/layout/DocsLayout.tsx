@@ -28,6 +28,7 @@ const sidebarData = [
           { name: "Checkbox", href: "/components/core/checkbox" },
           { name: "Switch", href: "/components/core/switch" },
           { name: "Select", href: "/components/core/select" },
+          { name: "Radio Group", href: "/components/core/radio-group" },
         ],
       },
       {
