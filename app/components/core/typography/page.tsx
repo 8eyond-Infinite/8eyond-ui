@@ -7,6 +7,10 @@ import {
   TableHead,
   TableRow,
   TableCell,
+  H1,
+  H3,
+  Lead,
+  Muted,
 } from "@/components/ui";
 import { CopyButton } from "@/components/docs/CopyButton";
 
@@ -97,9 +101,12 @@ export default function TypographyDoc() {
 
       <section className="space-y-12">
         <div className="flex items-center justify-between border-b border-white/5 pb-4">
-          <Typography variant="h3">Scale Preview</Typography>
+          <div className="flex items-center gap-3">
+            <div className="w-2 h-2 bg-zinc-500" />
+            <H3>Preview</H3>
+          </div>
           <span className="text-[10px] font-mono text-zinc-800 italic">
-            Core Archetypes
+            Core
           </span>
         </div>
 
@@ -109,12 +116,12 @@ export default function TypographyDoc() {
               <div key={example.label} className="space-y-6">
                 <div className="flex items-center justify-between border-b border-white/5 pb-3">
                   <div className="flex items-center gap-3">
-                    <span className="px-2 py-0.5 rounded-sm bg-accent/10 border border-accent/20 text-accent font-mono text-[10px] font-bold">
-                      {example.variant.toUpperCase()}
+                    <span className="px-2 py-0.5 rounded-sm bg-white/5 border border-white/10 text-zinc-400 font-mono text-[10px] font-bold">
+                      {example.variant}
                     </span>
                     <Typography
                       variant="large"
-                      className="text-sm uppercase tracking-[0.2em]"
+                      className="text-sm tracking-tight"
                     >
                       {example.label}
                     </Typography>
@@ -154,7 +161,15 @@ export default function TypographyDoc() {
       </section>
 
       <section className="space-y-8">
-        <Typography variant="h3">API Reference</Typography>
+        <div className="flex items-center justify-between border-b border-white/5 pb-4">
+          <div className="flex items-center gap-3">
+            <div className="w-2 h-2 bg-zinc-800" />
+            <H3>API_Reference</H3>
+          </div>
+          <span className="text-[10px] font-mono text-zinc-800 italic">
+            Core
+          </span>
+        </div>
         <Card className="overflow-hidden border-white/5 bg-black/20">
           <Table>
             <TableHeader>
@@ -167,7 +182,7 @@ export default function TypographyDoc() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell className="font-mono text-accent">variant</TableCell>
+                <TableCell className="font-mono text-white">variant</TableCell>
                 <TableCell className="text-[12px] font-mono text-zinc-500">
                   "h1" | "h2" | "h3" | "h4" | "p" | "lead" | "large" | "small" |
                   "muted" | "code" | "ul" | "li" | "blockquote"
@@ -176,7 +191,7 @@ export default function TypographyDoc() {
                 <TableCell>The typographic preset to apply.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-mono text-accent">as</TableCell>
+                <TableCell className="font-mono text-white">as</TableCell>
                 <TableCell className="text-[12px] font-mono text-zinc-500">
                   React.ElementType
                 </TableCell>
@@ -186,17 +201,15 @@ export default function TypographyDoc() {
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-mono text-accent">
-                  gradient
-                </TableCell>
+                <TableCell className="font-mono text-white">gradient</TableCell>
                 <TableCell className="text-[12px] font-mono text-zinc-500">
                   boolean
                 </TableCell>
                 <TableCell className="font-mono text-[12px]">false</TableCell>
-                <TableCell>Apply metallic gold gradient effect.</TableCell>
+                <TableCell>Apply metallic silver gradient effect.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-mono text-accent">align</TableCell>
+                <TableCell className="font-mono text-white">align</TableCell>
                 <TableCell className="text-[12px] font-mono text-zinc-500">
                   "left" | "center" | "right" | "justify"
                 </TableCell>
@@ -206,6 +219,32 @@ export default function TypographyDoc() {
             </TableBody>
           </Table>
         </Card>
+      </section>
+
+      {/* Usage */}
+      <section className="space-y-8">
+        <div className="flex items-center justify-between border-b border-white/5 pb-4">
+          <div className="flex items-center gap-3">
+            <div className="w-2 h-2 bg-zinc-800" />
+            <H3>Usage</H3>
+          </div>
+          <span className="text-[10px] font-mono text-zinc-800 italic">
+            Core
+          </span>
+        </div>
+        <div className="relative group">
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-700 rounded-sm blur-sm" />
+          <div className="relative p-8 bg-black/60 border border-white/5 font-mono text-sm overflow-x-auto flex items-center justify-between">
+            <code className="text-zinc-400 group-hover:text-white transition-colors duration-500 whitespace-pre">
+              {`<Typography variant="h1">
+  Industrial_Core
+</Typography>`}
+            </code>
+            <CopyButton
+              value={`<Typography variant="h1">Industrial_Core</Typography>`}
+            />
+          </div>
+        </div>
       </section>
     </div>
   );

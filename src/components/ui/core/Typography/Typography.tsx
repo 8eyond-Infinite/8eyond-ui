@@ -45,23 +45,23 @@ const Typography = React.forwardRef<HTMLElement, TypographyProps>(
     };
 
     const variants = {
-      h1: "scroll-m-20 text-4xl font-black italic tracking-tighter lg:text-6xl text-white",
-      h2: "scroll-m-20 border-b border-white/5 pb-2 text-3xl font-bold italic tracking-tight first:mt-0 text-white",
-      h3: "scroll-m-20 text-2xl font-bold tracking-tight text-white",
-      h4: "scroll-m-20 text-xl font-bold tracking-tight text-white",
+      h1: "scroll-m-20 text-4xl font-black tracking-tighter lg:text-6xl text-white font-mono",
+      h2: "scroll-m-20 border-b border-white/5 pb-2 text-3xl font-bold tracking-tight first:mt-0 text-white font-mono",
+      h3: "scroll-m-20 text-2xl font-bold tracking-tight text-white font-mono",
+      h4: "scroll-m-20 text-xl font-bold tracking-tight text-white font-mono",
       p: "leading-7 [&:not(:first-child)]:mt-6 font-normal text-zinc-400",
       blockquote: "mt-6 border-l-2 border-white/10 pl-6 italic text-zinc-500",
       ul: "my-6 ml-6 list-none space-y-2",
-      li: "relative pl-6 text-zinc-400 leading-7 before:absolute before:left-0 before:top-[0.6em] before:h-1.5 before:w-1.5 before:bg-accent/40 before:rotate-45",
+      li: "relative pl-6 text-zinc-400 leading-7 before:absolute before:left-0 before:top-[0.7em] before:h-1.5 before:w-1.5 before:bg-white/20",
       lead: "text-xl text-zinc-500 font-normal leading-relaxed",
       large: "text-lg font-bold text-white",
       small: "text-sm font-medium leading-none text-zinc-500",
       muted: "text-[13px] text-zinc-600 font-medium",
-      code: "relative rounded-[3px] bg-zinc-950/50 border border-white/10 px-[0.4rem] py-[0.1rem] font-mono text-[12.5px] font-medium text-accent/90 shadow-[0_0_15px_rgba(251,191,36,0.05)]",
+      code: "relative rounded-[2px] bg-white/5 border border-white/10 px-[0.4rem] py-[0.1rem] font-mono text-[12px] font-medium text-white shadow-sm",
     };
 
     const gradientStyles =
-      "bg-gradient-to-br from-white via-accent to-accent/50 bg-clip-text text-transparent";
+      "bg-gradient-to-br from-white via-zinc-400 to-zinc-800 bg-clip-text text-transparent";
 
     return (
       <Component
