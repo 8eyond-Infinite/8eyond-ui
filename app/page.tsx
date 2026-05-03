@@ -3,22 +3,11 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Button,
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-  CardFooter,
-  Input,
-  Label,
-} from "@/components/ui";
+import { Button, Card, Input, Label } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import {
   MoveRight,
   Shield,
-  Repeat,
   Layers,
   Code,
   Eye,

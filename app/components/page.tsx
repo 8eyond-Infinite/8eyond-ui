@@ -1,10 +1,4 @@
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-} from "@/components/ui";
+import { Card } from "@/components/ui";
 import { Cpu, Terminal, Layers } from "lucide-react";
 import Link from "next/link";
 

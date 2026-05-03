@@ -1,4 +1,4 @@
-import { DocsLayout } from "@/components/layout/DocsLayout";
+import { DocsLayout } from "@/components/layout";
 
 export default function ComponentsLayout({
   children,
