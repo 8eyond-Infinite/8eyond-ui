@@ -4,3 +4,8 @@ export * from "./Input";
 export * from "./Label";
 export * from "./Checkbox";
 export * from "./Switch";
+export * from "./Tabs";
+export * from "./Breadcrumb";
+export * from "./Table";
+export * from "./Dialog";
+export * from "./Typography";

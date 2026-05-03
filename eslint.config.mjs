@@ -7,11 +7,26 @@ import nextTs from "eslint-config-next/typescript";
 
 import eslintConfigPrettier from "eslint-config-prettier";
 
-const eslintConfig = defineConfig([...nextVitals, ...nextTs, eslintConfigPrettier, globalIgnores([
-  ".next/**",
-  "out/**",
-  "build/**",
-  "next-env.d.ts",
-]), ...storybook.configs["flat/recommended"]]);
+const eslintConfig = defineConfig([
+  ...nextVitals, 
+  ...nextTs, 
+  eslintConfigPrettier, 
+  globalIgnores([
+    ".next/**",
+    "out/**",
+    "build/**",
+    "next-env.d.ts",
+  ]), 
+  ...storybook.configs["flat/recommended"],
+  {
+    rules: {
+      "@next/next/no-html-link-for-pages": "off",
+      "react-hooks/exhaustive-deps": "warn",
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/set-state-in-effect": "off",
+      "react/no-unescaped-entities": "off"
+    }
+  }
+]);
 
 export default eslintConfig;

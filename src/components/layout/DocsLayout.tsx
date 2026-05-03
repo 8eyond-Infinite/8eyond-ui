@@ -31,7 +31,21 @@ const sidebarData = [
   },
   {
     title: "Data Display",
-    items: [{ name: "Card", href: "/components/card" }],
+    items: [
+      { name: "Card", href: "/components/card" },
+      { name: "Table", href: "/components/table" },
+    ],
+  },
+  {
+    title: "Navigation",
+    items: [
+      { name: "Tabs", href: "/components/tabs" },
+      { name: "Breadcrumb", href: "/components/breadcrumb" },
+    ],
+  },
+  {
+    title: "Overlays",
+    items: [{ name: "Dialog", href: "/components/dialog" }],
   },
 ];
 
@@ -192,7 +206,7 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
           </div>
         </nav>
 
-        <div className="relative z-10 pt-16 pb-32 px-6 md:px-16 max-w-5xl mx-auto">
+        <div className="relative z-10 pt-16 pb-32 px-8 md:px-24 max-w-7xl mx-auto">
           {children}
         </div>
       </main>

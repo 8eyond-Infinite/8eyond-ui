@@ -5,6 +5,7 @@ import {
   Layers,
   Type,
   ArrowRight,
+  MoveRight,
   Check,
   Repeat,
 } from "lucide-react";
@@ -177,6 +178,99 @@ export default function ComponentsPage() {
                   </h3>
                   <p className="text-zinc-400 text-sm leading-relaxed">
                     Structural containers for organized data display.
+                  </p>
+                </div>
+              </Card>
+            </Link>
+          </div>
+        </div>
+        {/* Navigation */}
+        <div className="space-y-8">
+          <div className="flex items-center justify-between border-b border-white/5 pb-4">
+            <h2 className="text-[12px] font-mono font-bold uppercase tracking-[0.5em] text-zinc-600">
+              Navigation
+            </h2>
+            <span className="text-[10px] font-mono text-zinc-800 italic">
+              User_Flow_Protocols
+            </span>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <Link href="/components/tabs">
+              <Card className="p-6 group hover:border-accent/30 transition-all duration-500 relative overflow-hidden">
+                <div className="flex items-start justify-between">
+                  <Type
+                    className="text-zinc-600 group-hover:text-accent transition-colors"
+                    size={24}
+                  />
+                  <ArrowRight
+                    size={14}
+                    className="text-zinc-800 group-hover:text-accent transition-all group-hover:translate-x-1"
+                  />
+                </div>
+                <div className="mt-8">
+                  <h3 className="text-md font-bold uppercase italic mb-2">
+                    Tabs
+                  </h3>
+                  <p className="text-zinc-500 text-sm leading-relaxed">
+                    Spring-animated interface for switching views.
+                  </p>
+                </div>
+              </Card>
+            </Link>
+            <Link href="/components/breadcrumb">
+              <Card className="p-6 group hover:border-accent/30 transition-all duration-500 relative overflow-hidden">
+                <div className="flex items-start justify-between">
+                  <MoveRight
+                    className="text-zinc-600 group-hover:text-accent transition-colors"
+                    size={24}
+                  />
+                  <ArrowRight
+                    size={14}
+                    className="text-zinc-800 group-hover:text-accent transition-all group-hover:translate-x-1"
+                  />
+                </div>
+                <div className="mt-8">
+                  <h3 className="text-md font-bold uppercase italic mb-2">
+                    Breadcrumb
+                  </h3>
+                  <p className="text-zinc-500 text-sm leading-relaxed">
+                    Path indicators for hierarchical navigation.
+                  </p>
+                </div>
+              </Card>
+            </Link>
+          </div>
+        </div>
+
+        {/* Overlays */}
+        <div className="space-y-8">
+          <div className="flex items-center justify-between border-b border-white/5 pb-4">
+            <h2 className="text-[12px] font-mono font-bold uppercase tracking-[0.5em] text-zinc-600">
+              Overlays
+            </h2>
+            <span className="text-[10px] font-mono text-zinc-800 italic">
+              Focus_Portals
+            </span>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <Link href="/components/dialog">
+              <Card className="p-6 group hover:border-accent/30 transition-all duration-500 relative overflow-hidden">
+                <div className="flex items-start justify-between">
+                  <Layers
+                    className="text-zinc-600 group-hover:text-accent transition-colors"
+                    size={24}
+                  />
+                  <ArrowRight
+                    size={14}
+                    className="text-zinc-800 group-hover:text-accent transition-all group-hover:translate-x-1"
+                  />
+                </div>
+                <div className="mt-8">
+                  <h3 className="text-md font-bold uppercase italic mb-2">
+                    Dialog
+                  </h3>
+                  <p className="text-zinc-500 text-sm leading-relaxed">
+                    Immersive overlay portals for critical focus.
                   </p>
                 </div>
               </Card>
