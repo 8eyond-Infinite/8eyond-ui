@@ -1,0 +1,240 @@
+"use client";
+
+import * as React from "react";
+import {
+  Select,
+  SelectTrigger,
+  SelectContent,
+  SelectItem,
+  SelectSeparator,
+  Card,
+  Table,
+  TableHeader,
+  TableBody,
+  TableHead,
+  TableRow,
+  TableCell,
+  H1,
+  H3,
+  Lead,
+  Muted,
+} from "@/components/ui";
+import { CopyButton } from "@/components/docs/CopyButton";
+import { Cpu, Shield, Database, Globe, Layers } from "lucide-react";
+
+export default function SelectDoc() {
+  const [protocol, setProtocol] = React.useState("NEURAL_LINK");
+  const [region, setRegion] = React.useState("NEO_TOKYO");
+
+  const scalingSizes = ["xs", "sm", "md", "lg", "xl"] as const;
+
+  return (
+    <div className="space-y-20 pb-24">
+      {/* Header */}
+      <div className="space-y-4">
+        <H1>Select</H1>
+        <Lead>
+          A high-fidelity selection artifact for navigating complex state
+          matrices. Engineered for precision and rapid operational switching.
+        </Lead>
+      </div>
+
+      {/* Execution */}
+      <section className="space-y-8">
+        <div className="flex items-center justify-between border-b border-white/5 pb-4">
+          <div className="flex items-center gap-3">
+            <div className="w-2 h-2 bg-accent shadow-glow" />
+            <H3>Execution</H3>
+          </div>
+          <span className="text-[10px] font-mono text-zinc-800 italic">
+            Core
+          </span>
+        </div>
+
+        <div className="p-12 rounded-sm border border-white/5 bg-zinc-900/20 relative overflow-hidden min-h-[400px]">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808005_1px,transparent_1px),linear-gradient(to_bottom,#80808005_1px,transparent_1px)] bg-[size:32px_32px]" />
+
+          <div className="relative z-10 w-full max-w-md mx-auto space-y-12">
+            <div className="space-y-6">
+              <div className="flex items-center justify-between px-1">
+                <Muted className="text-[9px] uppercase tracking-widest">
+                  Protocol_Selection
+                </Muted>
+                <span className="text-[10px] font-mono text-accent">
+                  ID: {protocol}
+                </span>
+              </div>
+              <Select value={protocol} onValueChange={setProtocol}>
+                <SelectTrigger placeholder="Choose Protocol" />
+                <SelectContent>
+                  <SelectItem value="NEURAL_LINK">Neural_Link_V4</SelectItem>
+                  <SelectItem value="VOID_SIGNAL">
+                    Void_Signal_Static
+                  </SelectItem>
+                  <SelectItem value="QUANTUM_CORE">
+                    Quantum_Core_Alpha
+                  </SelectItem>
+                  <SelectSeparator />
+                  <SelectItem value="DEBUG_MODE">
+                    Debug_Protocol_Root
+                  </SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className="space-y-6">
+              <Muted className="text-[9px] uppercase tracking-widest px-1">
+                Geo_Node_Mapping
+              </Muted>
+              <Card className="p-8 bg-black/40 border-white/10 flex flex-col gap-4">
+                <Select value={region} onValueChange={setRegion} size="sm">
+                  <SelectTrigger className="bg-transparent" />
+                  <SelectContent>
+                    <SelectItem value="NEO_TOKYO">Neo_Tokyo_Sector</SelectItem>
+                    <SelectItem value="ORBITAL_STATION">
+                      Orbital_Station_7
+                    </SelectItem>
+                    <SelectItem value="DEEP_CORE">
+                      Deep_Core_Facility
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
+                <div className="pt-2 flex items-center justify-between text-[10px] font-mono">
+                  <span className="text-zinc-600 italic">Active_Zone:</span>
+                  <span className="text-zinc-400">{region}.ZONE_LOCKED</span>
+                </div>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Preview */}
+      <section className="space-y-12">
+        <div className="flex items-center justify-between border-b border-white/5 pb-4">
+          <div className="flex items-center gap-3">
+            <div className="w-2 h-2 bg-zinc-500" />
+            <H3>Preview</H3>
+          </div>
+          <span className="text-[10px] font-mono text-zinc-800 italic">
+            Core
+          </span>
+        </div>
+
+        <div className="space-y-16">
+          <div className="space-y-6">
+            <Muted className="text-sm tracking-tight">
+              Dimensional_Scaling
+            </Muted>
+            <div className="p-10 rounded-sm border border-white/5 bg-white/[0.01] grid grid-cols-1 md:grid-cols-2 gap-8 items-end">
+              {scalingSizes.map((size) => (
+                <div key={size} className="space-y-2">
+                  <span className="text-[9px] font-mono text-zinc-700 uppercase">
+                    {size}_scale
+                  </span>
+                  <Select value="OPTION" onValueChange={() => {}} size={size}>
+                    <SelectTrigger />
+                    <SelectContent>
+                      <SelectItem value="OPTION">
+                        Operational_Standard
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* API Reference */}
+      <section className="space-y-8">
+        <div className="flex items-center justify-between border-b border-white/5 pb-4">
+          <div className="flex items-center gap-3">
+            <div className="w-2 h-2 bg-zinc-800" />
+            <H3>API_Reference</H3>
+          </div>
+          <span className="text-[10px] font-mono text-zinc-800 italic">
+            Core
+          </span>
+        </div>
+        <Card className="overflow-hidden border-white/5 bg-black/20">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-[150px]">Prop</TableHead>
+                <TableHead>Type</TableHead>
+                <TableHead>Default</TableHead>
+                <TableHead>Description</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell className="font-mono text-white">size</TableCell>
+                <TableCell className="text-[12px] font-mono text-zinc-500">
+                  "xs" | "sm" | "md" | "lg" | "xl"
+                </TableCell>
+                <TableCell className="font-mono text-[12px]">"md"</TableCell>
+                <TableCell>
+                  Mechanical scale of the trigger and list items.
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className="font-mono text-white">value</TableCell>
+                <TableCell className="text-[12px] font-mono text-zinc-500">
+                  string
+                </TableCell>
+                <TableCell className="font-mono text-[12px]">-</TableCell>
+                <TableCell>
+                  The currently active identifier in the matrix.
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className="font-mono text-white">
+                  onValueChange
+                </TableCell>
+                <TableCell className="text-[12px] font-mono text-zinc-500 text-pretty">
+                  (value: string) =&gt; void
+                </TableCell>
+                <TableCell className="font-mono text-[12px]">null</TableCell>
+                <TableCell>
+                  Triggered when a new operational state is selected.
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </Card>
+      </section>
+
+      {/* Usage */}
+      <section className="space-y-8">
+        <div className="flex items-center justify-between border-b border-white/5 pb-4">
+          <div className="flex items-center gap-3">
+            <div className="w-2 h-2 bg-zinc-800" />
+            <H3>Usage</H3>
+          </div>
+          <span className="text-[10px] font-mono text-zinc-800 italic">
+            Core
+          </span>
+        </div>
+        <div className="relative group">
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-700 rounded-sm blur-sm" />
+          <div className="relative p-8 bg-black/60 border border-white/5 font-mono text-sm overflow-x-auto flex items-center justify-between">
+            <code className="text-zinc-400 group-hover:text-white transition-colors duration-500 whitespace-pre">
+              {`<Select value={val} onValueChange={setVal}>
+  <SelectTrigger placeholder="Protocol..." />
+  <SelectContent>
+    <SelectItem value="A">Alpha_Node</SelectItem>
+    <SelectItem value="B">Beta_Link</SelectItem>
+  </SelectContent>
+</Select>`}
+            </code>
+            <CopyButton
+              value={`<Select value={val} onValueChange={setVal}>\n  <SelectTrigger placeholder="Protocol..." />\n  <SelectContent>\n    <SelectItem value="A">Alpha_Node</SelectItem>\n    <SelectItem value="B">Beta_Link</SelectItem>\n  </SelectContent>\n</Select>`}
+            />
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

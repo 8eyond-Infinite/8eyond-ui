@@ -10,6 +10,7 @@ export * from "./core/Breadcrumb";
 export * from "./core/Table";
 export * from "./core/Dialog";
 export * from "./core/Toast";
+export * from "./core/Select";
 export * from "./core/Typography";
 
 export { AlchemistButton } from "./alchemist/Button/Button";

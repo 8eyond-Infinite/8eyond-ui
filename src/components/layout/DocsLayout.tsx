@@ -27,10 +27,11 @@ const sidebarData = [
           { name: "Label", href: "/components/core/label" },
           { name: "Checkbox", href: "/components/core/checkbox" },
           { name: "Switch", href: "/components/core/switch" },
+          { name: "Select", href: "/components/core/select" },
         ],
       },
       {
-        title: "Data_Display",
+        title: "Data Display",
         items: [{ name: "Table", href: "/components/core/table" }],
       },
       {
