@@ -1,12 +1,12 @@
 "use client";
 
+import * as React from "react";
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui";
+import { ChevronRight } from "lucide-react";
 
 const sidebarData = [
   {
@@ -59,12 +59,12 @@ const sidebarData = [
   },
   {
     system: "alchemist",
-    label: "Alchemist_Sanctum",
+    label: "Alchemist Sanctum",
     groups: [
       {
         title: "Artifacts",
         items: [
-          { name: "Alchemist_Button", href: "/components/alchemist/button" },
+          { name: "Alchemist Button", href: "/components/alchemist/button" },
         ],
       },
     ],
@@ -85,20 +85,31 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
     );
   };
 
+  const getBreadcrumbs = () => {
+    if (pathname === "/components") return [];
+
+    for (const system of sidebarData) {
+      for (const group of system.groups) {
+        const item = group.items.find((i) => i.href === pathname);
+        if (item) {
+          return [
+            { label: system.label.replace("_", " "), href: "#" },
+            { label: group.title, href: "#" },
+            { label: item.name.replace("_", " "), href: pathname },
+          ];
+        }
+      }
+    }
+    return [];
+  };
+
+  const breadcrumbs = getBreadcrumbs();
+
   return (
     <div className="flex min-h-screen bg-background text-foreground">
       {/* Sidebar */}
-      <aside className="fixed top-0 left-0 z-40 w-72 h-screen border-r border-white/5 bg-background/50 backdrop-blur-xl pt-20 px-8 overflow-y-auto hidden md:block">
-        <div className="space-y-8">
-          <div className="flex items-center gap-3 mb-12">
-            <div className="w-5 h-5 border border-accent rotate-45 flex items-center justify-center">
-              <div className="w-1.5 h-1.5 bg-accent" />
-            </div>
-            <span className="font-mono text-[11px] tracking-[0.4em] uppercase font-bold text-white">
-              8eyond_UI
-            </span>
-          </div>
-
+      <aside className="fixed top-16 left-0 z-40 w-72 h-[calc(100vh-64px)] border-r border-white/5 bg-background/50 backdrop-blur-xl px-8 overflow-y-auto hidden md:block pt-12">
+        <div className="space-y-8 pb-12">
           <div className="space-y-12">
             {sidebarData.map((system) => (
               <div key={system.label} className="space-y-4">
@@ -225,58 +236,34 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
         </div>
       </aside>
 
-      {/* Main Content */}
       <main className="md:pl-72 w-full relative">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808005_1px,transparent_1px),linear-gradient(to_bottom,#80808005_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
 
-        <nav className="sticky top-0 z-30 h-20 border-b border-white/5 bg-background/50 backdrop-blur-xl px-12 flex items-center justify-between">
-          <div className="flex items-center gap-4 text-[11px] font-mono uppercase tracking-[0.3em]">
-            <Link
-              href="/"
-              className="text-zinc-600 hover:text-accent transition-colors"
-            >
-              System_Home
-            </Link>
-            <ChevronRight size={12} className="text-zinc-800" />
-            <Link
-              href="/components"
-              className="text-zinc-600 hover:text-accent transition-colors"
-            >
-              Library
-            </Link>
-            {pathname !== "/components" && (
-              <>
-                <ChevronRight size={12} className="text-zinc-800" />
-                <span className="text-accent font-bold text-glow italic">
-                  {pathname.split("/").pop()?.toUpperCase()}
-                </span>
-              </>
+        <div className="relative z-10 pt-10 pb-32 px-8 md:px-24 max-w-7xl mx-auto">
+          {/* Breadcrumb Area */}
+          <div className="flex items-center gap-4 text-[10px] font-mono uppercase tracking-[0.3em] mb-12 border-b border-white/5 pb-8 min-h-[40px]">
+            {breadcrumbs.length > 0 ? (
+              breadcrumbs.map((crumb, idx) => (
+                <React.Fragment key={crumb.label}>
+                  {idx > 0 && (
+                    <ChevronRight size={10} className="text-zinc-800" />
+                  )}
+                  <span
+                    className={cn(
+                      "transition-colors",
+                      idx === breadcrumbs.length - 1
+                        ? "text-accent font-bold text-glow italic"
+                        : "text-zinc-600"
+                    )}
+                  >
+                    {crumb.label.toUpperCase()}
+                  </span>
+                </React.Fragment>
+              ))
+            ) : (
+              <span className="text-zinc-600">Library Index</span>
             )}
           </div>
-          <div className="flex items-center gap-6">
-            <div className="relative group hidden sm:block">
-              <Search
-                size={12}
-                className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-600 group-focus-within:text-accent transition-colors"
-              />
-              <input
-                placeholder="Search artifacts..."
-                className="bg-white/5 border border-white/5 rounded-full py-1.5 pl-10 pr-4 text-[10px] font-mono w-40 focus:w-60 focus:border-accent/30 focus:outline-none transition-all duration-500"
-              />
-            </div>
-            <Link href="/">
-              <Button
-                variant="ghost"
-                size="sm"
-                className="h-8 text-[9px] uppercase tracking-widest px-4 border border-white/5"
-              >
-                Exit_System
-              </Button>
-            </Link>
-          </div>
-        </nav>
-
-        <div className="relative z-10 pt-16 pb-32 px-8 md:px-24 max-w-7xl mx-auto">
           {children}
         </div>
       </main>

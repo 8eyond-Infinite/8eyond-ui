@@ -27,20 +27,20 @@ export default function CheckboxDoc() {
   ]);
 
   const protocols = [
-    { id: "P-01", label: "Encryption_Module_X8", icon: <Lock size={12} /> },
+    { id: "P-01", label: "Encryption Module X8", icon: <Lock size={12} /> },
     {
       id: "P-02",
-      label: "Realtime_Data_Ingestion",
+      label: "Realtime Data Ingestion",
       icon: <Activity size={12} />,
     },
     {
       id: "P-03",
-      label: "Structural_Backup_Sync",
+      label: "Structural Backup Sync",
       icon: <Database size={12} />,
     },
     {
       id: "P-04",
-      label: "Hardened_Kernel_Protection",
+      label: "Hardened Kernel Protection",
       icon: <ShieldCheck size={12} />,
     },
   ];
@@ -52,11 +52,11 @@ export default function CheckboxDoc() {
   };
 
   const scalingExamples = [
-    { size: "xs", label: "EXTREME_DENSITY" },
-    { size: "sm", label: "COMPACT_LOGIC" },
-    { size: "md", label: "STANDARD_VIEW" },
-    { size: "lg", label: "FOCUS_MODE" },
-    { size: "xl", label: "HIGH_FIDELITY" },
+    { size: "xs", label: "EXTREME DENSITY" },
+    { size: "sm", label: "COMPACT LOGIC" },
+    { size: "md", label: "STANDARD VIEW" },
+    { size: "lg", label: "FOCUS MODE" },
+    { size: "xl", label: "HIGH FIDELITY" },
   ] as const;
 
   return (
@@ -90,7 +90,7 @@ export default function CheckboxDoc() {
               <div className="flex items-center gap-2">
                 <div className="w-1 h-1 bg-zinc-800" />
                 <Muted className="text-[10px] font-mono uppercase tracking-[0.2em]">
-                  Active_Protocols
+                  Active Protocols
                 </Muted>
               </div>
               <div className="flex gap-1">
@@ -190,12 +190,12 @@ export default function CheckboxDoc() {
               <div className="flex items-center gap-2 px-1">
                 <div className="w-1 h-1 bg-zinc-800" />
                 <Muted className="text-[10px] font-mono uppercase tracking-[0.2em]">
-                  States_Unchecked
+                  States
                 </Muted>
               </div>
               <div className="p-10 rounded-sm border border-white/5 bg-white/[0.01] flex items-center gap-4">
                 <Checkbox id="un-1" />
-                <Label htmlFor="un-1">Inactive_Module</Label>
+                <Label htmlFor="un-1">Inactive Module</Label>
               </div>
             </div>
 
@@ -203,13 +203,13 @@ export default function CheckboxDoc() {
               <div className="flex items-center gap-2 px-1">
                 <div className="w-1 h-1 bg-zinc-800" />
                 <Muted className="text-[10px] font-mono uppercase tracking-[0.2em]">
-                  States_Disabled
+                  States Disabled
                 </Muted>
               </div>
               <div className="p-10 rounded-sm border border-white/5 bg-white/[0.01] flex items-center gap-4">
                 <Checkbox id="dis-1" disabled defaultChecked />
                 <Label htmlFor="dis-1" className="opacity-50">
-                  Hardened_Protection
+                  Hardened Protection
                 </Label>
               </div>
             </div>
@@ -222,7 +222,7 @@ export default function CheckboxDoc() {
         <div className="flex items-center justify-between border-b border-white/5 pb-4">
           <div className="flex items-center gap-3">
             <div className="w-2 h-2 bg-zinc-800" />
-            <H3>API_Reference</H3>
+            <H3>API Reference</H3>
           </div>
           <span className="text-[10px] font-mono text-zinc-800 italic">
             Core

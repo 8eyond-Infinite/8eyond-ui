@@ -92,7 +92,7 @@ export default function SwitchDoc() {
                     <Zap size={14} />
                   </div>
                   <div className="space-y-0.5">
-                    <Label htmlFor="overclock">Neural_Overclocking</Label>
+                    <Label htmlFor="overclock">Neural Overclocking</Label>
                     <Muted className="text-[10px]">
                       Increase processing throughput by 40%.
                     </Muted>
@@ -111,7 +111,7 @@ export default function SwitchDoc() {
                     <Radio size={14} />
                   </div>
                   <div className="space-y-0.5">
-                    <Label htmlFor="telemetry">Active_Telemetry</Label>
+                    <Label htmlFor="telemetry">Active Telemetry</Label>
                     <Muted className="text-[10px]">
                       Stream operational logs to the core.
                     </Muted>
@@ -130,7 +130,7 @@ export default function SwitchDoc() {
                     <Globe size={14} />
                   </div>
                   <div className="space-y-0.5">
-                    <Label htmlFor="sync">Global_Architecture_Sync</Label>
+                    <Label htmlFor="sync">Global Architecture Sync</Label>
                     <Muted className="text-[10px]">
                       Synchronize state across distributed nodes.
                     </Muted>
@@ -192,11 +192,11 @@ export default function SwitchDoc() {
               <div className="flex items-center gap-2 px-1">
                 <div className="w-1 h-1 bg-zinc-800" />
                 <Muted className="text-[10px] font-mono uppercase tracking-[0.2em]">
-                  States_Inactive
+                  States Inactive
                 </Muted>
               </div>
               <div className="p-10 rounded-sm border border-white/5 bg-white/[0.01] flex items-center justify-between">
-                <Label htmlFor="s-off">Decommissioned_Module</Label>
+                <Label htmlFor="s-off">Decommissioned Module</Label>
                 <Switch id="s-off" />
               </div>
             </div>
@@ -205,12 +205,12 @@ export default function SwitchDoc() {
               <div className="flex items-center gap-2 px-1">
                 <div className="w-1 h-1 bg-zinc-800" />
                 <Muted className="text-[10px] font-mono uppercase tracking-[0.2em]">
-                  States_Disabled
+                  States Disabled
                 </Muted>
               </div>
               <div className="p-10 rounded-sm border border-white/5 bg-white/[0.01] flex items-center justify-between">
                 <Label htmlFor="s-dis" className="opacity-50">
-                  Hardened_Protection
+                  Hardened Protection
                 </Label>
                 <Switch id="s-dis" disabled defaultChecked />
               </div>
@@ -224,7 +224,7 @@ export default function SwitchDoc() {
         <div className="flex items-center justify-between border-b border-white/5 pb-4">
           <div className="flex items-center gap-3">
             <div className="w-2 h-2 bg-zinc-800" />
-            <H3>API_Reference</H3>
+            <H3>API Reference</H3>
           </div>
           <span className="text-[10px] font-mono text-zinc-800 italic">
             Core
@@ -288,12 +288,12 @@ export default function SwitchDoc() {
           <div className="relative p-8 bg-black/60 border border-white/5 font-mono text-sm overflow-x-auto flex items-center justify-between">
             <code className="text-zinc-400 group-hover:text-white transition-colors duration-500 whitespace-pre">
               {`<div className="flex items-center justify-between">
-  <Label htmlFor="id" size="sm">Enable_System</Label>
+  <Label htmlFor="id" size="sm">Enable System</Label>
   <Switch id="id" size="sm" />
 </div>`}
             </code>
             <CopyButton
-              value={`<div className="flex items-center justify-between">\n  <Label htmlFor="id" size="sm">Enable_System</Label>\n  <Switch id="id" size="sm" />\n</div>`}
+              value={`<div className="flex items-center justify-between">\n  <Label htmlFor="id" size="sm">Enable System</Label>\n  <Switch id="id" size="sm" />\n</div>`}
             />
           </div>
         </div>

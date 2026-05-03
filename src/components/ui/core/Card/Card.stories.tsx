@@ -41,7 +41,7 @@ export const Default: Story = {
 
 export const Artifact: Story = {
   render: () => (
-    <Card variant="artifact" className="max-w-md">
+    <Card className="max-w-md">
       <CardHeader>
         <CardDescription className="text-accent/60">
           Alchemical_Artifact // 07

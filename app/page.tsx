@@ -1,409 +1,396 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import { Button, Card, Input, Label } from "@/components/ui";
-import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
+import {
+  Button,
+  Card,
+  Badge,
+  Table,
+  TableHeader,
+  TableBody,
+  TableRow,
+  TableHead,
+  TableCell,
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/ui";
+import { Footer } from "@/components/layout";
 import {
   MoveRight,
   Shield,
   Layers,
   Code,
-  Eye,
-  Copy,
-  Check,
   Terminal,
-  Cpu,
   Sparkles,
+  Activity,
+  Lock,
+  Database,
 } from "lucide-react";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<"preview" | "code">("preview");
-  const [activeInputTab, setActiveInputTab] = useState<"preview" | "code">(
-    "preview"
-  );
-  const [copied, setCopied] = useState(false);
+  const [scanning, setScanning] = useState(true);
 
-  const copyCode = (code: string) => {
-    navigator.clipboard.writeText(code);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setScanning((prev) => !prev);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <main className="min-h-screen bg-background text-foreground selection:bg-accent selection:text-void-1000 overflow-x-hidden">
+      {/* Background System */}
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
-        <div className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-accent/5 rounded-full blur-[140px] animate-pulse-slow" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-accent-secondary/5 rounded-full blur-[140px] animate-pulse-slow" />
+        <motion.div
+          animate={{ top: ["0%", "100%", "0%"] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+          className="absolute left-0 w-full h-[1px] bg-accent/20 shadow-[0_0_20px_rgba(251,191,36,0.2)] z-10"
+        />
       </div>
 
       <div className="relative z-10">
-        <nav className="sticky top-0 w-full border-b border-white/5 bg-background/50 backdrop-blur-xl px-6 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <div className="w-6 h-6 border border-accent rotate-45 flex items-center justify-center">
-              <div className="w-2 h-2 bg-accent" />
-            </div>
-            <span className="font-mono text-xs tracking-[0.4em] uppercase font-bold">
-              8eyond_UI
-            </span>
-          </div>
-          <div className="hidden md:flex gap-8 font-mono text-[9px] uppercase tracking-[0.3em] text-zinc-500">
-            <Link
-              href="/components"
-              className="hover:text-white transition-colors"
+        {/* Hero Section */}
+        <section className="max-w-7xl mx-auto px-6 pt-32 pb-40">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              className="space-y-12"
             >
-              Documentation
-            </Link>
-            <Link
-              href="/components"
-              className="hover:text-white transition-colors"
-            >
-              Components
-            </Link>
-            <a href="#" className="hover:text-white transition-colors">
-              Lab
-            </a>
-          </div>
-          <Link href="/components">
-            <Button size="sm" className="h-8">
-              Initialize_System
-            </Button>
-          </Link>
-        </nav>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-accent/20 bg-accent/5 text-[9px] font-mono text-accent uppercase tracking-widest">
+                <Sparkles size={10} className="animate-pulse" /> Industrial Core
+                v1.0.4
+              </div>
+              <div className="space-y-4">
+                <h1 className="text-6xl md:text-8xl font-black tracking-tighter uppercase italic leading-[0.85]">
+                  High_Fidelity <br />
+                  <span
+                    className="text-transparent"
+                    style={{ WebkitTextStroke: "1px rgba(255,255,255,0.2)" }}
+                  >
+                    Interface.
+                  </span>
+                </h1>
+                <p className="max-w-lg text-zinc-500 text-lg font-light leading-relaxed">
+                  A modular design system bridging the gap between{" "}
+                  <span className="text-white italic font-medium">
+                    industrial efficiency
+                  </span>{" "}
+                  and{" "}
+                  <span className="text-accent italic font-medium">
+                    high-fidelity aesthetics
+                  </span>
+                  .
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-6 pt-4">
+                <Link href="/components">
+                  <Button size="lg" className="px-10 h-14">
+                    Browse Artifacts
+                  </Button>
+                </Link>
+                <Button
+                  size="lg"
+                  variant="secondary"
+                  className="px-10 h-14 border-white/10"
+                >
+                  <Code size={16} className="mr-3" />
+                  Documentation
+                </Button>
+              </div>
 
-        <section className="max-w-6xl mx-auto px-6 pt-32 pb-24">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-center space-y-10 mb-40"
-          >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-accent/20 bg-accent/5 text-[9px] font-mono text-accent uppercase tracking-widest">
-              <Sparkles size={10} className="animate-pulse" />{" "}
-              Experimental_Build_v0.1
-            </div>
-            <h1 className="text-6xl md:text-[10rem] font-black tracking-tighter uppercase italic leading-[0.75]">
-              Architectural <br />
-              <span
-                className="text-transparent"
-                style={{ WebkitTextStroke: "1px rgba(255,255,255,0.15)" }}
+              <div className="grid grid-cols-3 gap-8 pt-12 border-t border-white/5">
+                <div className="space-y-1">
+                  <div className="text-2xl font-black italic text-white">
+                    17+
+                  </div>
+                  <div className="text-[9px] font-mono text-zinc-600 uppercase tracking-widest">
+                    Core Nodes
+                  </div>
+                </div>
+                <div className="space-y-1">
+                  <div className="text-2xl font-black italic text-white">
+                    60FPS
+                  </div>
+                  <div className="text-[9px] font-mono text-zinc-600 uppercase tracking-widest">
+                    Motion Engine
+                  </div>
+                </div>
+                <div className="space-y-1">
+                  <div className="text-2xl font-black italic text-white">
+                    0.4kb
+                  </div>
+                  <div className="text-[9px] font-mono text-zinc-600 uppercase tracking-widest">
+                    Atomic Payload
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Industrial Showcase Mockup */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, rotateY: -10 }}
+              animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+              transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+              className="relative hidden lg:block"
+            >
+              <div className="absolute -inset-4 bg-accent/5 blur-3xl rounded-full opacity-30" />
+              <Card
+                variant="technical"
+                className="p-1 border-white/20 bg-black/40 backdrop-blur-2xl overflow-hidden shadow-2xl"
               >
-                Entropy.
-              </span>
-            </h1>
-            <p className="max-w-2xl mx-auto text-zinc-500 text-lg md:text-xl font-light leading-relaxed">
-              The catalyst for digital excellence. A modular UI system bridging
-              the gap between{" "}
-              <span className="text-white italic">industrial efficiency</span>{" "}
-              and <span className="text-accent italic">alchemical wonder</span>.
-            </p>
-            <div className="flex justify-center gap-6">
-              <Link href="/components">
-                <Button size="lg">Browse Artifacts</Button>
-              </Link>
-              <Button size="lg" variant="secondary">
-                View Source
-              </Button>
-            </div>
-          </motion.div>
-
-          <div className="grid grid-cols-1 gap-60">
-            {/* Artifact 01: Button */}
-            <div className="space-y-16">
-              <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3 text-accent font-mono text-[10px] tracking-[0.4em] uppercase opacity-60">
-                    <Cpu size={14} /> Artifact_01 // ATOMIC
+                <div className="bg-zinc-950/50 rounded-[1px] p-6 space-y-6">
+                  {/* Mock Header */}
+                  <div className="flex items-center justify-between border-b border-white/5 pb-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-2 h-2 bg-accent shadow-glow" />
+                      <span className="font-mono text-[10px] font-bold uppercase tracking-widest">
+                        System Monitor v2
+                      </span>
+                    </div>
+                    <div className="flex gap-1">
+                      <div className="w-2 h-2 rounded-full bg-red-500/20" />
+                      <div className="w-2 h-2 rounded-full bg-amber-500/20" />
+                      <div className="w-2 h-2 rounded-full bg-emerald-500/20" />
+                    </div>
                   </div>
-                  <h2 className="text-5xl font-black tracking-tight uppercase italic">
-                    The Button
-                  </h2>
-                  <p className="text-zinc-500 max-w-md text-sm leading-relaxed">
-                    A polymorphic interactive element supporting logical states
-                    and artistic expressions.
-                  </p>
-                </div>
 
-                <div className="flex bg-white/5 p-1 rounded-[2px] border border-white/5 h-fit">
-                  <button
-                    onClick={() => setActiveTab("preview")}
-                    className={cn(
-                      "flex items-center gap-2 px-6 py-2 text-[10px] font-mono uppercase tracking-widest transition-all duration-300",
-                      activeTab === "preview"
-                        ? "bg-white/10 text-white shadow-lg"
-                        : "text-zinc-500 hover:text-zinc-300"
-                    )}
-                  >
-                    <Eye size={12} /> Preview
-                  </button>
-                  <button
-                    onClick={() => setActiveTab("code")}
-                    className={cn(
-                      "flex items-center gap-2 px-6 py-2 text-[10px] font-mono uppercase tracking-widest transition-all duration-300",
-                      activeTab === "code"
-                        ? "bg-white/10 text-white shadow-lg"
-                        : "text-zinc-500 hover:text-zinc-300"
-                    )}
-                  >
-                    <Code size={12} /> Code
-                  </button>
-                </div>
-              </div>
-
-              <Card className="min-h-[500px] flex items-center justify-center relative overflow-hidden bg-white/[0.01]">
-                <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,rgba(251,191,36,0.1),transparent_50%)]" />
-
-                <AnimatePresence mode="wait">
-                  {activeTab === "preview" ? (
-                    <motion.div
-                      key="preview"
-                      initial={{
-                        opacity: 0,
-                        scale: 0.98,
-                        filter: "blur(10px)",
-                      }}
-                      animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                      exit={{ opacity: 0, scale: 0.98, filter: "blur(10px)" }}
-                      transition={{ duration: 0.5 }}
-                      className="flex flex-wrap gap-12 justify-center items-center z-10"
-                    >
-                      <Button variant="primary">Core_Logic</Button>
-                      <Button variant="secondary">System_Static</Button>
-                      <Button size="lg" className="group">
-                        Transmute Now
-                        <MoveRight className="ml-4 w-4 h-4 group-hover:translate-x-2 transition-transform" />
-                      </Button>
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="code"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      className="w-full max-w-2xl bg-black/40 backdrop-blur-md rounded-lg border border-white/5 p-8 font-mono text-sm relative group"
-                    >
-                      <div className="flex justify-between items-center mb-6 pb-4 border-b border-white/5">
-                        <div className="flex gap-1.5">
-                          <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
-                          <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
-                          <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
-                        </div>
-                        <button
-                          onClick={() =>
-                            copyCode(
-                              `<Button size="lg">\n  Transmute Artifact\n</Button>`
-                            )
-                          }
-                          className="text-zinc-500 hover:text-white transition-all p-2 hover:bg-white/5 rounded-md"
-                        >
-                          {copied ? (
-                            <Check size={16} className="text-accent" />
-                          ) : (
-                            <Copy size={16} />
-                          )}
-                        </button>
+                  {/* Mock Grid */}
+                  <div className="grid grid-cols-2 gap-4">
+                    <Card className="p-4 bg-white/[0.02] space-y-3">
+                      <div className="flex justify-between items-center">
+                        <Activity size={12} className="text-zinc-600" />
+                        <Badge variant="success" size="xs" dot pulse>
+                          Live
+                        </Badge>
                       </div>
-                      <pre className="text-zinc-300 leading-loose overflow-x-auto">
-                        <code className="block">
-                          <span className="text-zinc-600">import</span>{" "}
-                          {"{ Button }"}{" "}
-                          <span className="text-zinc-600">from</span>{" "}
-                          <span className="text-accent">
-                            &quot;@/components/ui&quot;
-                          </span>
-                          ;{"\n\n"}
-                          {"<Button "}
-                          <span className="text-accent">size</span>
-                          =&quot;lg&quot;{">"}
-                          {"\n"}
-                          {"  Transmute Artifact"}
-                          {"\n"}
-                          {"</Button>"}
-                        </code>
-                      </pre>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </Card>
-            </div>
-
-            {/* Artifact 02: Input */}
-            <div className="space-y-16">
-              <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3 text-accent font-mono text-[10px] tracking-[0.4em] uppercase opacity-60">
-                    <Terminal size={14} /> Artifact_02 // INSCRIPTION
+                      <div className="space-y-1">
+                        <div className="text-lg font-black italic text-white leading-none">
+                          84.2%
+                        </div>
+                        <div className="text-[8px] font-mono text-zinc-500 uppercase tracking-tighter">
+                          Memory Efficiency
+                        </div>
+                      </div>
+                    </Card>
+                    <Card className="p-4 bg-white/[0.02] space-y-3">
+                      <div className="flex justify-between items-center">
+                        <Database size={12} className="text-zinc-600" />
+                        <Badge variant="secondary" size="xs">
+                          Stable
+                        </Badge>
+                      </div>
+                      <div className="space-y-1">
+                        <div className="text-lg font-black italic text-white leading-none">
+                          12ms
+                        </div>
+                        <div className="text-[8px] font-mono text-zinc-500 uppercase tracking-tighter">
+                          Query Latency
+                        </div>
+                      </div>
+                    </Card>
                   </div>
-                  <h2 className="text-5xl font-black tracking-tight uppercase italic">
-                    The Input
-                  </h2>
-                  <p className="text-zinc-500 max-w-md text-sm leading-relaxed">
-                    Monospace input fields designed for data-heavy inscriptions
-                    and industrial focus states.
-                  </p>
-                </div>
 
-                <div className="flex bg-white/5 p-1 rounded-[2px] border border-white/5 h-fit">
-                  <button
-                    onClick={() => setActiveInputTab("preview")}
-                    className={cn(
-                      "flex items-center gap-2 px-6 py-2 text-[10px] font-mono uppercase tracking-widest transition-all duration-300",
-                      activeInputTab === "preview"
-                        ? "bg-white/10 text-white shadow-lg"
-                        : "text-zinc-500 hover:text-zinc-300"
-                    )}
-                  >
-                    <Eye size={12} /> Preview
-                  </button>
-                  <button
-                    onClick={() => setActiveInputTab("code")}
-                    className={cn(
-                      "flex items-center gap-2 px-6 py-2 text-[10px] font-mono uppercase tracking-widest transition-all duration-300",
-                      activeInputTab === "code"
-                        ? "bg-white/10 text-white shadow-lg"
-                        : "text-zinc-500 hover:text-zinc-300"
-                    )}
-                  >
-                    <Code size={12} /> Code
-                  </button>
-                </div>
-              </div>
+                  {/* Mock Table */}
+                  <div className="border border-white/5 rounded-sm overflow-hidden">
+                    <Table>
+                      <TableHeader className="bg-white/[0.02]">
+                        <TableRow className="hover:bg-transparent border-white/5">
+                          <TableHead className="h-8 text-[8px] uppercase tracking-widest text-zinc-600">
+                            Artifact
+                          </TableHead>
+                          <TableHead className="h-8 text-[8px] uppercase tracking-widest text-zinc-600">
+                            Status
+                          </TableHead>
+                          <TableHead className="h-8 text-[8px] uppercase tracking-widest text-zinc-600 text-right">
+                            Node
+                          </TableHead>
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        <TableRow className="border-white/5 hover:bg-white/[0.01]">
+                          <TableCell className="py-2 text-[9px] font-mono text-white">
+                            Kernel_X1
+                          </TableCell>
+                          <TableCell className="py-2">
+                            <Badge variant="outline" size="xs">
+                              Active
+                            </Badge>
+                          </TableCell>
+                          <TableCell className="py-2 text-[9px] font-mono text-zinc-500 text-right">
+                            0x9F
+                          </TableCell>
+                        </TableRow>
+                        <TableRow className="border-white/5 hover:bg-white/[0.01]">
+                          <TableCell className="py-2 text-[9px] font-mono text-white">
+                            Proxy_A2
+                          </TableCell>
+                          <TableCell className="py-2">
+                            <Badge variant="outline" size="xs">
+                              Idle
+                            </Badge>
+                          </TableCell>
+                          <TableCell className="py-2 text-[9px] font-mono text-zinc-500 text-right">
+                            0x12
+                          </TableCell>
+                        </TableRow>
+                      </TableBody>
+                    </Table>
+                  </div>
 
-              <Card className="min-h-[500px] flex items-center justify-center relative overflow-hidden bg-white/[0.01]">
-                <AnimatePresence mode="wait">
-                  {activeInputTab === "preview" ? (
-                    <motion.div
-                      key="preview"
-                      initial={{
-                        opacity: 0,
-                        scale: 0.98,
-                        filter: "blur(10px)",
-                      }}
-                      animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                      exit={{ opacity: 0, scale: 0.98, filter: "blur(10px)" }}
-                      transition={{ duration: 0.5 }}
-                      className="w-full max-w-md space-y-8 z-10"
+                  {/* Mock Accordion */}
+                  <Accordion type="single" defaultValue="i1">
+                    <AccordionItem
+                      value="i1"
+                      className="border-white/5 bg-transparent"
                     >
-                      <div className="space-y-3">
-                        <Label htmlFor="logic">Logic_Field</Label>
-                        <Input id="logic" placeholder="Standard_Input..." />
-                      </div>
-                      <div className="space-y-3">
-                        <Label htmlFor="industrial">
-                          Industrial_Inscription
-                        </Label>
-                        <Input
-                          id="industrial"
-                          placeholder="Steel_Focus_Enabled..."
-                        />
-                      </div>
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="code"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      className="w-full max-w-2xl bg-black/40 backdrop-blur-md rounded-lg border border-white/5 p-8 font-mono text-sm relative group"
-                    >
-                      <div className="flex justify-between items-center mb-6 pb-4 border-b border-white/5">
-                        <div className="flex gap-1.5">
-                          <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
-                          <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
-                          <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
-                        </div>
-                        <button
-                          onClick={() =>
-                            copyCode(
-                              `<Label htmlFor="key">Key</Label>\n<Input id="key" />`
-                            )
-                          }
-                          className="text-zinc-500 hover:text-white transition-all p-2 hover:bg-white/5 rounded-md"
-                        >
-                          {copied ? (
-                            <Check size={16} className="text-accent" />
-                          ) : (
-                            <Copy size={16} />
-                          )}
-                        </button>
-                      </div>
-                      <pre className="text-zinc-300 leading-loose overflow-x-auto">
-                        <code className="block">
-                          <span className="text-zinc-600">import</span>{" "}
-                          {"{ Input, Label }"}{" "}
-                          <span className="text-zinc-600">from</span>{" "}
-                          <span className="text-accent">
-                            &quot;@/components/ui&quot;
-                          </span>
-                          ;{"\n\n"}
-                          {'<div className="space-y-3">'}
-                          {"\n"}
-                          {'  <Label htmlFor="key">System_Key</Label>'}
-                          {"\n"}
-                          {"  <Input "}
-                          id=&quot;key&quot; /&gt;{"\n"}
-                          {"</div>"}
-                        </code>
-                      </pre>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                      <AccordionTrigger className="p-3 text-[9px] py-2">
+                        Security Protocol
+                      </AccordionTrigger>
+                      <AccordionContent className="p-3 pt-0 text-[10px] text-zinc-500 italic">
+                        RSA-4096 Encryption Active. All streams verified.
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </div>
               </Card>
-            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <Card className="p-8 space-y-4 group">
-                <Terminal
-                  size={24}
-                  className="text-zinc-600 group-hover:text-accent transition-colors"
-                />
-                <h3 className="font-bold uppercase italic">Command_Driven</h3>
-                <p className="text-zinc-500 text-xs leading-relaxed">
-                  Built for technical users who demand precision and
-                  keyboard-first accessibility.
-                </p>
-              </Card>
-              <Card className="p-8 space-y-4 group">
-                <Layers
-                  size={24}
-                  className="text-zinc-400 group-hover:text-accent transition-colors"
-                />
-                <h3 className="font-bold uppercase italic">Multi_Layered</h3>
-                <p className="text-zinc-400 text-xs leading-relaxed">
-                  Dual-layer design system that scales from minimalist admin
-                  panels to high-end landing pages.
-                </p>
-              </Card>
-              <Card className="p-8 space-y-4 group">
-                <Shield
-                  size={24}
-                  className="text-zinc-600 group-hover:text-accent transition-colors"
-                />
-                <h3 className="font-bold uppercase italic">
-                  Architect_Hardened
-                </h3>
-                <p className="text-zinc-500 text-xs leading-relaxed">
-                  Enterprise-grade security and performance optimization at
-                  every atomic level.
-                </p>
-              </Card>
-            </div>
+              {/* Floating Accents */}
+              <motion.div
+                animate={{ y: [0, -20, 0] }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="absolute -top-10 -right-10 p-4 rounded-sm glass-technical border-white/20 shadow-2xl z-20"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full border border-accent/30 flex items-center justify-center">
+                    <Lock size={12} className="text-accent" />
+                  </div>
+                  <div className="space-y-0.5">
+                    <div className="text-[10px] font-black italic text-white uppercase">
+                      Encrypted
+                    </div>
+                    <div className="text-[8px] font-mono text-zinc-600 uppercase tracking-widest">
+                      Level_04
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
           </div>
         </section>
 
-        <footer className="mt-40 border-t border-white/5 py-12 px-6">
-          <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-            <div className="flex gap-12 font-mono text-[9px] text-zinc-700 uppercase tracking-[0.4em]">
-              <div>Kernel: v1.0.0-catalyst</div>
-              <div>Protocol: Alchemical_Standard</div>
-            </div>
-            <div className="text-[10px] font-mono text-zinc-600 italic">
-              &quot;The lead of logic, the gold of mastery.&quot;
-            </div>
+        {/* Feature Grid */}
+        <section className="max-w-7xl mx-auto px-6 pb-40">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <Card className="p-10 space-y-6 group hover:bg-white/[0.02] transition-all duration-700">
+              <div className="w-12 h-12 rounded-sm bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-accent/30 transition-colors">
+                <Terminal
+                  size={20}
+                  className="text-zinc-600 group-hover:text-accent transition-colors"
+                />
+              </div>
+              <div className="space-y-3">
+                <h3 className="text-lg font-black uppercase italic tracking-tight text-white">
+                  Technical Precision
+                </h3>
+                <p className="text-zinc-500 text-sm leading-relaxed font-light">
+                  Every component is engineered with mathematical precision,
+                  prioritizing monospace readability and industrial clarity.
+                </p>
+              </div>
+              <div className="pt-4 flex items-center gap-2 text-accent font-mono text-[9px] uppercase tracking-[0.3em] opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0">
+                Explore Logic <MoveRight size={10} />
+              </div>
+            </Card>
+
+            <Card className="p-10 space-y-6 group hover:bg-white/[0.02] transition-all duration-700">
+              <div className="w-12 h-12 rounded-sm bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-accent/30 transition-colors">
+                <Layers
+                  size={20}
+                  className="text-zinc-600 group-hover:text-accent transition-colors"
+                />
+              </div>
+              <div className="space-y-3">
+                <h3 className="text-lg font-black uppercase italic tracking-tight text-white">
+                  Multi Layer Depth
+                </h3>
+                <p className="text-zinc-500 text-sm leading-relaxed font-light">
+                  A dual-layer design system that seamlessly blends minimal
+                  industrial utility with high-end glassmorphic artifacts.
+                </p>
+              </div>
+              <div className="pt-4 flex items-center gap-2 text-accent font-mono text-[9px] uppercase tracking-[0.3em] opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0">
+                View Hierarchy <MoveRight size={10} />
+              </div>
+            </Card>
+
+            <Card className="p-10 space-y-6 group hover:bg-white/[0.02] transition-all duration-700">
+              <div className="w-12 h-12 rounded-sm bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-accent/30 transition-colors">
+                <Shield
+                  size={20}
+                  className="text-zinc-600 group-hover:text-accent transition-colors"
+                />
+              </div>
+              <div className="space-y-3">
+                <h3 className="text-lg font-black uppercase italic tracking-tight text-white">
+                  System Hardened
+                </h3>
+                <p className="text-zinc-500 text-sm leading-relaxed font-light">
+                  Optimized for enterprise-grade performance and uncompromising
+                  security at every atomic level of the framework.
+                </p>
+              </div>
+              <div className="pt-4 flex items-center gap-2 text-accent font-mono text-[9px] uppercase tracking-[0.3em] opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0">
+                Audit Protocol <MoveRight size={10} />
+              </div>
+            </Card>
           </div>
-        </footer>
+        </section>
+
+        {/* Call to Action */}
+        <section className="max-w-7xl mx-auto px-6 pb-40">
+          <Card
+            variant="technical"
+            className="p-20 text-center space-y-10 relative overflow-hidden border-accent/20"
+          >
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
+            <div className="relative z-10 space-y-6">
+              <h2 className="text-5xl md:text-7xl font-black uppercase italic tracking-tighter text-white">
+                Ready to Build?
+              </h2>
+              <p className="max-w-xl mx-auto text-zinc-400 text-lg font-light leading-relaxed">
+                Initialize the system today and start building the future of
+                industrial digital interfaces.
+              </p>
+              <div className="pt-8 flex justify-center gap-6">
+                <Link href="/components">
+                  <Button size="lg" className="px-12 h-16">
+                    Get Started Now
+                  </Button>
+                </Link>
+                <Button
+                  size="lg"
+                  variant="secondary"
+                  className="px-12 h-16 border-white/10"
+                >
+                  View GitHub
+                </Button>
+              </div>
+            </div>
+          </Card>
+        </section>
+
+        <Footer />
       </div>
     </main>
   );

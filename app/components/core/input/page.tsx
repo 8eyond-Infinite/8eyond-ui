@@ -31,30 +31,30 @@ export default function InputDoc() {
       items: [
         {
           id: "default",
-          label: "Standard_Input",
-          placeholder: "Enter_Data...",
+          label: "Standard Input",
+          placeholder: "Enter Data...",
         },
         {
           id: "error",
-          label: "Error_State",
-          placeholder: "Invalid_Sequence...",
+          label: "Error State",
+          placeholder: "Invalid Sequence...",
           error: true,
         },
       ],
     },
     {
-      label: "Technical_Addons",
+      label: "Technical Addons",
       items: [
         {
           id: "prefix",
-          label: "Command_Prefix",
-          placeholder: "systemctl_start...",
+          label: "Command Prefix",
+          placeholder: "systemctl start...",
           leftIcon: <Terminal size={14} />,
         },
         {
           id: "suffix",
-          label: "Search_Suffix",
-          placeholder: "Find_Asset...",
+          label: "Search Suffix",
+          placeholder: "Find Asset...",
           rightIcon: <Search size={14} />,
         },
       ],
@@ -62,11 +62,11 @@ export default function InputDoc() {
     {
       label: "Scaling",
       items: [
-        { id: "xs", label: "XS", size: "xs", placeholder: "EXTREME_DENSITY" },
-        { id: "sm", label: "SM", size: "sm", placeholder: "COMPACT_MODE" },
-        { id: "md", label: "MD", size: "md", placeholder: "STANDARD_VIEW" },
-        { id: "lg", label: "LG", size: "lg", placeholder: "FOCUS_MODE" },
-        { id: "xl", label: "XL", size: "xl", placeholder: "HIGH_FIDELITY" },
+        { id: "xs", label: "XS", size: "xs", placeholder: "EXTREME DENSITY" },
+        { id: "sm", label: "SM", size: "sm", placeholder: "COMPACT MODE" },
+        { id: "md", label: "MD", size: "md", placeholder: "STANDARD VIEW" },
+        { id: "lg", label: "LG", size: "lg", placeholder: "FOCUS MODE" },
+        { id: "xl", label: "XL", size: "xl", placeholder: "HIGH FIDELITY" },
       ] as const,
     },
   ];
@@ -104,18 +104,18 @@ export default function InputDoc() {
                   htmlFor="access-key"
                   className="text-[10px] uppercase tracking-widest text-zinc-500"
                 >
-                  Secure_Access_Key
+                  Secure Access Key
                 </Label>
                 {isError && (
                   <span className="text-[9px] font-mono text-red-500 uppercase animate-pulse flex items-center gap-1">
-                    <ShieldAlert size={10} /> Length_Inadequate
+                    <ShieldAlert size={10} /> Length Inadequate
                   </span>
                 )}
               </div>
               <Input
                 id="access-key"
                 type="password"
-                placeholder="MIN_8_CHARACTERS"
+                placeholder="MIN 8 CHARACTERS"
                 value={accessKey}
                 onChange={(e) => setAccessKey(e.target.value)}
                 error={isError}
@@ -187,7 +187,7 @@ export default function InputDoc() {
         <div className="flex items-center justify-between border-b border-white/5 pb-4">
           <div className="flex items-center gap-3">
             <div className="w-2 h-2 bg-zinc-800" />
-            <H3>API_Reference</H3>
+            <H3>API Reference</H3>
           </div>
           <span className="text-[10px] font-mono text-zinc-800 italic">
             Core
@@ -266,7 +266,7 @@ export default function InputDoc() {
             <code className="text-zinc-400 group-hover:text-white transition-colors duration-500 whitespace-pre">
               {`<Input 
   leftIcon={<Terminal size={14} />} 
-  placeholder="Enter_Command..." 
+  placeholder="Enter Command..." 
   error={isInvalid}
 />`}
             </code>

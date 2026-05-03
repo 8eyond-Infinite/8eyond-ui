@@ -156,7 +156,7 @@ export default function TypographyDoc() {
         <div className="flex items-center justify-between border-b border-white/5 pb-4">
           <div className="flex items-center gap-3">
             <div className="w-2 h-2 bg-zinc-800" />
-            <H3>API_Reference</H3>
+            <H3>API Reference</H3>
           </div>
           <span className="text-[10px] font-mono text-zinc-800 italic">
             Core

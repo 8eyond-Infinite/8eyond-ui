@@ -26,6 +26,7 @@ export const metadata: Metadata = {
 };
 
 import { ToastProvider } from "@/components/ui";
+import { Header } from "@/components/layout";
 
 export default function RootLayout({
   children,
@@ -38,6 +39,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${cormorantGaramond.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <Header />
         <ToastProvider>{children}</ToastProvider>
       </body>
     </html>

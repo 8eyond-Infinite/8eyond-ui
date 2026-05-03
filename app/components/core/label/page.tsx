@@ -65,35 +65,35 @@ export default function LabelDoc() {
           id: "s-xs",
           text: "XS_Label",
           size: "xs" as const,
-          placeholder: "Extreme_Density",
+          placeholder: "Extreme Density",
           required: true,
         },
         {
           id: "s-sm",
           text: "SM_Label",
           size: "sm" as const,
-          placeholder: "Compact_Mode",
+          placeholder: "Compact Mode",
           required: true,
         },
         {
           id: "s-md",
           text: "MD_Label",
           size: "md" as const,
-          placeholder: "Standard_Protocol",
+          placeholder: "Standard Protocol",
           required: true,
         },
         {
           id: "s-lg",
           text: "LG_Label",
           size: "lg" as const,
-          placeholder: "Focus_Mode",
+          placeholder: "Focus Mode",
           required: true,
         },
         {
           id: "s-xl",
           text: "XL_Label",
           size: "xl" as const,
-          placeholder: "High_Fidelity",
+          placeholder: "High Fidelity",
           required: true,
         },
       ],
@@ -174,7 +174,7 @@ export default function LabelDoc() {
         <div className="flex items-center justify-between border-b border-white/5 pb-4">
           <div className="flex items-center gap-3">
             <div className="w-2 h-2 bg-zinc-800" />
-            <H3>API_Reference</H3>
+            <H3>API Reference</H3>
           </div>
           <span className="text-[10px] font-mono text-zinc-800 italic">
             Core

@@ -59,16 +59,16 @@ export default function BadgeDoc() {
             <Card className="p-8 bg-black/40 border-white/10 space-y-8">
               <div className="flex flex-wrap gap-4 items-center justify-center">
                 <Badge variant="success" dot pulse>
-                  Stable_Core
+                  System Stable
                 </Badge>
                 <Badge variant="destructive" dot pulse>
-                  Critical_Failure
+                  Critical Failure
                 </Badge>
                 <Badge variant="warning" dot pulse>
-                  Thermal_Alert
+                  Thermal Alert
                 </Badge>
-                <Badge variant="outline">Unverified_Node</Badge>
-                <Badge variant="secondary">Archived_Log</Badge>
+                <Badge variant="outline">Unverified Node</Badge>
+                <Badge variant="secondary">Archived Log</Badge>
               </div>
 
               <div className="pt-8 border-t border-white/5 flex flex-col gap-4">
@@ -78,7 +78,7 @@ export default function BadgeDoc() {
                       <Shield size={14} />
                     </div>
                     <span className="text-xs font-mono">
-                      Kernel_Protection_System
+                      Kernel Protection System
                     </span>
                   </div>
                   <Badge variant="success" size="sm">
@@ -91,10 +91,10 @@ export default function BadgeDoc() {
                     <div className="p-2 rounded-sm bg-zinc-950 border border-white/5 text-zinc-500">
                       <Zap size={14} />
                     </div>
-                    <span className="text-xs font-mono">Energy_Grid_Sync</span>
+                    <span className="text-xs font-mono">Energy Grid Sync</span>
                   </div>
                   <Badge variant="warning" size="sm">
-                    98%_Peak
+                    98% Peak
                   </Badge>
                 </div>
               </div>
@@ -158,7 +158,7 @@ export default function BadgeDoc() {
                     {size.toUpperCase()}
                   </span>
                   <div className="flex items-center justify-center min-w-[80px]">
-                    <Badge size={size}>Badge_Label</Badge>
+                    <Badge size={size}>Badge Label</Badge>
                   </div>
                 </div>
               ))}
@@ -172,7 +172,7 @@ export default function BadgeDoc() {
         <div className="flex items-center justify-between border-b border-white/5 pb-4">
           <div className="flex items-center gap-3">
             <div className="w-2 h-2 bg-zinc-800" />
-            <H3>API_Reference</H3>
+            <H3>API Reference</H3>
           </div>
           <span className="text-[10px] font-mono text-zinc-800 italic">
             Core
@@ -252,12 +252,10 @@ export default function BadgeDoc() {
           <div className="absolute -inset-0.5 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-700 rounded-sm blur-sm" />
           <div className="relative p-8 bg-black/60 border border-white/5 font-mono text-sm overflow-x-auto flex items-center justify-between">
             <code className="text-zinc-400 group-hover:text-white transition-colors duration-500 whitespace-pre">
-              {`<Badge variant="success" dot pulse>
-  System_Stable
-</Badge>`}
+              {`<Badge variant="success" dot pulse>\n  System Stable\n</Badge>`}
             </code>
             <CopyButton
-              value={`<Badge variant="success" dot pulse>\n  System_Stable\n</Badge>`}
+              value={`<Badge variant="success" dot pulse>\n  System Stable\n</Badge>`}
             />
           </div>
         </div>

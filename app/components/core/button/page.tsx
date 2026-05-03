@@ -83,7 +83,7 @@ export default function ButtonDoc() {
     {
       label: "Layout",
       items: [
-        { variant: "primary", children: "Full_Width_Block", fullWidth: true },
+        { variant: "primary", children: "Full Width Block", fullWidth: true },
       ],
     },
   ];
@@ -131,7 +131,7 @@ export default function ButtonDoc() {
               leftIcon={!isDeploying && <Zap size={14} />}
               className="min-w-[280px]"
             >
-              {isDeploying ? "Deploying..." : "Initialize_System"}
+              {isDeploying ? "Deploying..." : "Initialize"}
             </Button>
             <Typography variant="small" className="text-zinc-600 font-mono">
               [CMD]: sudo systemctl start 8eyond-core.service
@@ -182,7 +182,7 @@ export default function ButtonDoc() {
         <div className="flex items-center justify-between border-b border-white/5 pb-4">
           <div className="flex items-center gap-3">
             <div className="w-2 h-2 bg-zinc-800" />
-            <H3>API_Reference</H3>
+            <H3>API Reference</H3>
           </div>
           <span className="text-[10px] font-mono text-zinc-800 italic">
             Core
