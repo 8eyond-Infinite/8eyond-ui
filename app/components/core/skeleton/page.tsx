@@ -1,7 +1,6 @@
 "use client";
 
-import * as React from "react";
-import { Skeleton, Card, H1, H3, Lead, Badge } from "@/components/ui";
+import { Skeleton, Card, H1, H3, Lead } from "@/components/ui";
 import { UsageBlock } from "@/components/docs/UsageBlock";
 
 export default function SkeletonDoc() {
@@ -22,9 +21,6 @@ export default function SkeletonDoc() {
             <div className="w-2 h-2 bg-accent" />
             <H3>Execution</H3>
           </div>
-          <Badge variant="outline" size="xs">
-            Scanning Mode
-          </Badge>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">

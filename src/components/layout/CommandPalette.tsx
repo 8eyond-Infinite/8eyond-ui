@@ -16,11 +16,11 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
   const [query, setQuery] = React.useState("");
 
   const allItems = React.useMemo(() => {
-    return sidebarData.flatMap((system) =>
-      system.groups.flatMap((group) =>
+    return sidebarData.flatMap((protocol) =>
+      protocol.groups.flatMap((group) =>
         group.items.map((item) => ({
           ...item,
-          system: system.label.replace("_", " "),
+          protocol: protocol.label,
           group: group.title,
         }))
       )
@@ -30,11 +30,7 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
   const filteredItems = React.useMemo(() => {
     if (!query) return [];
     return allItems
-      .filter(
-        (item) =>
-          item.name.toLowerCase().includes(query.toLowerCase()) ||
-          item.desc.toLowerCase().includes(query.toLowerCase())
-      )
+      .filter((item) => item.name.toLowerCase().includes(query.toLowerCase()))
       .slice(0, 10);
   }, [query, allItems]);
 
@@ -103,9 +99,6 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
                         {item.group}
                       </span>
                     </div>
-                    <p className="text-[10px] font-mono text-zinc-600 mt-0.5">
-                      {item.desc}
-                    </p>
                   </div>
                   <ArrowRight
                     size={14}

@@ -57,7 +57,6 @@ export function Select({
 
 export function SelectTrigger({
   className,
-  children,
   placeholder,
 }: {
   className?: string;

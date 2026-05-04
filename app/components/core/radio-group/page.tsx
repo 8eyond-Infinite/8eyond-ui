@@ -19,7 +19,7 @@ import {
 } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import { UsageBlock } from "@/components/docs/UsageBlock";
-import { Cpu, Shield, Zap, Flame, Snowflake } from "lucide-react";
+import { Zap, Flame, Snowflake } from "lucide-react";
 
 export default function RadioGroupDoc() {
   const [protocol, setProtocol] = React.useState("BALANCED");

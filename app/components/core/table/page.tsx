@@ -12,10 +12,9 @@ import {
   H1,
   H3,
   Lead,
-  Muted,
 } from "@/components/ui";
 import { UsageBlock } from "@/components/docs/UsageBlock";
-import { Activity, Shield, Database, Cpu } from "lucide-react";
+import { Database, Cpu } from "lucide-react";
 
 export default function TableDoc() {
   return (

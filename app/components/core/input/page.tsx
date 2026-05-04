@@ -11,7 +11,6 @@ import {
   TableHead,
   TableRow,
   TableCell,
-  Typography,
   H1,
   H3,
   Lead,

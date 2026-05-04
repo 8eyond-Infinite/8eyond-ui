@@ -1,5 +1,5 @@
 import { UsageBlock } from "@/components/docs/UsageBlock";
-import { Shield, Activity, Lock } from "lucide-react";
+import { Shield, Activity } from "lucide-react";
 
 import {
   Card,

@@ -6,15 +6,17 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight } from "lucide-react";
 import { sidebarData } from "@/config/docs";
+
+import * as LucideIcons from "lucide-react";
 
 export function DocsLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [openGroups, setOpenGroups] = useState<string[]>([
-    "General",
-    "Form",
-    "Artifacts",
+    "Text Components",
+    "Actions & Signals",
+    "Control Interface",
+    "Templates",
   ]);
 
   const toggleGroup = (title: string) => {
@@ -26,14 +28,14 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
   const getBreadcrumbs = () => {
     if (pathname === "/components") return [];
 
-    for (const system of sidebarData) {
-      for (const group of system.groups) {
+    for (const protocol of sidebarData) {
+      for (const group of protocol.groups) {
         const item = group.items.find((i) => i.href === pathname);
         if (item) {
           return [
-            { label: system.label.replace("_", " "), href: "#" },
+            { label: protocol.label, href: "#" },
             { label: group.title, href: "#" },
-            { label: item.name.replace("_", " "), href: pathname },
+            { label: item.name, href: pathname },
           ];
         }
       }
@@ -48,37 +50,36 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
       {/* Sidebar */}
       <aside className="fixed top-16 left-0 z-40 w-72 h-[calc(100vh-64px)] border-r border-border bg-background/20 backdrop-blur-3xl px-8 overflow-y-auto hidden md:block pt-12 transition-colors duration-300">
         <div className="space-y-12 pb-20">
-          {sidebarData.map((system) => (
-            <div key={system.label} className="space-y-8">
-              {/* System Header */}
-              <div className="flex items-center gap-3 px-2">
-                <div
-                  className={cn(
-                    "w-1 h-3 rounded-full",
-                    system.system === "alchemist"
-                      ? "bg-accent shadow-glow"
-                      : "bg-foreground/20"
-                  )}
-                />
+          {sidebarData.map((protocol) => (
+            <div key={protocol.protocol} className="space-y-4">
+              <div className="px-3 flex items-center justify-between">
                 <span
                   className={cn(
-                    "font-mono text-[10px] uppercase tracking-[0.2em] font-black italic",
-                    system.system === "alchemist"
-                      ? "text-accent"
-                      : "text-foreground"
+                    "text-[10px] font-mono font-bold uppercase tracking-[0.3em]",
+                    protocol.protocol === "EXTENDED_ARTIFACTS"
+                      ? "text-accent/80"
+                      : protocol.protocol === "TERMINAL_SOLUTIONS"
+                        ? "text-emerald-500/80"
+                        : "text-muted"
                   )}
                 >
-                  {system.label.replace("_", " ")}
+                  {protocol.label}
                 </span>
+                <div className="h-[1px] flex-1 ml-4 bg-border/30" />
               </div>
 
-              {/* Groups & Items */}
-              <div className="space-y-4 pl-1">
-                {system.groups.map((group) => {
+              <div className="space-y-2">
+                {protocol.groups.map((group) => {
                   const isOpen = openGroups.includes(group.title);
                   const hasActiveItem = group.items.some(
                     (item) => item.href === pathname
                   );
+                  const Icon = (
+                    LucideIcons as unknown as Record<
+                      string,
+                      LucideIcons.LucideIcon
+                    >
+                  )[group.icon || "Box"];
 
                   return (
                     <div key={group.title} className="space-y-1">
@@ -86,22 +87,35 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
                         onClick={() => toggleGroup(group.title)}
                         className="w-full flex items-center justify-between px-3 py-2 group/btn transition-colors hover:bg-foreground/[0.02] rounded-sm"
                       >
-                        <h4
-                          className={cn(
-                            "text-sm font-bold uppercase tracking-wider transition-colors",
-                            hasActiveItem
-                              ? "text-foreground"
-                              : "text-muted group-hover/btn:text-foreground/70"
+                        <div className="flex items-center gap-3">
+                          {Icon && (
+                            <Icon
+                              size={14}
+                              className={cn(
+                                "transition-colors",
+                                hasActiveItem
+                                  ? "text-accent"
+                                  : "text-muted group-hover/btn:text-foreground/70"
+                              )}
+                            />
                           )}
-                        >
-                          {group.title}
-                        </h4>
-                        <ChevronRight
-                          size={12}
+                          <h4
+                            className={cn(
+                              "text-[12px] font-medium transition-colors",
+                              hasActiveItem
+                                ? "text-foreground"
+                                : "text-muted group-hover/btn:text-foreground/70"
+                            )}
+                          >
+                            {group.title}
+                          </h4>
+                        </div>
+                        <LucideIcons.ChevronRight
+                          size={10}
                           className={cn(
                             "text-muted transition-transform duration-300",
                             isOpen && "rotate-90",
-                            hasActiveItem && "text-accent/60"
+                            hasActiveItem && "text-accent"
                           )}
                         />
                       </button>
@@ -116,10 +130,15 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
                               duration: 0.3,
                               ease: [0.16, 1, 0.3, 1],
                             }}
-                            className="space-y-1 border-l border-border ml-4 pl-4 overflow-hidden"
+                            className="space-y-1 border-l border-border ml-4.5 pl-4 overflow-hidden"
                           >
                             {group.items.map((item) => {
                               const isActive = pathname === item.href;
+                              const isAlchemist =
+                                protocol.protocol === "EXTENDED_ARTIFACTS";
+                              const isTemplate =
+                                protocol.protocol === "TERMINAL_SOLUTIONS";
+
                               return (
                                 <li key={item.href}>
                                   <Link
@@ -131,7 +150,17 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
                                         : "text-muted hover:text-foreground"
                                     )}
                                   >
-                                    <span className="relative z-10">
+                                    <span
+                                      className={cn(
+                                        "relative z-10",
+                                        isAlchemist &&
+                                          !isActive &&
+                                          "text-accent/60 group-hover:text-accent",
+                                        isTemplate &&
+                                          !isActive &&
+                                          "text-emerald-500/60 group-hover:text-emerald-500"
+                                      )}
+                                    >
                                       {item.name}
                                     </span>
                                     {isActive && (
@@ -140,17 +169,21 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
                                           layoutId="active-pill"
                                           className={cn(
                                             "absolute left-0 w-0.5 h-full rounded-full z-20",
-                                            system.system === "alchemist"
+                                            isAlchemist
                                               ? "bg-accent shadow-glow"
-                                              : "bg-foreground"
+                                              : isTemplate
+                                                ? "bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]"
+                                                : "bg-foreground"
                                           )}
                                         />
                                         <div
                                           className={cn(
                                             "w-1 h-1 rounded-full",
-                                            system.system === "alchemist"
+                                            isAlchemist
                                               ? "bg-accent"
-                                              : "bg-foreground"
+                                              : isTemplate
+                                                ? "bg-emerald-500"
+                                                : "bg-foreground"
                                           )}
                                         />
                                       </>
@@ -181,7 +214,10 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
               breadcrumbs.map((crumb, idx) => (
                 <React.Fragment key={crumb.label}>
                   {idx > 0 && (
-                    <ChevronRight size={10} className="text-zinc-800" />
+                    <LucideIcons.ChevronRight
+                      size={10}
+                      className="text-zinc-800"
+                    />
                   )}
                   <span
                     className={cn(

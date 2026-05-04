@@ -14,7 +14,6 @@ import {
   H3,
   Lead,
   Badge,
-  Muted,
 } from "@/components/ui";
 import { UsageBlock } from "@/components/docs/UsageBlock";
 

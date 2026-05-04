@@ -12,7 +12,6 @@ import {
   Navigation,
   ExternalLink,
   MessageSquare,
-  MousePointer2,
   List,
   FormInput,
   ToggleLeft,

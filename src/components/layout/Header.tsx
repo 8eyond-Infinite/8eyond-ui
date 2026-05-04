@@ -25,9 +25,6 @@ export function Header() {
             <div className="w-6 h-6 border border-accent rotate-45 flex items-center justify-center transition-transform group-hover:rotate-90 duration-500">
               <div className="w-2.5 h-2.5 bg-accent shadow-glow" />
             </div>
-            <span className="font-mono text-sm tracking-[0.3em] uppercase font-bold text-foreground group-hover:text-accent transition-colors">
-              8eyond_Catalyst
-            </span>
           </Link>
           <div className="h-5 w-[1px] bg-border hidden sm:block" />
           <div className="hidden lg:flex items-center gap-2">

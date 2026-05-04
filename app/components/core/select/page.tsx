@@ -20,7 +20,6 @@ import {
   Muted,
 } from "@/components/ui";
 import { UsageBlock } from "@/components/docs/UsageBlock";
-import { Cpu, Shield, Database, Globe, Layers } from "lucide-react";
 
 export default function SelectDoc() {
   const [protocol, setProtocol] = React.useState("NEURAL_LINK");

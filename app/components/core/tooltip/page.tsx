@@ -5,7 +5,6 @@ import {
   Tooltip,
   TooltipTrigger,
   TooltipContent,
-  TooltipProvider,
   Button,
   Card,
   Table,
@@ -141,11 +140,11 @@ export default function TooltipDoc() {
               <Tooltip position="top">
                 <TooltipTrigger>
                   <Button variant="secondary" size="sm">
-                    Hover_For_Status
+                    Hover For Status
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent className="bg-accent text-black border-accent">
-                  SYSTEM_READY_FOR_DEPLOYMENT
+                  SYSTEM READY FOR DEPLOYMENT
                 </TooltipContent>
               </Tooltip>
 
@@ -153,7 +152,7 @@ export default function TooltipDoc() {
                 <TooltipTrigger>
                   <div className="flex items-center gap-2 text-muted hover:text-foreground transition-colors cursor-help">
                     <Info size={14} />
-                    <span className="text-xs font-mono">Instant_Feedback</span>
+                    <span className="text-xs font-mono">Instant Feedback</span>
                   </div>
                 </TooltipTrigger>
                 <TooltipContent>

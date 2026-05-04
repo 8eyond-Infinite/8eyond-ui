@@ -18,7 +18,6 @@ import {
   ToastProvider,
 } from "@/components/ui";
 import { UsageBlock } from "@/components/docs/UsageBlock";
-import { LayoutGrid, MousePointer2 } from "lucide-react";
 
 type ToastPosition = "top-left" | "top-right" | "bottom-left" | "bottom-right";
 

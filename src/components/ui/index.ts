@@ -1,4 +1,5 @@
 // Core Industrial Components
+export * from "./core/Avatar";
 export * from "./core/Button";
 export * from "./core/Card";
 export * from "./core/Input";
@@ -9,15 +10,21 @@ export * from "./core/Tabs";
 export * from "./core/Breadcrumb";
 export * from "./core/Table";
 export * from "./core/Dialog";
+export * from "./core/Sheet";
 export * from "./core/Toast";
 export * from "./core/Select";
 export * from "./core/RadioGroup";
 export * from "./core/Tooltip";
+export * from "./core/Slider";
+export * from "./core/ScrollArea";
+export * from "./core/Progress";
 export * from "./core/Badge";
 export * from "./core/Typography";
 export * from "./core/Accordion";
 export * from "./core/Skeleton";
+export * from "./core/Spinner";
 export * from "./core/Separator";
 export * from "./core/Calendar";
+export * from "./core/Command";
 
 export { AlchemistButton } from "./alchemist/Button/Button";

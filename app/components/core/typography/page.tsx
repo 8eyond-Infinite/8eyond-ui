@@ -12,7 +12,7 @@ import {
   Lead,
   Muted,
 } from "@/components/ui";
-import { CopyButton } from "@/components/docs/CopyButton";
+
 import { UsageBlock } from "@/components/docs/UsageBlock";
 
 export default function TypographyDoc() {

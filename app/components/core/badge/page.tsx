@@ -15,8 +15,8 @@ import {
   Lead,
   Muted,
 } from "@/components/ui";
+import { Shield, Zap } from "lucide-react";
 import { UsageBlock } from "@/components/docs/UsageBlock";
-import { Shield, Zap, Info, AlertTriangle, CheckCircle } from "lucide-react";
 
 export default function BadgeDoc() {
   const scalingSizes = ["xs", "sm", "md", "lg", "xl"] as const;
