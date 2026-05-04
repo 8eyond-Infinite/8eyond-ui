@@ -27,7 +27,7 @@ export function CopyButton({
         setHasCopied(true);
       }}
       className={cn(
-        "relative z-20 inline-flex items-center justify-center rounded-sm text-sm font-medium transition-all hover:bg-white/5 h-8 w-8 text-zinc-600 hover:text-white border border-transparent hover:border-white/10",
+        "relative z-20 inline-flex items-center justify-center rounded-sm text-sm font-medium transition-all hover:bg-foreground/10 h-8 w-8 text-muted hover:text-foreground border border-transparent hover:border-border",
         className
       )}
     >

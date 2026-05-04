@@ -15,13 +15,12 @@ import {
   TableHead,
   TableRow,
   TableCell,
-  Typography,
   H1,
   H3,
   Lead,
   Muted,
 } from "@/components/ui";
-import { CopyButton } from "@/components/docs/CopyButton";
+import { UsageBlock } from "@/components/docs/UsageBlock";
 import { Home, Slash } from "lucide-react";
 
 export default function BreadcrumbDoc() {
@@ -40,28 +39,26 @@ export default function BreadcrumbDoc() {
 
       {/* Execution */}
       <section className="space-y-8">
-        <div className="flex items-center justify-between border-b border-white/5 pb-4">
+        <div className="flex items-center justify-between border-b border-border pb-4">
           <div className="flex items-center gap-3">
-            <div className="w-2 h-2 bg-accent shadow-glow" />
+            <div className="w-2 h-2 bg-accent" />
             <H3>Execution</H3>
           </div>
-          <span className="text-[10px] font-mono text-zinc-800 italic">
-            Core
-          </span>
+          <span className="text-[10px] font-mono text-muted italic">Core</span>
         </div>
 
-        <div className="p-12 rounded-sm border border-white/5 bg-zinc-900/20 relative overflow-hidden">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808005_1px,transparent_1px),linear-gradient(to_bottom,#80808005_1px,transparent_1px)] bg-[size:20px_20px]" />
+        <div className="p-12 rounded-sm border border-border bg-foreground/[0.02] relative overflow-hidden transition-all duration-500 hover:bg-foreground/[0.03] hover:border-foreground/10">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808005_1px,transparent_1px),linear-gradient(to_bottom,#80808005_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none" />
 
           <div className="relative z-10 w-full max-w-2xl mx-auto space-y-12">
             <div className="space-y-4">
               <div className="flex items-center gap-2 px-1">
-                <div className="w-1 h-1 bg-zinc-800" />
+                <div className="w-1 h-1 bg-border" />
                 <Muted className="text-[10px] font-mono uppercase tracking-[0.2em]">
                   Kernel_File_System
                 </Muted>
               </div>
-              <Card className="p-6 bg-black/40 border-white/10">
+              <Card className="p-6 bg-background/40 border-border">
                 <Breadcrumb size="md">
                   <BreadcrumbList>
                     <BreadcrumbItem>
@@ -93,12 +90,12 @@ export default function BreadcrumbDoc() {
 
             <div className="space-y-4">
               <div className="flex items-center gap-2 px-1">
-                <div className="w-1 h-1 bg-zinc-800" />
+                <div className="w-1 h-1 bg-border" />
                 <Muted className="text-[10px] font-mono uppercase tracking-[0.2em]">
                   Custom_Separator_Protocol
                 </Muted>
               </div>
-              <Card className="p-6 bg-black/40 border-white/10">
+              <Card className="p-6 bg-background/40 border-border">
                 <Breadcrumb size="sm">
                   <BreadcrumbList>
                     <BreadcrumbItem>
@@ -126,26 +123,24 @@ export default function BreadcrumbDoc() {
 
       {/* Preview */}
       <section className="space-y-12">
-        <div className="flex items-center justify-between border-b border-white/5 pb-4">
+        <div className="flex items-center justify-between border-b border-border pb-4">
           <div className="flex items-center gap-3">
-            <div className="w-2 h-2 bg-zinc-500" />
+            <div className="w-2 h-2 bg-muted" />
             <H3>Preview</H3>
           </div>
-          <span className="text-[10px] font-mono text-zinc-800 italic">
-            Core
-          </span>
+          <span className="text-[10px] font-mono text-muted italic">Core</span>
         </div>
 
         <div className="space-y-16">
           <div className="space-y-8">
             <div className="flex items-center gap-2 px-1">
-              <div className="w-1 h-1 bg-zinc-800" />
+              <div className="w-1 h-1 bg-border" />
               <Muted className="text-[10px] font-mono uppercase tracking-[0.2em]">
                 Scaling
               </Muted>
             </div>
 
-            <div className="p-10 rounded-sm border border-white/5 bg-white/[0.01] flex flex-col gap-10">
+            <div className="p-10 rounded-sm border border-border bg-foreground/[0.01] flex flex-col gap-10">
               {scalingSizes.map((size) => (
                 <div key={size} className="flex flex-col gap-3">
                   <Muted className="text-[9px] uppercase tracking-[0.3em] font-bold">
@@ -175,17 +170,15 @@ export default function BreadcrumbDoc() {
 
       {/* API Reference */}
       <section className="space-y-8">
-        <div className="flex items-center justify-between border-b border-white/5 pb-4">
+        <div className="flex items-center justify-between border-b border-border pb-4">
           <div className="flex items-center gap-3">
-            <div className="w-2 h-2 bg-zinc-800" />
+            <div className="w-2 h-2 bg-muted" />
             <H3>API Reference</H3>
           </div>
-          <span className="text-[10px] font-mono text-zinc-800 italic">
-            Core
-          </span>
+          <span className="text-[10px] font-mono text-muted italic">Core</span>
         </div>
-        <Card className="overflow-hidden border-white/5 bg-black/20">
-          <Table>
+        <Card className="overflow-hidden border-border bg-foreground/[0.02]">
+          <Table variant="technical">
             <TableHeader>
               <TableRow>
                 <TableHead className="w-[150px]">Prop</TableHead>
@@ -196,24 +189,30 @@ export default function BreadcrumbDoc() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell className="font-mono text-white">size</TableCell>
-                <TableCell className="text-[12px] font-mono text-zinc-500">
+                <TableCell className="font-mono text-foreground">
+                  size
+                </TableCell>
+                <TableCell className="text-[12px] font-mono text-accent">
                   "xs" | "sm" | "md" | "lg" | "xl"
                 </TableCell>
-                <TableCell className="font-mono text-[12px]">"md"</TableCell>
-                <TableCell>Overall dimensional scale of the path.</TableCell>
+                <TableCell className="font-mono text-[12px] text-muted">
+                  "md"
+                </TableCell>
+                <TableCell className="text-muted/70">
+                  Overall dimensional scale of the path.
+                </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-mono text-white">
+                <TableCell className="font-mono text-foreground">
                   separator
                 </TableCell>
-                <TableCell className="text-[12px] font-mono text-zinc-500">
+                <TableCell className="text-[12px] font-mono text-accent">
                   ReactNode
                 </TableCell>
-                <TableCell className="font-mono text-[12px]">
+                <TableCell className="font-mono text-[12px] text-muted">
                   ChevronRight
                 </TableCell>
-                <TableCell>
+                <TableCell className="text-muted/70">
                   Custom node used to separate path segments.
                 </TableCell>
               </TableRow>
@@ -224,36 +223,16 @@ export default function BreadcrumbDoc() {
 
       {/* Usage */}
       <section className="space-y-8">
-        <div className="flex items-center justify-between border-b border-white/5 pb-4">
+        <div className="flex items-center justify-between border-b border-border pb-4">
           <div className="flex items-center gap-3">
-            <div className="w-2 h-2 bg-zinc-800" />
+            <div className="w-2 h-2 bg-muted" />
             <H3>Usage</H3>
           </div>
-          <span className="text-[10px] font-mono text-zinc-800 italic">
-            Core
-          </span>
+          <span className="text-[10px] font-mono text-muted italic">Core</span>
         </div>
-        <div className="relative group">
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-700 rounded-sm blur-sm" />
-          <div className="relative p-8 bg-black/60 border border-white/5 font-mono text-sm overflow-x-auto flex items-center justify-between">
-            <code className="text-zinc-400 group-hover:text-white transition-colors duration-500 whitespace-pre">
-              {`<Breadcrumb size="sm">
-  <BreadcrumbList>
-    <BreadcrumbItem>
-      <BreadcrumbLink href="/">ROOT</BreadcrumbLink>
-    </BreadcrumbItem>
-    <BreadcrumbSeparator />
-    <BreadcrumbItem>
-      <BreadcrumbPage>ARCHITECT</BreadcrumbPage>
-    </BreadcrumbItem>
-  </BreadcrumbList>
-</Breadcrumb>`}
-            </code>
-            <CopyButton
-              value={`<Breadcrumb size="sm">\n  <BreadcrumbList>\n    <BreadcrumbItem>\n      <BreadcrumbLink href="/">ROOT</BreadcrumbLink>\n    </BreadcrumbItem>\n    <BreadcrumbSeparator />\n    <BreadcrumbItem>\n      <BreadcrumbPage>ARCHITECT</BreadcrumbPage>\n    </BreadcrumbItem>\n  </BreadcrumbList>\n</Breadcrumb>`}
-            />
-          </div>
-        </div>
+        <UsageBlock
+          code={`<Breadcrumb size="sm">\n  <BreadcrumbList>\n    <BreadcrumbItem>\n      <BreadcrumbLink href="/">ROOT</BreadcrumbLink>\n    </BreadcrumbItem>\n    <BreadcrumbSeparator />\n    <BreadcrumbItem>\n      <BreadcrumbPage>ARCHITECT</BreadcrumbPage>\n    </BreadcrumbItem>\n  </BreadcrumbList>\n</Breadcrumb>`}
+        />
       </section>
     </div>
   );

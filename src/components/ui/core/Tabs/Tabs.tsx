@@ -68,7 +68,7 @@ const TabsList = ({
   return (
     <div
       className={cn(
-        "inline-flex items-center justify-center rounded-sm bg-zinc-950/50 border border-white/10 text-zinc-500 relative",
+        "inline-flex items-center justify-center rounded-sm bg-foreground/[0.03] border border-border text-muted relative",
         sizes[size],
         className
       )}
@@ -105,14 +105,14 @@ const TabsTrigger = ({
       className={cn(
         "relative z-10 inline-flex items-center justify-center whitespace-nowrap font-mono font-bold uppercase tracking-widest transition-all duration-300 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 h-full",
         sizes[size],
-        isActive ? "text-black" : "hover:text-zinc-300",
+        isActive ? "text-background" : "hover:text-foreground/80",
         className
       )}
     >
       {isActive && (
         <motion.div
           layoutId={context?.layoutId}
-          className="absolute inset-0 bg-white rounded-[1px] shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+          className="absolute inset-0 bg-foreground rounded-[1px]"
           transition={{ type: "spring", bounce: 0.15, duration: 0.5 }}
         />
       )}

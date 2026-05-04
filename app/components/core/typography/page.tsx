@@ -13,6 +13,7 @@ import {
   Muted,
 } from "@/components/ui";
 import { CopyButton } from "@/components/docs/CopyButton";
+import { UsageBlock } from "@/components/docs/UsageBlock";
 
 export default function TypographyDoc() {
   const typographyExamples = [
@@ -92,31 +93,29 @@ export default function TypographyDoc() {
   return (
     <div className="space-y-20 pb-24">
       <div className="space-y-4">
-        <Typography variant="h1">Typography</Typography>
-        <Typography variant="lead">
+        <H1>Typography</H1>
+        <Lead>
           The structural language of 8eyond UI. A dual-layer system balancing
           technical precision with readability.
-        </Typography>
+        </Lead>
       </div>
 
       <section className="space-y-12">
-        <div className="flex items-center justify-between border-b border-white/5 pb-4">
+        <div className="flex items-center justify-between border-b border-border pb-4">
           <div className="flex items-center gap-3">
-            <div className="w-2 h-2 bg-zinc-500" />
+            <div className="w-2 h-2 bg-accent shadow-glow" />
             <H3>Preview</H3>
           </div>
-          <span className="text-[10px] font-mono text-zinc-800 italic">
-            Core
-          </span>
+          <span className="text-[10px] font-mono text-muted italic">Core</span>
         </div>
 
         <div className="space-y-24">
           {typographyExamples.map((example) => {
             return (
               <div key={example.label} className="space-y-6">
-                <div className="flex items-center justify-between border-b border-white/5 pb-3">
+                <div className="flex items-center justify-between border-b border-border pb-3">
                   <div className="flex items-center gap-2">
-                    <div className="w-1 h-1 bg-zinc-800" />
+                    <div className="w-1 h-1 bg-border" />
                     <Muted className="text-[10px] font-mono uppercase tracking-[0.2em]">
                       {example.label}
                     </Muted>
@@ -127,7 +126,7 @@ export default function TypographyDoc() {
                 </div>
 
                 <div className="space-y-4">
-                  <div className="p-10 rounded-sm border border-white/5 bg-white/[0.01] overflow-hidden">
+                  <div className="p-10 rounded-sm border border-border bg-foreground/[0.01] overflow-hidden transition-all duration-500 hover:bg-foreground/[0.02] hover:border-foreground/10 group/preview">
                     <Typography
                       variant={example.variant}
                       gradient={example.gradient}
@@ -136,15 +135,7 @@ export default function TypographyDoc() {
                     </Typography>
                   </div>
 
-                  <div className="relative group">
-                    <div className="absolute -inset-0.5 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-700 rounded-sm blur-sm" />
-                    <div className="relative p-6 rounded-sm bg-black/60 border border-white/5 font-mono text-sm overflow-x-auto flex items-center justify-between">
-                      <code className="text-zinc-400 group-hover:text-white transition-colors duration-500 whitespace-pre">
-                        {example.code}
-                      </code>
-                      <CopyButton value={example.code} className="ml-4" />
-                    </div>
-                  </div>
+                  <UsageBlock code={example.code} />
                 </div>
               </div>
             );
@@ -153,17 +144,15 @@ export default function TypographyDoc() {
       </section>
 
       <section className="space-y-8">
-        <div className="flex items-center justify-between border-b border-white/5 pb-4">
+        <div className="flex items-center justify-between border-b border-border pb-4">
           <div className="flex items-center gap-3">
-            <div className="w-2 h-2 bg-zinc-800" />
+            <div className="w-2 h-2 bg-muted" />
             <H3>API Reference</H3>
           </div>
-          <span className="text-[10px] font-mono text-zinc-800 italic">
-            Core
-          </span>
+          <span className="text-[10px] font-mono text-muted italic">Core</span>
         </div>
-        <Card className="overflow-hidden border-white/5 bg-black/20">
-          <Table>
+        <Card className="overflow-hidden border-border bg-foreground/[0.02]">
+          <Table variant="technical">
             <TableHeader>
               <TableRow>
                 <TableHead className="w-[150px]">Prop</TableHead>
@@ -174,8 +163,10 @@ export default function TypographyDoc() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell className="font-mono text-white">variant</TableCell>
-                <TableCell className="text-[12px] font-mono text-zinc-500">
+                <TableCell className="font-mono text-foreground">
+                  variant
+                </TableCell>
+                <TableCell className="text-[12px] font-mono text-accent">
                   "h1" | "h2" | "h3" | "h4" | "p" | "lead" | "large" | "small" |
                   "muted" | "code" | "ul" | "li" | "blockquote"
                 </TableCell>
@@ -183,8 +174,8 @@ export default function TypographyDoc() {
                 <TableCell>The typographic preset to apply.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-mono text-white">as</TableCell>
-                <TableCell className="text-[12px] font-mono text-zinc-500">
+                <TableCell className="font-mono text-foreground">as</TableCell>
+                <TableCell className="text-[12px] font-mono text-accent">
                   React.ElementType
                 </TableCell>
                 <TableCell className="font-mono text-[12px]">null</TableCell>
@@ -193,16 +184,20 @@ export default function TypographyDoc() {
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-mono text-white">gradient</TableCell>
-                <TableCell className="text-[12px] font-mono text-zinc-500">
+                <TableCell className="font-mono text-foreground">
+                  gradient
+                </TableCell>
+                <TableCell className="text-[12px] font-mono text-accent">
                   boolean
                 </TableCell>
                 <TableCell className="font-mono text-[12px]">false</TableCell>
-                <TableCell>Apply metallic silver gradient effect.</TableCell>
+                <TableCell>Apply adaptive metallic gradient effect.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-mono text-white">align</TableCell>
-                <TableCell className="text-[12px] font-mono text-zinc-500">
+                <TableCell className="font-mono text-foreground">
+                  align
+                </TableCell>
+                <TableCell className="text-[12px] font-mono text-accent">
                   "left" | "center" | "right" | "justify"
                 </TableCell>
                 <TableCell className="font-mono text-[12px]">"left"</TableCell>
@@ -215,28 +210,16 @@ export default function TypographyDoc() {
 
       {/* Usage */}
       <section className="space-y-8">
-        <div className="flex items-center justify-between border-b border-white/5 pb-4">
+        <div className="flex items-center justify-between border-b border-border pb-4">
           <div className="flex items-center gap-3">
-            <div className="w-2 h-2 bg-zinc-800" />
+            <div className="w-2 h-2 bg-muted" />
             <H3>Usage</H3>
           </div>
-          <span className="text-[10px] font-mono text-zinc-800 italic">
-            Core
-          </span>
+          <span className="text-[10px] font-mono text-muted italic">Core</span>
         </div>
-        <div className="relative group">
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-700 rounded-sm blur-sm" />
-          <div className="relative p-8 bg-black/60 border border-white/5 font-mono text-sm overflow-x-auto flex items-center justify-between">
-            <code className="text-zinc-400 group-hover:text-white transition-colors duration-500 whitespace-pre">
-              {`<Typography variant="h1">
-  Industrial_Core
-</Typography>`}
-            </code>
-            <CopyButton
-              value={`<Typography variant="h1">Industrial_Core</Typography>`}
-            />
-          </div>
-        </div>
+        <UsageBlock
+          code={`<Typography variant="h1">\n  Industrial_Core\n</Typography>`}
+        />
       </section>
     </div>
   );

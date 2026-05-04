@@ -121,14 +121,14 @@ const ToastItem = ({
   onRemove: () => void;
 }) => {
   const icons = {
-    info: <Info size={16} className="text-zinc-400" />,
+    info: <Info size={16} className="text-muted" />,
     success: <CheckCircle2 size={16} className="text-emerald-500" />,
     warning: <AlertTriangle size={16} className="text-accent" />,
     error: <AlertCircle size={16} className="text-red-500" />,
   };
 
   const indicators = {
-    info: "bg-zinc-800",
+    info: "bg-border",
     success: "bg-emerald-500",
     warning: "bg-accent",
     error: "bg-red-500",
@@ -157,7 +157,7 @@ const ToastItem = ({
         damping: 30,
       }}
       className={cn(
-        "pointer-events-auto absolute w-full rounded-sm border border-white/10 bg-zinc-950 p-4 pr-10 shadow-[0_8px_32px_rgba(0,0,0,0.5)] backdrop-blur-md",
+        "pointer-events-auto absolute w-full rounded-sm border border-border bg-background p-4 pr-10 shadow-2xl backdrop-blur-md",
         isTop ? "top-0" : "bottom-0",
         position.includes("left") ? "left-0" : "right-0",
         "flex gap-4 items-start"
@@ -182,12 +182,12 @@ const ToastItem = ({
 
       <div className="space-y-1">
         {title && (
-          <h4 className="text-[11px] font-black uppercase italic tracking-wider text-white leading-tight">
+          <h4 className="text-[11px] font-black uppercase italic tracking-wider text-foreground leading-tight">
             {title}
           </h4>
         )}
         {description && (
-          <p className="text-[11px] font-mono text-zinc-500 leading-relaxed">
+          <p className="text-[11px] font-mono text-muted leading-relaxed">
             {description}
           </p>
         )}
@@ -195,7 +195,7 @@ const ToastItem = ({
 
       <button
         onClick={onRemove}
-        className="absolute right-3 top-3 text-zinc-700 hover:text-white transition-colors"
+        className="absolute right-3 top-3 text-muted hover:text-foreground transition-colors"
       >
         <X size={14} />
       </button>

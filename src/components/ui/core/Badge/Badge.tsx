@@ -26,15 +26,14 @@ function Badge({
   ...props
 }: BadgeProps) {
   const variants = {
-    default: "bg-white text-black border-transparent",
-    secondary: "bg-zinc-900 text-zinc-300 border-white/5 hover:bg-zinc-800",
-    outline: "border-white/20 text-white bg-transparent hover:bg-white/5",
-    destructive:
-      "bg-zinc-950 text-red-500 border-red-500/20 shadow-[0_0_15px_rgba(239,68,68,0.1)]",
-    success:
-      "bg-zinc-950 text-emerald-500 border-emerald-500/20 shadow-[0_0_15px_rgba(16,185,129,0.1)]",
-    warning:
-      "bg-zinc-950 text-amber-500 border-amber-500/20 shadow-[0_0_15px_rgba(245,158,11,0.1)]",
+    default: "bg-foreground text-background border-transparent",
+    secondary:
+      "bg-foreground/5 text-muted border-border hover:bg-foreground/10",
+    outline:
+      "border-border text-foreground bg-transparent hover:bg-foreground/5",
+    destructive: "bg-red-500/5 text-red-500 border-red-500/20",
+    success: "bg-emerald-500/5 text-emerald-500 border-emerald-500/20",
+    warning: "bg-amber-500/5 text-amber-500 border-amber-500/20",
   };
 
   const sizes = {
@@ -46,9 +45,9 @@ function Badge({
   };
 
   const dotColors = {
-    default: "bg-black",
-    secondary: "bg-zinc-500",
-    outline: "bg-white",
+    default: "bg-background",
+    secondary: "bg-muted",
+    outline: "bg-foreground",
     destructive: "bg-red-500",
     success: "bg-emerald-500",
     warning: "bg-amber-500",

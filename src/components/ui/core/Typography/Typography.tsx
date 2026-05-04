@@ -45,23 +45,23 @@ const Typography = React.forwardRef<HTMLElement, TypographyProps>(
     };
 
     const variants = {
-      h1: "scroll-m-20 text-4xl font-black tracking-tighter lg:text-6xl text-white font-mono",
-      h2: "scroll-m-20 border-b border-white/5 pb-2 text-3xl font-bold tracking-tight first:mt-0 text-white font-mono",
-      h3: "scroll-m-20 text-2xl font-bold tracking-tight text-white font-mono",
-      h4: "scroll-m-20 text-xl font-bold tracking-tight text-white font-mono",
-      p: "leading-7 [&:not(:first-child)]:mt-6 font-normal text-zinc-400",
-      blockquote: "mt-6 border-l-2 border-white/10 pl-6 italic text-zinc-500",
+      h1: "scroll-m-20 text-4xl font-black tracking-tighter lg:text-6xl text-foreground font-mono",
+      h2: "scroll-m-20 border-b border-border pb-2 text-3xl font-bold tracking-tight first:mt-0 text-foreground font-mono",
+      h3: "scroll-m-20 text-2xl font-bold tracking-tight text-foreground font-mono",
+      h4: "scroll-m-20 text-xl font-bold tracking-tight text-foreground font-mono",
+      p: "leading-7 [&:not(:first-child)]:mt-6 font-normal text-foreground/80",
+      blockquote: "mt-6 border-l-2 border-border pl-6 italic text-muted",
       ul: "my-6 ml-6 list-none space-y-2",
-      li: "relative pl-6 text-zinc-400 leading-7 before:absolute before:left-0 before:top-[0.7em] before:h-1.5 before:w-1.5 before:bg-white/20",
-      lead: "text-xl text-zinc-500 font-normal leading-relaxed",
-      large: "text-lg font-bold text-white",
-      small: "text-sm font-medium leading-none text-zinc-500",
-      muted: "text-[13px] text-zinc-600 font-medium",
-      code: "relative rounded-[2px] bg-white/5 border border-white/10 px-[0.4rem] py-[0.1rem] font-mono text-[12px] font-medium text-white shadow-sm",
+      li: "relative pl-6 text-foreground/80 leading-7 before:absolute before:left-0 before:top-[0.7em] before:h-1.5 before:w-1.5 before:bg-accent/40",
+      lead: "text-xl text-muted font-normal leading-relaxed",
+      large: "text-lg font-bold text-foreground",
+      small: "text-sm font-medium leading-none text-muted",
+      muted: "text-[13px] text-muted font-medium",
+      code: "relative rounded-[2px] bg-foreground/5 border border-border px-[0.4rem] py-[0.1rem] font-mono text-[12px] font-medium text-foreground shadow-sm",
     };
 
     const gradientStyles =
-      "bg-gradient-to-br from-white via-zinc-400 to-zinc-800 bg-clip-text text-transparent";
+      "bg-gradient-to-br from-foreground via-foreground/70 to-foreground/40 bg-clip-text text-transparent";
 
     return (
       <Component

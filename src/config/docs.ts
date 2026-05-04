@@ -26,6 +26,11 @@ export const sidebarData = [
             href: "/components/core/accordion",
             desc: "Collapsible content disclosure.",
           },
+          {
+            name: "Separator",
+            href: "/components/core/separator",
+            desc: "Industrial-grade dividers.",
+          },
         ],
       },
       {
@@ -76,6 +81,11 @@ export const sidebarData = [
             href: "/components/core/table",
             desc: "High-density data matrices.",
           },
+          {
+            name: "Calendar",
+            href: "/components/core/calendar",
+            desc: "Chronological data trackers.",
+          },
         ],
       },
       {
@@ -110,6 +120,16 @@ export const sidebarData = [
             name: "Tooltip",
             href: "/components/core/tooltip",
             desc: "Contextual info overlays.",
+          },
+        ],
+      },
+      {
+        title: "Feedback",
+        items: [
+          {
+            name: "Skeleton",
+            href: "/components/core/skeleton",
+            desc: "Technical loading placeholders.",
           },
         ],
       },

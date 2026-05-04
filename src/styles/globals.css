@@ -1,29 +1,14 @@
 @import "tailwindcss";
 
 @theme {
-  --color-void-900: #08080a;
-  --color-void-950: #040405;
-  --color-void-1000: #020203;
-
-  --color-accent: #fbbf24;
-  --color-accent-dim: rgba(251, 191, 36, 0.15);
-  --color-accent-secondary: #f59e0b;
-  --color-accent-highlight: #fef3c7;
-
-  --color-steel-400: #a1a1aa;
-  --color-steel-500: #71717a;
-  --color-steel-600: #52525b;
-
-  --color-background: var(--color-void-1000);
-  --color-foreground: #ececed;
-  --color-border: rgba(255, 255, 255, 0.06);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-border: var(--border);
 
   --font-sans: var(--font-geist-sans), "Inter", system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), "Fira Code", monospace;
-  --font-serif: var(--font-serif), serif;
-
-  --shadow-glow: 0 0 20px rgba(251, 191, 36, 0.1);
-  --shadow-glow-heavy: 0 0 40px rgba(251, 191, 36, 0.2);
 
   --animate-shimmer: shimmer 2s linear infinite;
   --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
@@ -48,68 +33,82 @@
   }
 }
 
+:root {
+  --background: #f8f9fa;
+  --background-raw: 210, 20%, 98%;
+  --foreground: #1a1a1e;
+  --foreground-raw: 240, 5%, 11%;
+  --accent: #f59e0b;
+  --accent-foreground: #ffffff;
+  --border: rgba(0, 0, 0, 0.08);
+  --glass: rgba(255, 255, 255, 0.8);
+  --card: #ffffff;
+  --muted: #71717a;
+  --glow: rgba(245, 158, 11, 0.2);
+}
+
+.dark {
+  --background: #020203;
+  --background-raw: 240, 10%, 1%;
+  --foreground: #ececed;
+  --foreground-raw: 240, 5%, 93%;
+  --accent: #fbbf24;
+  --accent-foreground: #020203;
+  --border: rgba(255, 255, 255, 0.08);
+  --glass: rgba(8, 8, 10, 0.8);
+  --card: #040405;
+  --muted: #71717a;
+  --glow: rgba(251, 191, 36, 0.2);
+}
+
 @layer base {
   * {
-    border-color: var(--color-border);
+    border-color: var(--border);
   }
 
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
+    background-color: var(--background);
+    color: var(--foreground);
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     -webkit-font-smoothing: antialiased;
-    selection-background-color: var(--color-accent);
-    selection-color: var(--color-void-1000);
+    selection-background-color: var(--accent);
+    selection-color: var(--accent-foreground);
   }
 
   ::-webkit-scrollbar {
-    width: 4px;
+    width: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: var(--color-void-1000);
+    background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: var(--color-void-900);
-    border: 1px solid var(--color-border);
+    background: var(--border);
     border-radius: 10px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-accent-dim);
+    background: var(--accent);
   }
 }
 
 @layer utilities {
   .glass-technical {
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.01) 0%,
-      rgba(0, 0, 0, 0.4) 100%
-    );
+    background: var(--glass);
     backdrop-filter: blur(12px) saturate(150%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow:
-      inset 0 0 40px rgba(255, 255, 255, 0.01),
-      0 10px 40px -10px rgba(0, 0, 0, 0.6);
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.1);
   }
 
-  .glass-technical-hover {
-    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .glass-technical-hover:hover {
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.03) 0%,
-      rgba(255, 255, 255, 0.01) 100%
-    );
-    border-color: rgba(255, 255, 255, 0.2);
-    box-shadow:
-      0 0 20px rgba(255, 255, 255, 0.05),
-      inset 0 0 50px rgba(255, 255, 255, 0.02);
-    transform: translateY(-1px);
+  .dark .glass-technical {
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.6);
   }
 
   .text-artifact {
-    background: linear-gradient(to right, #ffffff, #a1a1aa, #ffffff);
+    background: linear-gradient(
+      to right,
+      var(--foreground),
+      var(--muted),
+      var(--foreground)
+    );
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -117,10 +116,14 @@
   }
 
   .text-glow {
-    text-shadow: 0 0 10px rgba(251, 191, 36, 0.4);
+    text-shadow: 0 0 10px var(--glow);
   }
 
-  .perspective-1000 {
-    perspective: 1000px;
+  .shadow-glow {
+    box-shadow: 0 0 20px var(--glow);
+  }
+
+  .shadow-glow-sm {
+    box-shadow: 0 0 10px var(--glow);
   }
 }

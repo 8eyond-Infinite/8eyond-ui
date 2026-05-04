@@ -16,5 +16,8 @@ export * from "./core/Tooltip";
 export * from "./core/Badge";
 export * from "./core/Typography";
 export * from "./core/Accordion";
+export * from "./core/Skeleton";
+export * from "./core/Separator";
+export * from "./core/Calendar";
 
 export { AlchemistButton } from "./alchemist/Button/Button";

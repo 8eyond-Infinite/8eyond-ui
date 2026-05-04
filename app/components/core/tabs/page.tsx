@@ -13,14 +13,12 @@ import {
   TableHead,
   TableRow,
   TableCell,
-  Typography,
   H1,
   H3,
   Lead,
   Muted,
 } from "@/components/ui";
-
-import { CopyButton } from "@/components/docs/CopyButton";
+import { UsageBlock } from "@/components/docs/UsageBlock";
 import { Activity, ShieldAlert, Globe } from "lucide-react";
 
 export default function TabsDoc() {
@@ -36,22 +34,17 @@ export default function TabsDoc() {
           views. Engineered with spring-based motion and structural clarity.
         </Lead>
       </div>
-
-      {/* Execution */}
       <section className="space-y-8">
-        <div className="flex items-center justify-between border-b border-white/5 pb-4">
+        <div className="flex items-center justify-between border-b border-border pb-4">
           <div className="flex items-center gap-3">
-            <div className="w-2 h-2 bg-accent shadow-glow" />
+            <div className="w-2 h-2 bg-accent" />
             <H3>Execution</H3>
           </div>
-          <span className="text-[10px] font-mono text-zinc-800 italic">
-            Core
-          </span>
+          <span className="text-[10px] font-mono text-muted italic">Core</span>
         </div>
 
-        <div className="p-12 rounded-sm border border-white/5 bg-zinc-900/20 relative overflow-hidden">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808005_1px,transparent_1px),linear-gradient(to_bottom,#80808005_1px,transparent_1px)] bg-[size:20px_20px]" />
-
+        <div className="p-12 rounded-sm border border-border bg-foreground/[0.02] relative overflow-hidden transition-all duration-500 hover:bg-foreground/[0.03] hover:border-foreground/10">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808005_1px,transparent_1px),linear-gradient(to_bottom,#80808005_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none" />
           <div className="relative z-10 w-full max-w-2xl mx-auto">
             <Tabs defaultValue="realtime" size="md">
               <div className="flex justify-center mb-8">
@@ -69,13 +62,13 @@ export default function TabsDoc() {
               </div>
 
               <TabsContent value="realtime">
-                <Card className="p-8 bg-black/40 border-white/10 space-y-6">
+                <Card className="p-8 bg-background/40 border-border space-y-6">
                   <div className="flex justify-between items-end">
                     <div className="space-y-1">
                       <Muted className="text-[10px] uppercase tracking-widest">
                         CPU_Utilization
                       </Muted>
-                      <div className="text-3xl font-black italic tracking-tighter text-white">
+                      <div className="text-3xl font-black italic tracking-tighter text-foreground">
                         42.08%
                       </div>
                     </div>
@@ -83,22 +76,22 @@ export default function TabsDoc() {
                       {[40, 60, 45, 80, 50, 70, 30, 90, 40].map((h, i) => (
                         <div
                           key={i}
-                          className="w-1 bg-white/20 rounded-t-[1px]"
+                          className="w-1 bg-foreground/20 rounded-t-[1px]"
                           style={{ height: `${h}%` }}
                         />
                       ))}
                     </div>
                   </div>
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="p-4 rounded-sm bg-white/[0.02] border border-white/5">
+                    <div className="p-4 rounded-sm bg-foreground/[0.02] border border-border">
                       <Muted className="text-[9px] uppercase tracking-widest block mb-1">
                         Node_ID
                       </Muted>
-                      <span className="font-mono text-xs text-zinc-300 italic">
+                      <span className="font-mono text-xs text-muted italic">
                         US-EAST-01
                       </span>
                     </div>
-                    <div className="p-4 rounded-sm bg-white/[0.02] border border-white/5">
+                    <div className="p-4 rounded-sm bg-foreground/[0.02] border border-border">
                       <Muted className="text-[9px] uppercase tracking-widest block mb-1">
                         Status
                       </Muted>
@@ -111,16 +104,13 @@ export default function TabsDoc() {
               </TabsContent>
 
               <TabsContent value="security">
-                <Card className="p-8 bg-black/40 border-white/10 space-y-6">
-                  <div className="flex items-center gap-4 border-b border-white/5 pb-6">
-                    <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center bg-white/[0.02]">
-                      <ShieldAlert
-                        className="text-accent shadow-glow"
-                        size={20}
-                      />
+                <Card className="p-8 bg-background/40 border-border space-y-6">
+                  <div className="flex items-center gap-4 border-b border-border pb-6">
+                    <div className="w-12 h-12 rounded-full border border-border flex items-center justify-center bg-foreground/[0.02]">
+                      <ShieldAlert className="text-accent" size={20} />
                     </div>
                     <div className="space-y-0.5">
-                      <div className="text-sm font-bold text-white uppercase italic">
+                      <div className="text-sm font-bold text-foreground uppercase italic">
                         Hardened_Protection_Active
                       </div>
                       <Muted className="text-[11px]">
@@ -128,39 +118,39 @@ export default function TabsDoc() {
                       </Muted>
                     </div>
                   </div>
-                  <div className="space-y-3 font-mono text-[10px] text-zinc-500">
-                    <div className="flex justify-between border-b border-white/5 py-1">
+                  <div className="space-y-3 font-mono text-[10px] text-muted">
+                    <div className="flex justify-between border-b border-border py-1">
                       <span>Encryption_v3</span>
-                      <span className="text-white">ENABLED</span>
+                      <span className="text-foreground">ENABLED</span>
                     </div>
-                    <div className="flex justify-between border-b border-white/5 py-1">
+                    <div className="flex justify-between border-b border-border py-1">
                       <span>Firewall_Filter</span>
-                      <span className="text-white">REACTIVE</span>
+                      <span className="text-foreground">REACTIVE</span>
                     </div>
-                    <div className="flex justify-between border-b border-white/5 py-1">
+                    <div className="flex justify-between border-b border-border py-1">
                       <span>Auth_Protocol</span>
-                      <span className="text-white">X_KEY_M7</span>
+                      <span className="text-foreground">X_KEY_M7</span>
                     </div>
                   </div>
                 </Card>
               </TabsContent>
 
               <TabsContent value="network">
-                <Card className="p-8 bg-black/40 border-white/10 space-y-6">
+                <Card className="p-8 bg-background/40 border-border space-y-6">
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <Globe size={14} className="text-zinc-600" />
+                        <Globe size={14} className="text-muted" />
                         <span className="text-[11px] font-bold uppercase tracking-widest">
                           Traffic_Flow
                         </span>
                       </div>
-                      <span className="text-[10px] font-mono text-zinc-700 italic">
+                      <span className="text-[10px] font-mono text-muted/60 italic">
                         LATENCY: 14MS
                       </span>
                     </div>
-                    <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden">
-                      <div className="w-3/4 h-full bg-white shadow-glow" />
+                    <div className="w-full h-1 bg-foreground/5 rounded-full overflow-hidden">
+                      <div className="w-3/4 h-full bg-foreground" />
                     </div>
                     <Muted className="text-[10px] italic">
                       Outbound transmission stabilized at 4.2GB/s
@@ -175,30 +165,28 @@ export default function TabsDoc() {
 
       {/* Preview */}
       <section className="space-y-12">
-        <div className="flex items-center justify-between border-b border-white/5 pb-4">
+        <div className="flex items-center justify-between border-b border-border pb-4">
           <div className="flex items-center gap-3">
-            <div className="w-2 h-2 bg-zinc-500" />
+            <div className="w-2 h-2 bg-muted" />
             <H3>Preview</H3>
           </div>
-          <span className="text-[10px] font-mono text-zinc-800 italic">
-            Core
-          </span>
+          <span className="text-[10px] font-mono text-muted italic">Core</span>
         </div>
 
         <div className="space-y-16">
           <div className="space-y-8">
             <div className="flex items-center gap-2 px-1">
-              <div className="w-1 h-1 bg-zinc-800" />
+              <div className="w-1 h-1 bg-border" />
               <Muted className="text-[10px] font-mono uppercase tracking-[0.2em]">
                 Scaling
               </Muted>
             </div>
 
-            <div className="p-10 rounded-sm border border-white/5 bg-white/[0.01] flex flex-col gap-12 items-center">
+            <div className="p-10 rounded-sm border border-border bg-foreground/[0.01] flex flex-col gap-12 items-center">
               {scalingSizes.map((size) => (
                 <div
                   key={size}
-                  className="w-full flex flex-col items-center gap-4 border-b border-white/5 pb-8 last:border-0 last:pb-0"
+                  className="w-full flex flex-col items-center gap-4 border-b border-border pb-8 last:border-0 last:pb-0"
                 >
                   <Muted className="text-[9px] uppercase tracking-[0.3em] font-bold">
                     {size.toUpperCase()}_VERSION
@@ -219,17 +207,15 @@ export default function TabsDoc() {
 
       {/* API Reference */}
       <section className="space-y-8">
-        <div className="flex items-center justify-between border-b border-white/5 pb-4">
+        <div className="flex items-center justify-between border-b border-border pb-4">
           <div className="flex items-center gap-3">
-            <div className="w-2 h-2 bg-zinc-800" />
+            <div className="w-2 h-2 bg-muted" />
             <H3>API Reference</H3>
           </div>
-          <span className="text-[10px] font-mono text-zinc-800 italic">
-            Core
-          </span>
+          <span className="text-[10px] font-mono text-muted italic">Core</span>
         </div>
-        <Card className="overflow-hidden border-white/5 bg-black/20">
-          <Table>
+        <Card className="overflow-hidden border-border bg-foreground/[0.02]">
+          <Table variant="technical">
             <TableHeader>
               <TableRow>
                 <TableHead className="w-[150px]">Prop</TableHead>
@@ -240,36 +226,44 @@ export default function TabsDoc() {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell className="font-mono text-white">size</TableCell>
-                <TableCell className="text-[12px] font-mono text-zinc-500">
+                <TableCell className="font-mono text-foreground">
+                  size
+                </TableCell>
+                <TableCell className="text-[12px] font-mono text-accent">
                   "xs" | "sm" | "md" | "lg" | "xl"
                 </TableCell>
-                <TableCell className="font-mono text-[12px]">"md"</TableCell>
-                <TableCell>
+                <TableCell className="font-mono text-[12px] text-muted">
+                  "md"
+                </TableCell>
+                <TableCell className="text-muted/70">
                   The overall dimensional scale of the tabs list.
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-mono text-white">
+                <TableCell className="font-mono text-foreground">
                   defaultValue
                 </TableCell>
-                <TableCell className="text-[12px] font-mono text-zinc-500">
+                <TableCell className="text-[12px] font-mono text-accent">
                   string
                 </TableCell>
-                <TableCell className="font-mono text-[12px]">null</TableCell>
-                <TableCell>
+                <TableCell className="font-mono text-[12px] text-muted">
+                  null
+                </TableCell>
+                <TableCell className="text-muted/70">
                   The value of the tab to be active by default.
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-mono text-white">
+                <TableCell className="font-mono text-foreground">
                   onValueChange
                 </TableCell>
-                <TableCell className="text-[12px] font-mono text-zinc-500 text-pretty">
+                <TableCell className="text-[12px] font-mono text-accent text-pretty">
                   (value: string) =&gt; void
                 </TableCell>
-                <TableCell className="font-mono text-[12px]">null</TableCell>
-                <TableCell>
+                <TableCell className="font-mono text-[12px] text-muted">
+                  null
+                </TableCell>
+                <TableCell className="text-muted/70">
                   Callback triggered when a tab is selected.
                 </TableCell>
               </TableRow>
@@ -280,33 +274,16 @@ export default function TabsDoc() {
 
       {/* Usage */}
       <section className="space-y-8">
-        <div className="flex items-center justify-between border-b border-white/5 pb-4">
+        <div className="flex items-center justify-between border-b border-border pb-4">
           <div className="flex items-center gap-3">
-            <div className="w-2 h-2 bg-zinc-800" />
+            <div className="w-2 h-2 bg-muted" />
             <H3>Usage</H3>
           </div>
-          <span className="text-[10px] font-mono text-zinc-800 italic">
-            Core
-          </span>
+          <span className="text-[10px] font-mono text-muted italic">Core</span>
         </div>
-        <div className="relative group">
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-700 rounded-sm blur-sm" />
-          <div className="relative p-8 bg-black/60 border border-white/5 font-mono text-sm overflow-x-auto flex items-center justify-between">
-            <code className="text-zinc-400 group-hover:text-white transition-colors duration-500 whitespace-pre">
-              {`<Tabs defaultValue="tab1" size="sm">
-  <TabsList>
-    <TabsTrigger value="tab1">Module_01</TabsTrigger>
-    <TabsTrigger value="tab2">Module_02</TabsTrigger>
-  </TabsList>
-  <TabsContent value="tab1">Content_A</TabsContent>
-  <TabsContent value="tab2">Content_B</TabsContent>
-</Tabs>`}
-            </code>
-            <CopyButton
-              value={`<Tabs defaultValue="tab1" size="sm">\n  <TabsList>\n    <TabsTrigger value="tab1">Module_01</TabsTrigger>\n    <TabsTrigger value="tab2">Module_02</TabsTrigger>\n  </TabsList>\n  <TabsContent value="tab1">Content_A</TabsContent>\n  <TabsContent value="tab2">Content_B</TabsContent>\n</Tabs>`}
-            />
-          </div>
-        </div>
+        <UsageBlock
+          code={`<Tabs defaultValue="tab1" size="sm">\n  <TabsList>\n    <TabsTrigger value="tab1">Module_01</TabsTrigger>\n    <TabsTrigger value="tab2">Module_02</TabsTrigger>\n  </TabsList>\n  <TabsContent value="tab1">Content_A</TabsContent>\n  <TabsContent value="tab2">Content_B</TabsContent>\n</Tabs>`}
+        />
       </section>
     </div>
   );

@@ -63,7 +63,7 @@ const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps>(
         <div
           ref={ref}
           className={cn(
-            "border border-white/5 bg-white/[0.01] rounded-[2px] overflow-hidden",
+            "border border-border bg-foreground/[0.01] rounded-[2px] overflow-hidden",
             className
           )}
           {...props}
@@ -93,7 +93,9 @@ const AccordionTrigger = React.forwardRef<
       onClick={() => toggleItem(value)}
       className={cn(
         "flex w-full items-center justify-between p-6 text-left font-mono text-[11px] font-bold uppercase tracking-widest transition-all",
-        isOpen ? "text-white" : "text-zinc-500 hover:text-zinc-300",
+        isOpen
+          ? "text-foreground bg-foreground/[0.02]"
+          : "text-muted hover:text-foreground hover:bg-foreground/[0.01]",
         className
       )}
       {...props}
@@ -107,7 +109,7 @@ const AccordionTrigger = React.forwardRef<
           size={14}
           className={cn(
             "transition-colors",
-            isOpen ? "text-white" : "text-zinc-800"
+            isOpen ? "text-foreground" : "text-muted"
           )}
         />
       </motion.div>
@@ -136,7 +138,7 @@ const AccordionContent = React.forwardRef<
           <div
             ref={ref}
             className={cn(
-              "p-6 pt-0 text-sm text-zinc-400 leading-relaxed",
+              "p-6 pt-2 text-sm text-foreground/70 leading-relaxed font-sans",
               className
             )}
             {...props}

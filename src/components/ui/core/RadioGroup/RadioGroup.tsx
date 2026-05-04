@@ -79,10 +79,10 @@ export function RadioGroupItem({
       disabled={disabled}
       onClick={() => !disabled && context.onValueChange?.(value)}
       className={cn(
-        "relative flex items-center justify-center rounded-full border border-white/10 bg-zinc-950 transition-all focus:outline-none focus:ring-1 focus:ring-white/20 disabled:cursor-not-allowed disabled:opacity-50",
+        "relative flex items-center justify-center rounded-full border border-border bg-background transition-all focus:outline-none focus:ring-1 focus:ring-foreground/20 disabled:cursor-not-allowed disabled:opacity-50",
         isChecked
-          ? "border-white text-white"
-          : "hover:border-white/20 text-transparent",
+          ? "border-foreground text-foreground"
+          : "hover:border-foreground/20 text-transparent",
         sizeMap[context.size],
         className
       )}

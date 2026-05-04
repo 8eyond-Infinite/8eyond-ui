@@ -102,7 +102,7 @@ export function TooltipContent({
           exit={initialValues[context.position]}
           transition={{ duration: 0.15, ease: "easeOut" }}
           className={cn(
-            "absolute z-[9999] whitespace-nowrap rounded-sm border border-white/10 bg-zinc-950/90 px-3 py-1.5 font-mono text-[10px] leading-none text-zinc-300 shadow-2xl backdrop-blur-md",
+            "absolute z-[9999] whitespace-nowrap rounded-sm border border-border bg-background/90 px-3 py-1.5 font-mono text-[10px] leading-none text-foreground shadow-2xl backdrop-blur-md",
             positions[context.position],
             className
           )}
@@ -111,7 +111,7 @@ export function TooltipContent({
           {/* Subtle pointer arrow */}
           <div
             className={cn(
-              "absolute h-1.5 w-1.5 rotate-45 border-white/10 bg-zinc-950",
+              "absolute h-1.5 w-1.5 rotate-45 border-border bg-background",
               context.position === "top" &&
                 "bottom-[-4px] left-1/2 -translate-x-1/2 border-b border-r",
               context.position === "bottom" &&

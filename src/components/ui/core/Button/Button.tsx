@@ -38,18 +38,17 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       "relative inline-flex items-center justify-center rounded-[2px] font-mono text-[13px] tracking-tight transition-all duration-500 focus-visible:outline-none disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none";
 
     const variants = {
-      primary:
-        "bg-foreground text-background hover:bg-white/90 shadow-[0_4px_12px_rgba(255,255,255,0.03)]",
+      primary: "bg-foreground text-background hover:opacity-90 shadow-sm",
       secondary:
-        "border border-white/5 bg-white/[0.03] text-zinc-400 hover:bg-white/[0.08] hover:text-white hover:border-white/10",
-      ghost: "text-zinc-500 hover:text-white hover:bg-white/5",
+        "border border-border bg-foreground/[0.03] text-muted hover:bg-foreground/[0.08] hover:text-foreground hover:border-border",
+      ghost: "text-muted hover:text-foreground hover:bg-foreground/5",
       destructive:
-        "bg-red-500/5 text-red-500 border border-red-500/10 hover:bg-red-500/10 hover:border-red-500/40 shadow-[0_4px_12px_rgba(239,68,68,0.05)]",
+        "bg-red-500/5 text-red-500 border border-red-500/10 hover:bg-red-500/10 hover:border-red-500/40 shadow-sm",
       outline:
-        "border border-white/10 bg-transparent text-zinc-500 hover:bg-white/5 hover:border-white/20 hover:text-white",
+        "border border-border bg-transparent text-muted hover:bg-foreground/5 hover:border-foreground/20 hover:text-foreground",
       link: "text-accent underline-offset-4 hover:underline px-0 h-auto font-bold uppercase italic",
       success:
-        "bg-emerald-500/5 text-emerald-500 border border-emerald-500/10 hover:bg-emerald-500/10 hover:border-emerald-500/40 shadow-[0_4px_12px_rgba(16,185,129,0.05)]",
+        "bg-emerald-500/5 text-emerald-500 border border-emerald-500/10 hover:bg-emerald-500/10 hover:border-emerald-500/40 shadow-sm",
     };
 
     const sizes = {

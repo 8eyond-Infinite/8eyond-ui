@@ -12,7 +12,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
         ref={ref}
         className={cn(
           "rounded-[2px] transition-all duration-500",
-          variant === "default" && "border border-white/5 bg-white/[0.01]",
+          variant === "default" && "border border-border bg-foreground/[0.01]",
           variant === "technical" && "glass-technical glass-technical-hover",
           variant === "ghost" && "border border-transparent bg-transparent",
           className
@@ -55,7 +55,7 @@ const CardDescription = React.forwardRef<
   <p
     ref={ref}
     className={cn(
-      "text-[10px] font-mono text-zinc-600 uppercase tracking-widest",
+      "text-[10px] font-mono text-muted uppercase tracking-widest",
       className
     )}
     {...props}

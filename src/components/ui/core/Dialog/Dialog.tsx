@@ -90,7 +90,7 @@ const DialogContent = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => context.setOpen(false)}
-            className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-md"
+            className="fixed inset-0 z-[100] bg-background/80 backdrop-blur-md"
           />
           <div className="fixed inset-0 z-[101] flex items-center justify-center p-4 pointer-events-none">
             <motion.div
@@ -117,15 +117,15 @@ const DialogContent = ({
                 ease: [0.16, 1, 0.3, 1],
               }}
               className={cn(
-                "relative w-full max-w-lg overflow-hidden border border-white/10 bg-zinc-950 p-10 shadow-[0_0_100px_rgba(0,0,0,0.9)] rounded-sm pointer-events-auto",
+                "relative w-full max-w-lg overflow-hidden border border-border bg-background p-10 shadow-2xl rounded-sm pointer-events-auto",
                 className
               )}
             >
-              <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+              <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-foreground/10 to-transparent" />
 
               <button
                 onClick={() => context.setOpen(false)}
-                className="absolute right-6 top-6 text-zinc-600 hover:text-white transition-all hover:rotate-90"
+                className="absolute right-6 top-6 text-muted hover:text-foreground transition-all hover:rotate-90"
               >
                 <X size={18} strokeWidth={1.5} />
               </button>
@@ -158,7 +158,7 @@ const DialogTitle = ({
 }: React.HTMLAttributes<HTMLHeadingElement>) => (
   <h3
     className={cn(
-      "text-3xl font-black uppercase italic tracking-tighter text-white",
+      "text-3xl font-black uppercase italic tracking-tighter text-foreground",
       className
     )}
     {...props}
@@ -170,10 +170,7 @@ const DialogDescription = ({
   ...props
 }: React.HTMLAttributes<HTMLParagraphElement>) => (
   <p
-    className={cn(
-      "text-zinc-500 leading-relaxed text-sm font-normal",
-      className
-    )}
+    className={cn("text-muted leading-relaxed text-sm font-normal", className)}
     {...props}
   />
 );
@@ -184,7 +181,7 @@ const DialogFooter = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     className={cn(
-      "mt-12 pt-6 border-t border-white/5 flex flex-col-reverse sm:flex-row sm:justify-end sm:gap-3",
+      "mt-12 pt-6 border-t border-border flex flex-col-reverse sm:flex-row sm:justify-end sm:gap-3",
       className
     )}
     {...props}

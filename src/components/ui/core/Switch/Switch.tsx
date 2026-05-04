@@ -71,11 +71,11 @@ const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
         />
         <div
           className={cn(
-            "rounded-sm border transition-all duration-500 flex items-center relative",
+            "rounded-full border transition-all duration-500 flex items-center relative",
             sizes[size],
             checked
-              ? "bg-white/10 border-white/20"
-              : "bg-zinc-950/50 border-white/10 group-hover:border-white/30",
+              ? "bg-foreground border-foreground"
+              : "border-border bg-foreground/[0.02] group-hover:border-foreground/30",
             props.disabled && "opacity-50 cursor-not-allowed grayscale",
             className
           )}
@@ -89,14 +89,9 @@ const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
         >
           <div
             className={cn(
-              "absolute left-[2px] rounded-[1px] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+              "absolute left-[2px] rounded-full transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
               thumbSizes[size],
-              checked
-                ? cn(
-                    translates[size],
-                    "bg-white shadow-[0_0_15px_rgba(255,255,255,0.2)]"
-                  )
-                : "bg-zinc-700"
+              checked ? cn(translates[size], "bg-background") : "bg-foreground"
             )}
           />
         </div>

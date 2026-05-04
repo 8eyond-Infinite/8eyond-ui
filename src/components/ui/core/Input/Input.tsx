@@ -29,7 +29,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {leftIcon && (
           <div
             className={cn(
-              "absolute left-4 top-1/2 -translate-y-1/2 text-zinc-600 group-focus-within:text-white transition-colors duration-300",
+              "absolute left-4 top-1/2 -translate-y-1/2 text-muted group-focus-within:text-foreground transition-colors duration-300",
               size === "xs" && "left-2",
               size === "sm" && "left-3"
             )}
@@ -40,22 +40,22 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         <input
           type={type}
           className={cn(
-            "flex w-full rounded-[2px] border bg-zinc-950/50 font-mono tracking-tight transition-all duration-300 placeholder:text-zinc-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
+            "flex w-full rounded-[2px] border bg-foreground/[0.02] font-mono tracking-tight transition-all duration-300 placeholder:text-muted/50 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 text-foreground",
             sizes[size],
             leftIcon &&
               (size === "xs" ? "pl-8" : size === "sm" ? "pl-9" : "pl-11"),
             rightIcon &&
               (size === "xs" ? "pr-8" : size === "sm" ? "pr-9" : "pr-11"),
             error
-              ? "border-red-900/50 focus-visible:border-red-500 focus-visible:shadow-[0_0_15px_rgba(239,68,68,0.1)]"
-              : "border-white/10 focus-visible:border-white/30 focus-visible:bg-white/[0.04] focus-visible:shadow-[0_0_15px_rgba(255,255,255,0.02)]",
+              ? "border-red-500/50 focus-visible:border-red-500"
+              : "border-border focus-visible:border-foreground/30 focus-visible:bg-foreground/[0.03]",
             className
           )}
           ref={ref}
           {...props}
         />
         {rightIcon && (
-          <div className="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-600 group-focus-within:text-white transition-colors duration-300">
+          <div className="absolute right-4 top-1/2 -translate-y-1/2 text-muted group-focus-within:text-foreground transition-colors duration-300">
             {rightIcon}
           </div>
         )}

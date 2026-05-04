@@ -73,8 +73,8 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
             "rounded-[1px] border transition-all duration-300 flex items-center justify-center",
             sizes[size],
             internalChecked
-              ? "bg-white border-white shadow-[0_0_10px_rgba(255,255,255,0.1)]"
-              : "border-white/10 bg-zinc-950/50 group-hover:border-white/30",
+              ? "bg-foreground border-foreground"
+              : "border-border bg-foreground/[0.02] group-hover:border-foreground/30",
             props.disabled && "opacity-50 cursor-not-allowed grayscale",
             className
           )}
@@ -88,7 +88,7 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
         >
           <Check
             className={cn(
-              "text-black font-bold transition-all duration-300 transform",
+              "text-background font-bold transition-all duration-300 transform",
               checkSizes[size],
               internalChecked ? "opacity-100 scale-100" : "opacity-0 scale-50"
             )}

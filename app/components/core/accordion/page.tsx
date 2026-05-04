@@ -18,7 +18,7 @@ import {
   Lead,
   Muted,
 } from "@/components/ui";
-import { CopyButton } from "@/components/docs/CopyButton";
+import { UsageBlock } from "@/components/docs/UsageBlock";
 
 export default function AccordionDoc() {
   return (
@@ -35,18 +35,16 @@ export default function AccordionDoc() {
 
       {/* Execution */}
       <section className="space-y-8">
-        <div className="flex items-center justify-between border-b border-white/5 pb-4">
+        <div className="flex items-center justify-between border-b border-border pb-4">
           <div className="flex items-center gap-3">
-            <div className="w-2 h-2 bg-white shadow-[0_0_10px_rgba(255,255,255,0.3)]" />
+            <div className="w-2 h-2 bg-accent shadow-glow" />
             <H3>Execution</H3>
           </div>
-          <span className="text-[10px] font-mono text-zinc-800 italic">
-            Core
-          </span>
+          <span className="text-[10px] font-mono text-muted italic">Core</span>
         </div>
 
-        <div className="p-12 rounded-sm border border-white/5 bg-zinc-900/20 relative overflow-hidden min-h-[400px] flex items-center justify-center">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808005_1px,transparent_1px),linear-gradient(to_bottom,#80808005_1px,transparent_1px)] bg-[size:32px_32px]" />
+        <div className="p-12 rounded-sm border border-border bg-foreground/[0.02] relative overflow-hidden min-h-[400px] flex items-center justify-center transition-all duration-500 hover:bg-foreground/[0.03] hover:border-foreground/10">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808005_1px,transparent_1px),linear-gradient(to_bottom,#80808005_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
 
           <div className="relative z-10 w-full max-w-xl mx-auto">
             <Accordion type="single" defaultValue="item-1">
@@ -83,27 +81,25 @@ export default function AccordionDoc() {
 
       {/* Preview */}
       <section className="space-y-12">
-        <div className="flex items-center justify-between border-b border-white/5 pb-4">
+        <div className="flex items-center justify-between border-b border-border pb-4">
           <div className="flex items-center gap-3">
-            <div className="w-2 h-2 bg-zinc-500" />
+            <div className="w-2 h-2 bg-muted" />
             <H3>Preview</H3>
           </div>
-          <span className="text-[10px] font-mono text-zinc-800 italic">
-            Core
-          </span>
+          <span className="text-[10px] font-mono text-muted italic">Core</span>
         </div>
 
         <div className="space-y-16">
           <div className="space-y-6">
             <div className="flex items-center gap-2 px-1">
-              <div className="w-1 h-1 bg-zinc-800" />
+              <div className="w-1 h-1 bg-border" />
               <Muted className="text-[10px] font-mono uppercase tracking-[0.2em]">
                 Variants
               </Muted>
             </div>
-            <div className="p-10 rounded-sm border border-white/5 bg-white/[0.01] grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="p-10 rounded-sm border border-border bg-foreground/[0.01] grid grid-cols-1 md:grid-cols-2 gap-8 transition-all duration-500 hover:bg-foreground/[0.02] hover:border-foreground/10">
               <div className="space-y-4">
-                <Muted className="text-[9px] uppercase tracking-tighter opacity-50 block border-b border-white/5 pb-1">
+                <Muted className="text-[9px] uppercase tracking-tighter opacity-50 block border-b border-border pb-1">
                   Single_Mode
                 </Muted>
                 <Accordion type="single">
@@ -123,7 +119,7 @@ export default function AccordionDoc() {
               </div>
 
               <div className="space-y-4">
-                <Muted className="text-[9px] uppercase tracking-tighter opacity-50 block border-b border-white/5 pb-1">
+                <Muted className="text-[9px] uppercase tracking-tighter opacity-50 block border-b border-border pb-1">
                   Multiple_Mode
                 </Muted>
                 <Accordion type="multiple">
@@ -148,73 +144,47 @@ export default function AccordionDoc() {
 
       {/* API Reference */}
       <section className="space-y-8">
-        <div className="flex items-center justify-between border-b border-white/5 pb-4">
+        <div className="flex items-center justify-between border-b border-border pb-4">
           <div className="flex items-center gap-3">
-            <div className="w-2 h-2 bg-zinc-800" />
+            <div className="w-2 h-2 bg-muted" />
             <H3>API Reference</H3>
           </div>
-          <span className="text-[10px] font-mono text-zinc-800 italic">
-            Core
-          </span>
+          <span className="text-[10px] font-mono text-muted italic">Core</span>
         </div>
-        <Card className="overflow-hidden border-white/5 bg-black/20">
-          <Table>
+        <Card className="overflow-hidden border-border bg-foreground/[0.02]">
+          <Table variant="technical">
             <TableHeader>
               <TableRow>
-                <TableHead className="w-[150px]">Component</TableHead>
-                <TableHead>Prop</TableHead>
+                <TableHead className="w-[150px]">Prop</TableHead>
                 <TableHead>Type</TableHead>
+                <TableHead>Default</TableHead>
                 <TableHead>Description</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell className="font-mono text-white">
-                  Accordion
+                <TableCell className="font-mono text-foreground">
+                  type
                 </TableCell>
-                <TableCell className="font-mono text-zinc-500">type</TableCell>
-                <TableCell className="text-[12px] font-mono text-zinc-500">
+                <TableCell className="text-[12px] font-mono text-accent">
                   "single" | "multiple"
+                </TableCell>
+                <TableCell className="font-mono text-[12px]">
+                  "single"
                 </TableCell>
                 <TableCell>
                   Determines if one or multiple items can be open at once.
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-mono text-white">
-                  AccordionItem
+                <TableCell className="font-mono text-foreground">
+                  defaultValue
                 </TableCell>
-                <TableCell className="font-mono text-zinc-500">value</TableCell>
-                <TableCell className="text-[12px] font-mono text-zinc-500">
-                  string
+                <TableCell className="text-[12px] font-mono text-accent">
+                  string | string[]
                 </TableCell>
-                <TableCell>
-                  Unique identifier for the accordion artifact.
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className="font-mono text-white">
-                  AccordionTrigger
-                </TableCell>
-                <TableCell className="font-mono text-zinc-500">-</TableCell>
-                <TableCell className="text-[12px] font-mono text-zinc-500">
-                  Button
-                </TableCell>
-                <TableCell>
-                  The interactive control that toggles content visibility.
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className="font-mono text-white">
-                  AccordionContent
-                </TableCell>
-                <TableCell className="font-mono text-zinc-500">-</TableCell>
-                <TableCell className="text-[12px] font-mono text-zinc-500">
-                  MotionDiv
-                </TableCell>
-                <TableCell>
-                  The hidden payload area that expands on trigger.
-                </TableCell>
+                <TableCell className="font-mono text-[12px]">null</TableCell>
+                <TableCell>Initially expanded item value(s).</TableCell>
               </TableRow>
             </TableBody>
           </Table>
@@ -223,33 +193,16 @@ export default function AccordionDoc() {
 
       {/* Usage */}
       <section className="space-y-8">
-        <div className="flex items-center justify-between border-b border-white/5 pb-4">
+        <div className="flex items-center justify-between border-b border-border pb-4">
           <div className="flex items-center gap-3">
-            <div className="w-2 h-2 bg-zinc-800" />
+            <div className="w-2 h-2 bg-muted" />
             <H3>Usage</H3>
           </div>
-          <span className="text-[10px] font-mono text-zinc-800 italic">
-            Core
-          </span>
+          <span className="text-[10px] font-mono text-muted italic">Core</span>
         </div>
-        <div className="relative group">
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-700 rounded-sm blur-sm" />
-          <div className="relative p-8 bg-black/60 border border-white/5 font-mono text-sm overflow-x-auto flex items-center justify-between">
-            <code className="text-zinc-400 group-hover:text-white transition-colors duration-500 whitespace-pre">
-              {`<Accordion type="single">
-  <AccordionItem value="item-1">
-    <AccordionTrigger>Header</AccordionTrigger>
-    <AccordionContent>
-      Payload_Data
-    </AccordionContent>
-  </AccordionItem>
-</Accordion>`}
-            </code>
-            <CopyButton
-              value={`<Accordion type="single">\n  <AccordionItem value="item-1">\n    <AccordionTrigger>Header</AccordionTrigger>\n    <AccordionContent>\n      Payload_Data\n    </AccordionContent>\n  </AccordionItem>\n</Accordion>`}
-            />
-          </div>
-        </div>
+        <UsageBlock
+          code={`<Accordion type="single">\n  <AccordionItem value="item-1">\n    <AccordionTrigger>Header</AccordionTrigger>\n    <AccordionContent>\n      Payload_Data\n    </AccordionContent>\n  </AccordionItem>\n</Accordion>`}
+        />
       </section>
     </div>
   );
